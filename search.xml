@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/2020/08/08/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
-    <content><![CDATA[<hr>
-<h2 id="传统的机器学习方法——决策树（上）"><a href="#传统的机器学习方法——决策树（上）" class="headerlink" title="传统的机器学习方法——决策树（上）"></a>传统的机器学习方法——决策树（上）</h2><p>@[toc]</p>
+    <title>传统的机器学习方法——决策树（上）</title>
+    <url>/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
+    <content><![CDATA[<p>@[toc]</p>
 <h1 id="1-决策树模型介绍"><a href="#1-决策树模型介绍" class="headerlink" title="1 决策树模型介绍"></a>1 决策树模型介绍</h1><h2 id="1-1-决策树模型概述"><a href="#1-1-决策树模型概述" class="headerlink" title="1.1 决策树模型概述"></a>1.1 决策树模型概述</h2><p>   分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有两种类型：内部节点和叶节点，内部节点表示一个特征或属性，叶节点表示一个类。<br>   分类的时候，从根节点开始，当前节点设为根节点，当前节点必定是一种特征，根据实例的该特征的取值，向下移动，直到到达叶节点，将实例分到叶节点对应的类中。<br><img src="https://img-blog.csdnimg.cn/20200802172055879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树模型"></p>
 <h2 id="1-2-决策树与if-then规则"><a href="#1-2-决策树与if-then规则" class="headerlink" title="1.2 决策树与if-then规则"></a>1.2 决策树与if-then规则</h2><p>可以将决策树看成一个if-then规则的集合：由决策树的根节点到叶节点的每一条路径构建一条规则；路径上的内部结点的特征对应着if条件，叶节点对应着then结论。决策树的每一条路径都具有一个重要的性质：互斥且完备。这就是说，任何一个实例都被且仅被一条路径或规则覆盖。这里所谓覆盖是指实例的特征与路径上的特征一致或实例满足规则的条件。<br><em>举个例子：if(明天是晴天）then(我将出去玩)</em></p>
 <h2 id="1-3-决策树主要优点"><a href="#1-3-决策树主要优点" class="headerlink" title="1.3 决策树主要优点"></a>1.3 决策树主要优点</h2><p>1.分类速度快；<br>2.具有可读性；<br>3.学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新数据集，利用决策树模型进行分类。</p>
@@ -40,10 +39,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>python中的bug</title>
     <url>/2020/08/08/python%E4%B8%AD%E7%9A%84bug/</url>
-    <content><![CDATA[<hr>
-<h2 id="python中的bug"><a href="#python中的bug" class="headerlink" title=" python中的bug"></a> python中的bug</h2><h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
+    <content><![CDATA[<h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
 <h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
   </entry>
