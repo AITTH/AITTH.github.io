@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/2020/08/15/github%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/</url>
-    <content><![CDATA[<hr>
-<h2 id="修改github中的username"><a href="#修改github中的username" class="headerlink" title="修改github中的username"></a>修改github中的username</h2><p>第一次注册时的github时，用户名总是重复，当时随便起了一个，所以现在想要改一下，下面说一下改的过程</p>
-<h1 id="第一步，打开settings"><a href="#第一步，打开settings" class="headerlink" title="第一步，打开settings"></a>第一步，打开settings</h1><p><img src="https://img-blog.csdnimg.cn/20200810181128473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="第二步，account中找到change-username"><a href="#第二步，account中找到change-username" class="headerlink" title="第二步，account中找到change username"></a>第二步，account中找到change username</h1><p><img src="https://img-blog.csdnimg.cn/20200810181409670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="下面点击确定"><a href="#下面点击确定" class="headerlink" title="下面点击确定"></a>下面点击确定</h2><p><img src="https://img-blog.csdnimg.cn/20200810181549189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="最后，进入改username最后一步"><a href="#最后，进入改username最后一步" class="headerlink" title="最后，进入改username最后一步"></a>最后，进入改username最后一步</h1><p><img src="https://img-blog.csdnimg.cn/20200810181706116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>填入自己想要改的名字就可以了，但是要注意，有内容的仓库的名字也要改，不然仓库里的东西推到远端会出错。</p>
+    <title>Hello World</title>
+    <url>/2020/08/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>python中的bug</title>
+    <url>/2020/08/08/python%E4%B8%AD%E7%9A%84bug/</url>
+    <content><![CDATA[<h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
+<h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>传统的机器学习方法——决策树（上）</title>
+    <url>/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
+    <content><![CDATA[<p>@[toc]</p>
+<h1 id="1-决策树模型介绍"><a href="#1-决策树模型介绍" class="headerlink" title="1 决策树模型介绍"></a>1 决策树模型介绍</h1><h2 id="1-1-决策树模型概述"><a href="#1-1-决策树模型概述" class="headerlink" title="1.1 决策树模型概述"></a>1.1 决策树模型概述</h2><p>   分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有两种类型：内部节点和叶节点，内部节点表示一个特征或属性，叶节点表示一个类。<br>   分类的时候，从根节点开始，当前节点设为根节点，当前节点必定是一种特征，根据实例的该特征的取值，向下移动，直到到达叶节点，将实例分到叶节点对应的类中。<br><img src="https://img-blog.csdnimg.cn/20200802172055879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树模型"></p>
+<h2 id="1-2-决策树与if-then规则"><a href="#1-2-决策树与if-then规则" class="headerlink" title="1.2 决策树与if-then规则"></a>1.2 决策树与if-then规则</h2><p>可以将决策树看成一个if-then规则的集合：由决策树的根节点到叶节点的每一条路径构建一条规则；路径上的内部结点的特征对应着if条件，叶节点对应着then结论。决策树的每一条路径都具有一个重要的性质：互斥且完备。这就是说，任何一个实例都被且仅被一条路径或规则覆盖。这里所谓覆盖是指实例的特征与路径上的特征一致或实例满足规则的条件。<br><em>举个例子：if(明天是晴天）then(我将出去玩)</em></p>
+<h2 id="1-3-决策树主要优点"><a href="#1-3-决策树主要优点" class="headerlink" title="1.3 决策树主要优点"></a>1.3 决策树主要优点</h2><p>1.分类速度快；<br>2.具有可读性；<br>3.学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新数据集，利用决策树模型进行分类。</p>
+<h2 id="1-4-主要步骤"><a href="#1-4-主要步骤" class="headerlink" title="1.4 主要步骤"></a>1.4 主要步骤</h2><p>1.特征选择问题<br>2.决策树的生成<br>3.决策树的剪枝</p>
+<h1 id="2-特征选择"><a href="#2-特征选择" class="headerlink" title="2 特征选择"></a>2 特征选择</h1><h2 id="2-1-特征选择问题"><a href="#2-1-特征选择问题" class="headerlink" title="2.1 特征选择问题"></a>2.1 特征选择问题</h2><p>特征选择在于选取对训练集具有分类能力的特征。如果利用一个特征进行分类的结果与随即分类的结果没有很大差别，则称这个特征没有分类能力。通常特征选则的准则是信息增益或信息增益比。<br>特征选择是决定用哪个特征来划分特征空间。</p>
+<h3 id="2-1-1-举个例子"><a href="#2-1-1-举个例子" class="headerlink" title="2.1.1 举个例子"></a>2.1.1 <em>举个例子</em></h3><p>下表（表5.1）是由15个样本组成的贷款申请训练数据。数据包括贷款申请人的4个特征（属性），具体信息如表所示：<img src="https://img-blog.csdnimg.cn/20200802174557798.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="贷款申请样本数据集"><br>通过上表所给的训练数据构建一个贷款申请的决策树，用以对未来的贷款申请进行分类，即当新的客户提出贷款申请是，根据申请人的特征利用决策树决定是否批准贷款申请。<br><strong>在说明这个例子之前，必须先了解几个定义。</strong></p>
+<h2 id="2-2-重要定义"><a href="#2-2-重要定义" class="headerlink" title="2.2 重要定义"></a>2.2 重要定义</h2><h3 id="2-2-1-熵"><a href="#2-2-1-熵" class="headerlink" title="2.2.1 熵"></a>2.2.1 熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180036468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="熵"><br>由熵的定义可知，熵只依赖与X的分布，而与X的取值无关，所以也可以将X的熵记作H（<em>p</em>）,即<img src="https://img-blog.csdnimg.cn/2020080218034198.png" alt="熵"></p>
+<h3 id="2-2-2-条件熵"><a href="#2-2-2-条件熵" class="headerlink" title="2.2.2 条件熵"></a>2.2.2 条件熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180611704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="条件熵"></p>
+<h3 id="2-2-3-信息增益"><a href="#2-2-3-信息增益" class="headerlink" title="2.2.3 信息增益"></a>2.2.3 信息增益</h3><p><img src="https://img-blog.csdnimg.cn/20200802180734432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益"><br>一般地，熵H(Y)与条件熵H(Y|X)之差成为互信息。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。</p>
+<h2 id="2-3-信息增益的算法"><a href="#2-3-信息增益的算法" class="headerlink" title="2.3 信息增益的算法"></a>2.3 信息增益的算法</h2><h3 id="2-3-1-算法过程"><a href="#2-3-1-算法过程" class="headerlink" title="2.3.1 算法过程"></a>2.3.1 算法过程</h3><p><img src="https://img-blog.csdnimg.cn/20200802181234549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益的算法过程"></p>
+<h3 id="2-3-2-举个例子"><a href="#2-3-2-举个例子" class="headerlink" title="2.3.2 举个例子"></a>2.3.2 <em>举个例子</em></h3><p><img src="https://img-blog.csdnimg.cn/20200802181403214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="计算过程"><img src="https://img-blog.csdnimg.cn/20200802181442245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"></p>
+<h1 id="3-决策树的生成"><a href="#3-决策树的生成" class="headerlink" title="3 决策树的生成"></a>3 决策树的生成</h1><h2 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h2><p>   根据选择的特征评估标准，从上至下递归地生成子节点，直到数据集不可分则停止，决策树停止生长。这个过程实际上就是使用满足划分准则的特征不断的将数据集划分成纯度更高，不确定性更小的子集的过程。对于当前数据集的每一次划分，都希望根据某个特征划分之后的各个子集的纯度更高，不确定性更小。<br>    决策树生成算法不唯一，这里仅介绍两种算法——ID3算法和C4.5算法。</p>
+<h2 id="3-2-ID3算法"><a href="#3-2-ID3算法" class="headerlink" title="3.2 ID3算法"></a>3.2 ID3算法</h2><h3 id="3-2-1-ID3算法核心"><a href="#3-2-1-ID3算法核心" class="headerlink" title="3.2.1 ID3算法核心"></a>3.2.1 ID3算法核心</h3><p>核心：是在决策树各个节点上应用**<strong>信息增益准则**</strong>选择特征递归地构建决策树。</p>
+<h3 id="3-2-2-算法过程"><a href="#3-2-2-算法过程" class="headerlink" title="3.2.2 算法过程"></a>3.2.2 算法过程</h3><p>算法的过程为：<br>　　　1）初始化信息增益的阈值ϵ<br>　　　2）判断样本是否为同一类Di ，如果是则返回单节点树T。标记类别为Di。<br>　　　3）判断特征是否为空，如果是则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　4）计算A中的各个特征（一共n个）对输出D的信息增益，选择信息增益最大的特征Ag。<br>　　　5）如果Ag的信息增益小于阈值ϵ，则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　6）否则，按特征Ag的不同取值Agi将对应的样本输出D分成不同的类别Di。每个类别产生一个子节点。对应特征值为Agi。返回增加了节点的数T。<br>　　　7）对于所有的子节点，令D=Di,A=A−{Ag} ，递归调用2-6步，得到子树Ti并返回。</p>
+<h3 id="3-2-3-举个例子"><a href="#3-2-3-举个例子" class="headerlink" title="3.2.3 举个例子"></a>3.2.3 <em>举个例子</em></h3><p>用ID3算法构建表5.1的决策树过程如下：<img src="https://img-blog.csdnimg.cn/20200802182533696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"><br>构建决策树结果：<br><img src="https://img-blog.csdnimg.cn/2020080218271422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树"></p>
+<h3 id="3-2-4-ID3算法的不足"><a href="#3-2-4-ID3算法的不足" class="headerlink" title="3.2.4 ID3算法的不足"></a>3.2.4 ID3算法的不足</h3><p>  ID3算法虽然提出了新思路，但是还是有很多值得改进的地方。　　</p>
+<ol>
+<li>ID3没有考虑连续特征，比如长度，密度都是连续值，无法在ID3运用。这大大限制了ID3的用途。</li>
+<li>ID3采用信息增益大的特征优先建立决策树的节点。很快就被人发现，在相同条件下，取值比较多的特征比取值少的特征信息增益大。比如一个变量有2个值，各为1/2，另一个变量为3个值，各为1/3，其实他们都是完全不确定的变量，但是取3个值的比取2个值的信息增益大。</li>
+<li>ID3算法对于缺失值的情况没有做考虑。</li>
+<li>没有考虑过拟合的问题。</li>
+</ol>
+<h2 id="3-3-C4-5算法"><a href="#3-3-C4-5算法" class="headerlink" title="3.3 C4.5算法"></a>3.3 C4.5算法</h2><p>C4.5算法与ID3算法很相似，C4.5算法仅仅是对ID3算法做了改进，在生成决策树过程中采用<strong>信息增益比</strong>来选择特征算法过程没有变化，这里不再赘述。</p>
+<h3 id="3-3-1-C4-5算法的不足"><a href="#3-3-1-C4-5算法的不足" class="headerlink" title="3.3.1 C4.5算法的不足"></a>3.3.1 C4.5算法的不足</h3><p>   C4.5虽然改进了ID3算法的几个主要的问题，仍然有优化的空间。</p>
+<ol>
+<li>由于决策树算法非常容易过拟合，因此对于生成的决策树必须要进行剪枝。剪枝的算法有非常多，C4.5的剪枝方法有优化的空间。思路主要是两种，一种是预剪枝，即在生成决策树的时候就决定是否剪枝。另一个是后剪枝，即先生成决策树，再通过交叉验证来剪枝。<ol start="2">
+<li>C4.5生成的是多叉树，即一个父节点可以有多个节点。很多时候，在计算机中二叉树模型会比多叉树运算效率高。如果采用二叉树，可以提高效率。</li>
+<li>C4.5只能用于分类，如果能将决策树用于回归的话可以扩大它的使用范围。</li>
+<li>C4.5由于使用了熵模型，里面有大量的耗时的对数运算,如果是连续值还有大量的排序运算。如果能够加以模型简化可以减少运算强度但又不牺牲太多准确性的话，那就更好了。<br>　   这4个问题在CART树里面部分加以了改进。所以目前如果不考虑集成学习话，在普通的决策树算法里，CART算法算是比较优的算法了。<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1>这篇文章仅简单介绍了决策树的基本内容，主要是决策树的特征选择和生成两部分，后续会继续介绍决策树的剪枝和CART这个比较方便的算法。</li>
+</ol>
+</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -59,66 +111,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>传统的机器学习方法——决策树（上）</title>
-    <url>/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
-    <content><![CDATA[<p>@[toc]</p>
-<h1 id="1-决策树模型介绍"><a href="#1-决策树模型介绍" class="headerlink" title="1 决策树模型介绍"></a>1 决策树模型介绍</h1><h2 id="1-1-决策树模型概述"><a href="#1-1-决策树模型概述" class="headerlink" title="1.1 决策树模型概述"></a>1.1 决策树模型概述</h2><p>   分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有两种类型：内部节点和叶节点，内部节点表示一个特征或属性，叶节点表示一个类。<br>   分类的时候，从根节点开始，当前节点设为根节点，当前节点必定是一种特征，根据实例的该特征的取值，向下移动，直到到达叶节点，将实例分到叶节点对应的类中。<br><img src="https://img-blog.csdnimg.cn/20200802172055879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树模型"></p>
-<h2 id="1-2-决策树与if-then规则"><a href="#1-2-决策树与if-then规则" class="headerlink" title="1.2 决策树与if-then规则"></a>1.2 决策树与if-then规则</h2><p>可以将决策树看成一个if-then规则的集合：由决策树的根节点到叶节点的每一条路径构建一条规则；路径上的内部结点的特征对应着if条件，叶节点对应着then结论。决策树的每一条路径都具有一个重要的性质：互斥且完备。这就是说，任何一个实例都被且仅被一条路径或规则覆盖。这里所谓覆盖是指实例的特征与路径上的特征一致或实例满足规则的条件。<br><em>举个例子：if(明天是晴天）then(我将出去玩)</em></p>
-<h2 id="1-3-决策树主要优点"><a href="#1-3-决策树主要优点" class="headerlink" title="1.3 决策树主要优点"></a>1.3 决策树主要优点</h2><p>1.分类速度快；<br>2.具有可读性；<br>3.学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新数据集，利用决策树模型进行分类。</p>
-<h2 id="1-4-主要步骤"><a href="#1-4-主要步骤" class="headerlink" title="1.4 主要步骤"></a>1.4 主要步骤</h2><p>1.特征选择问题<br>2.决策树的生成<br>3.决策树的剪枝</p>
-<h1 id="2-特征选择"><a href="#2-特征选择" class="headerlink" title="2 特征选择"></a>2 特征选择</h1><h2 id="2-1-特征选择问题"><a href="#2-1-特征选择问题" class="headerlink" title="2.1 特征选择问题"></a>2.1 特征选择问题</h2><p>特征选择在于选取对训练集具有分类能力的特征。如果利用一个特征进行分类的结果与随即分类的结果没有很大差别，则称这个特征没有分类能力。通常特征选则的准则是信息增益或信息增益比。<br>特征选择是决定用哪个特征来划分特征空间。</p>
-<h3 id="2-1-1-举个例子"><a href="#2-1-1-举个例子" class="headerlink" title="2.1.1 举个例子"></a>2.1.1 <em>举个例子</em></h3><p>下表（表5.1）是由15个样本组成的贷款申请训练数据。数据包括贷款申请人的4个特征（属性），具体信息如表所示：<img src="https://img-blog.csdnimg.cn/20200802174557798.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="贷款申请样本数据集"><br>通过上表所给的训练数据构建一个贷款申请的决策树，用以对未来的贷款申请进行分类，即当新的客户提出贷款申请是，根据申请人的特征利用决策树决定是否批准贷款申请。<br><strong>在说明这个例子之前，必须先了解几个定义。</strong></p>
-<h2 id="2-2-重要定义"><a href="#2-2-重要定义" class="headerlink" title="2.2 重要定义"></a>2.2 重要定义</h2><h3 id="2-2-1-熵"><a href="#2-2-1-熵" class="headerlink" title="2.2.1 熵"></a>2.2.1 熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180036468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="熵"><br>由熵的定义可知，熵只依赖与X的分布，而与X的取值无关，所以也可以将X的熵记作H（<em>p</em>）,即<img src="https://img-blog.csdnimg.cn/2020080218034198.png" alt="熵"></p>
-<h3 id="2-2-2-条件熵"><a href="#2-2-2-条件熵" class="headerlink" title="2.2.2 条件熵"></a>2.2.2 条件熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180611704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="条件熵"></p>
-<h3 id="2-2-3-信息增益"><a href="#2-2-3-信息增益" class="headerlink" title="2.2.3 信息增益"></a>2.2.3 信息增益</h3><p><img src="https://img-blog.csdnimg.cn/20200802180734432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益"><br>一般地，熵H(Y)与条件熵H(Y|X)之差成为互信息。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。</p>
-<h2 id="2-3-信息增益的算法"><a href="#2-3-信息增益的算法" class="headerlink" title="2.3 信息增益的算法"></a>2.3 信息增益的算法</h2><h3 id="2-3-1-算法过程"><a href="#2-3-1-算法过程" class="headerlink" title="2.3.1 算法过程"></a>2.3.1 算法过程</h3><p><img src="https://img-blog.csdnimg.cn/20200802181234549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益的算法过程"></p>
-<h3 id="2-3-2-举个例子"><a href="#2-3-2-举个例子" class="headerlink" title="2.3.2 举个例子"></a>2.3.2 <em>举个例子</em></h3><p><img src="https://img-blog.csdnimg.cn/20200802181403214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="计算过程"><img src="https://img-blog.csdnimg.cn/20200802181442245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"></p>
-<h1 id="3-决策树的生成"><a href="#3-决策树的生成" class="headerlink" title="3 决策树的生成"></a>3 决策树的生成</h1><h2 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h2><p>   根据选择的特征评估标准，从上至下递归地生成子节点，直到数据集不可分则停止，决策树停止生长。这个过程实际上就是使用满足划分准则的特征不断的将数据集划分成纯度更高，不确定性更小的子集的过程。对于当前数据集的每一次划分，都希望根据某个特征划分之后的各个子集的纯度更高，不确定性更小。<br>    决策树生成算法不唯一，这里仅介绍两种算法——ID3算法和C4.5算法。</p>
-<h2 id="3-2-ID3算法"><a href="#3-2-ID3算法" class="headerlink" title="3.2 ID3算法"></a>3.2 ID3算法</h2><h3 id="3-2-1-ID3算法核心"><a href="#3-2-1-ID3算法核心" class="headerlink" title="3.2.1 ID3算法核心"></a>3.2.1 ID3算法核心</h3><p>核心：是在决策树各个节点上应用**<strong>信息增益准则**</strong>选择特征递归地构建决策树。</p>
-<h3 id="3-2-2-算法过程"><a href="#3-2-2-算法过程" class="headerlink" title="3.2.2 算法过程"></a>3.2.2 算法过程</h3><p>算法的过程为：<br>　　　1）初始化信息增益的阈值ϵ<br>　　　2）判断样本是否为同一类Di ，如果是则返回单节点树T。标记类别为Di。<br>　　　3）判断特征是否为空，如果是则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　4）计算A中的各个特征（一共n个）对输出D的信息增益，选择信息增益最大的特征Ag。<br>　　　5）如果Ag的信息增益小于阈值ϵ，则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　6）否则，按特征Ag的不同取值Agi将对应的样本输出D分成不同的类别Di。每个类别产生一个子节点。对应特征值为Agi。返回增加了节点的数T。<br>　　　7）对于所有的子节点，令D=Di,A=A−{Ag} ，递归调用2-6步，得到子树Ti并返回。</p>
-<h3 id="3-2-3-举个例子"><a href="#3-2-3-举个例子" class="headerlink" title="3.2.3 举个例子"></a>3.2.3 <em>举个例子</em></h3><p>用ID3算法构建表5.1的决策树过程如下：<img src="https://img-blog.csdnimg.cn/20200802182533696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"><br>构建决策树结果：<br><img src="https://img-blog.csdnimg.cn/2020080218271422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树"></p>
-<h3 id="3-2-4-ID3算法的不足"><a href="#3-2-4-ID3算法的不足" class="headerlink" title="3.2.4 ID3算法的不足"></a>3.2.4 ID3算法的不足</h3><p>  ID3算法虽然提出了新思路，但是还是有很多值得改进的地方。　　</p>
-<ol>
-<li>ID3没有考虑连续特征，比如长度，密度都是连续值，无法在ID3运用。这大大限制了ID3的用途。</li>
-<li>ID3采用信息增益大的特征优先建立决策树的节点。很快就被人发现，在相同条件下，取值比较多的特征比取值少的特征信息增益大。比如一个变量有2个值，各为1/2，另一个变量为3个值，各为1/3，其实他们都是完全不确定的变量，但是取3个值的比取2个值的信息增益大。</li>
-<li>ID3算法对于缺失值的情况没有做考虑。</li>
-<li>没有考虑过拟合的问题。</li>
-</ol>
-<h2 id="3-3-C4-5算法"><a href="#3-3-C4-5算法" class="headerlink" title="3.3 C4.5算法"></a>3.3 C4.5算法</h2><p>C4.5算法与ID3算法很相似，C4.5算法仅仅是对ID3算法做了改进，在生成决策树过程中采用<strong>信息增益比</strong>来选择特征算法过程没有变化，这里不再赘述。</p>
-<h3 id="3-3-1-C4-5算法的不足"><a href="#3-3-1-C4-5算法的不足" class="headerlink" title="3.3.1 C4.5算法的不足"></a>3.3.1 C4.5算法的不足</h3><p>   C4.5虽然改进了ID3算法的几个主要的问题，仍然有优化的空间。</p>
-<ol>
-<li>由于决策树算法非常容易过拟合，因此对于生成的决策树必须要进行剪枝。剪枝的算法有非常多，C4.5的剪枝方法有优化的空间。思路主要是两种，一种是预剪枝，即在生成决策树的时候就决定是否剪枝。另一个是后剪枝，即先生成决策树，再通过交叉验证来剪枝。<ol start="2">
-<li>C4.5生成的是多叉树，即一个父节点可以有多个节点。很多时候，在计算机中二叉树模型会比多叉树运算效率高。如果采用二叉树，可以提高效率。</li>
-<li>C4.5只能用于分类，如果能将决策树用于回归的话可以扩大它的使用范围。</li>
-<li>C4.5由于使用了熵模型，里面有大量的耗时的对数运算,如果是连续值还有大量的排序运算。如果能够加以模型简化可以减少运算强度但又不牺牲太多准确性的话，那就更好了。<br>　   这4个问题在CART树里面部分加以了改进。所以目前如果不考虑集成学习话，在普通的决策树算法里，CART算法算是比较优的算法了。<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1>这篇文章仅简单介绍了决策树的基本内容，主要是决策树的特征选择和生成两部分，后续会继续介绍决策树的剪枝和CART这个比较方便的算法。</li>
-</ol>
-</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>python中的bug</title>
-    <url>/2020/08/08/python%E4%B8%AD%E7%9A%84bug/</url>
-    <content><![CDATA[<h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
-<h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/08/02/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>修改github中的username</title>
+    <url>/2020/08/15/github%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/</url>
+    <content><![CDATA[<p>第一次注册时的github时，用户名总是重复，当时随便起了一个，所以现在想要改一下，下面说一下改的过程</p>
+<h1 id="第一步，打开settings"><a href="#第一步，打开settings" class="headerlink" title="第一步，打开settings"></a>第一步，打开settings</h1><p><img src="https://img-blog.csdnimg.cn/20200810181128473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="第二步，account中找到change-username"><a href="#第二步，account中找到change-username" class="headerlink" title="第二步，account中找到change username"></a>第二步，account中找到change username</h1><p><img src="https://img-blog.csdnimg.cn/20200810181409670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="下面点击确定"><a href="#下面点击确定" class="headerlink" title="下面点击确定"></a>下面点击确定</h2><p><img src="https://img-blog.csdnimg.cn/20200810181549189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="最后，进入改username最后一步"><a href="#最后，进入改username最后一步" class="headerlink" title="最后，进入改username最后一步"></a>最后，进入改username最后一步</h1><p><img src="https://img-blog.csdnimg.cn/20200810181706116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>填入自己想要改的名字就可以了，但是要注意，有内容的仓库的名字也要改，不然仓库里的东西推到远端会出错。</p>
 ]]></content>
   </entry>
 </search>
