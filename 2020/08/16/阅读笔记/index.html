@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python中的bug | milkcoffee</title>
+  <title>milkcoffee</title>
   <meta name="keywords" content="">
-  <meta name="description" content="python中的bug | milkcoffee">
+  <meta name="description" content="milkcoffee">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="@[toc] 记载一下自己的小发现今天开了两个视频会议，下午的会议是每周的学习汇报，晚上的会议主要是听老师讲的课。在晚上听老师讲课的时候，老师换了一个窗口，和我们看到的窗口不一样，但是老师还是一直在讲，随后同学截屏了我们看到的窗口，老师看到后说她放的不是这个窗口，然后关闭共享再打开之后，才是我们看到的窗口，我在会议结束后，重点实践了一下这个钉钉屏幕共享功能。 1 准备工作 一部手机（或电脑）登录另">
 <meta property="og:type" content="article">
@@ -233,9 +233,7 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-python中的bug" class="article article-type-post" itemscope itemprop="blogPost">
-    
-        <h1 class="article-title">python中的bug</h1>
+        <article id="post-阅读笔记" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
@@ -245,7 +243,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-09 09:23:37'>2020-08-08 20:26</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-16 19:08:23'>2020-08-16 19:08</time>
         
     </div>
     <div class="article-meta">
@@ -267,7 +265,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E4%B8%AD%E8%A7%A3%E5%86%B3SyntaxError-Non-UTF-8-code-starting-with-%E2%80%98-xc7%E2%80%99-in-file-%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9Acoding%E4%B8%8E-%EF%BC%8C-%E4%B8%8Egbk%E4%B9%8B%E9%97%B4%E6%B2%A1%E6%9C%89%E7%A9%BA%E6%A0%BC"><span class="toc-text">注意：coding与&#x3D;，&#x3D;与gbk之间没有空格</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E6%96%87%E7%AB%A0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E-CART-%E5%86%B3%E7%AD%96%E6%A0%91%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E5%88%86%E6%9E%90"><span class="toc-text">阅读文章——基于 CART 决策树的计算机网络课程学生成绩分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%96%87%E7%AB%A0%E7%AE%80%E4%BB%8B"><span class="toc-text">1 文章简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%A0%94%E7%A9%B6%E7%8E%B0%E7%8A%B6"><span class="toc-text">2 研究现状</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">3 数据处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9F%BA%E4%BA%8ECART%E5%86%B3%E7%AD%96%E6%A0%91%E7%9A%84%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E5%BB%BA%E6%A8%A1%E7%BB%93%E6%9E%9C"><span class="toc-text">4 基于CART决策树的学生成绩建模结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%BB%93%E6%9E%9C%E5%BB%BA%E8%AE%AE"><span class="toc-text">5 结果建议</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -283,8 +281,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
-<h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+        <hr>
+<h2 id="阅读文章——基于-CART-决策树的计算机网络课程学生成绩分析"><a href="#阅读文章——基于-CART-决策树的计算机网络课程学生成绩分析" class="headerlink" title="阅读文章——基于 CART 决策树的计算机网络课程学生成绩分析"></a>阅读文章——基于 CART 决策树的计算机网络课程学生成绩分析</h2><h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>近几周学习了决策树的相关知识，想要阅读一些用到这个知识的文章，但是在知网上浏览了几篇硕博士论文的摘要之后，发现一篇成熟的论文中，决策树这个知识只是整个论文实现目的的一个理论基础，自己现有的知识储备不足以读懂整篇论文，偶然看到了2019.12发表在计算机教育上的一篇期刊文章，对决策树地应用进行了介绍，最后就在对这篇文章进行了详细地阅读。</p>
+<h1 id="1-文章简介"><a href="#1-文章简介" class="headerlink" title="1 文章简介"></a>1 文章简介</h1><p>此文章利用 CART 决策树算法对学生的计算机网络相关课程成绩深入分析，找出影响学生网络课程学习成绩的主要因素，建立合理的成绩分类模型，以便协助教师发现不同学生的学习特征，从而正确地评价、引导学生，使学生得到更好的学习效果。</p>
+<h1 id="2-研究现状"><a href="#2-研究现状" class="headerlink" title="2 研究现状"></a>2 研究现状</h1><p>决策树算法是应用比较广的分类算法之一，最典型的算法是由 Quinlan 提出的 ID3 算法，该算法使用信息增益度量属性进行分类，将决策树和信息论联系起来。由于 ID3 的构造效果不够理想，只能处理离散的数据，Quinlan 又提出了C4.5 算法，对 ID3 进行了改进，选择信息增益率最大的属性作为分类属性。但是发现不管是 ID3 算法还是 C4.5 算法，都有一定的缺点，前面我的几篇文章有详细介绍，最后选择 CART 算法。</p>
+<h1 id="3-数据处理"><a href="#3-数据处理" class="headerlink" title="3 数据处理"></a>3 数据处理</h1><p>使用的数据集为计算机学院信息安全专业2013 级 2 个班（班号分别为130721、130722）、2014 级 1 个班（班号为 140721）、2015 级 1 个班（班号为 150743）本科生的基本信息和学习数据，共 124 人。<br>CART 决策树输入属性包括分组角色（组长与非组长）、性别、民族（汉与非汉）、理论努力程度、实践努力程度 5 个。<br>前 3 个属性原始数据为文本类型，将其转换为数值类型，担任实验组长则该值为 1，非组长为 0，性别为男值为 1，性别为女值为 0，少数民族值为 1，汉族值为 0。理论和实践努力程度分别表示学生平时理论和实践学习的努力程度，CART 决策树训练样本的分类等级即学生成绩等级。本文根据成绩排名进行划分，排名前 20%学生为 A，中间 60% 学生为 B，后 20% 学生为 C。部分实例数据如下：<br><img src="https://img-blog.csdnimg.cn/20200816184840898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="4-基于CART决策树的学生成绩建模结果"><a href="#4-基于CART决策树的学生成绩建模结果" class="headerlink" title="4 基于CART决策树的学生成绩建模结果"></a>4 基于CART决策树的学生成绩建模结果</h1><p>不再详细赘述，直接放结果：<br><img src="https://img-blog.csdnimg.cn/20200816185041658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200816185150690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="5-结果建议"><a href="#5-结果建议" class="headerlink" title="5 结果建议"></a>5 结果建议</h1><ol>
+<li>A 类学生分类规则分析及教学建议。<br>A 类学生人数占总样本的 22%，其共同特点是实践努力程度较高（&gt;0.694）。在此前提下，理论努力程度和性别差异对学生成绩影响极小。这也比较符合教学事实，因为实践的基础是理论，事实上，实践能让学生能够再次理解和掌握理论知识点。<br>因此，A 类学生分类规则非常符合第一点根据属性对学生成绩影响程度提出的教学建议，即应通过在计算机网络类课程教学过程中加强实验指导和效果跟踪提高学生的学习能力和效果，并且这对培养高水平学生非常重要。</li>
+<li>B 类学生分类规则分析及教学建议。<br>B 类学生人数占样本的 51.5%，共分为 5 个小类。其中前两小类与 A 类同学特点类似，后两小类与 C 类学生特点类似。中间小类学生人数较多，比较有代表性。<br>因此，从 B 类学生分类规则可以得到如下3 个启示及教学建议：实验是区分 A 类和 B 类学生的关键环节，加强实验指导和效果跟踪可以得到更好的学习效果；在实验环节中，教师应注意辨别“搭便车”现象，对这类学生加强启发和检查，使他们得到更好的学习效果；在复习环节加强与学生的互动，提高学生的复习效果。</li>
+<li>C 类学生分类规则分析及教学建议。<br>C 类学生人数占样本的 26.5%，其共同特点是实践和理论努力程度都不高。<br>因此，在教学过程中应及早发现和干预该类学生的学习，在保证基础知识学习的情况下提高他们的学习兴趣和效果。</li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395876210@qq.com </span>

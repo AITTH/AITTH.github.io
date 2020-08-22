@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python中的bug | milkcoffee</title>
+  <title>钉钉中的小发现 | milkcoffee</title>
   <meta name="keywords" content="">
-  <meta name="description" content="python中的bug | milkcoffee">
+  <meta name="description" content="钉钉中的小发现 | milkcoffee">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="@[toc] 记载一下自己的小发现今天开了两个视频会议，下午的会议是每周的学习汇报，晚上的会议主要是听老师讲的课。在晚上听老师讲课的时候，老师换了一个窗口，和我们看到的窗口不一样，但是老师还是一直在讲，随后同学截屏了我们看到的窗口，老师看到后说她放的不是这个窗口，然后关闭共享再打开之后，才是我们看到的窗口，我在会议结束后，重点实践了一下这个钉钉屏幕共享功能。 1 准备工作 一部手机（或电脑）登录另">
 <meta property="og:type" content="article">
@@ -233,9 +233,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-python中的bug" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-小发现" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python中的bug</h1>
+        <h1 class="article-title">钉钉中的小发现</h1>
     
     <div class="article-meta">
         
@@ -245,7 +245,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-09 09:23:37'>2020-08-08 20:26</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-22 08:14:54'>2020-08-22 08:13</time>
         
     </div>
     <div class="article-meta">
@@ -267,7 +267,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E4%B8%AD%E8%A7%A3%E5%86%B3SyntaxError-Non-UTF-8-code-starting-with-%E2%80%98-xc7%E2%80%99-in-file-%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9Acoding%E4%B8%8E-%EF%BC%8C-%E4%B8%8Egbk%E4%B9%8B%E9%97%B4%E6%B2%A1%E6%9C%89%E7%A9%BA%E6%A0%BC"><span class="toc-text">注意：coding与&#x3D;，&#x3D;与gbk之间没有空格</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B0%E8%BD%BD%E4%B8%80%E4%B8%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B0%8F%E5%8F%91%E7%8E%B0"><span class="toc-text">记载一下自己的小发现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">1 准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%AC%AC%E4%B8%80%E4%B8%AAPPT%E6%B1%87%E6%8A%A5"><span class="toc-text">2 第一个PPT汇报</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BD%93%E6%88%91%E6%B1%87%E6%8A%A5%E6%97%B6%E5%80%99%E7%82%B9%E5%87%BB%E7%9A%84%E5%85%B1%E4%BA%AB%E7%AA%97%E5%8F%A3"><span class="toc-text">2.1 当我汇报时候点击的共享窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-2-%E5%8F%B7%E6%9C%BA%E7%9C%8B%E5%88%B0%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-text">2.2 2 号机看到的窗口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%AC%AC%E4%BA%8C%E4%B8%AAPPT%E6%B1%87%E6%8A%A5"><span class="toc-text">3 第二个PPT汇报</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-1%E5%8F%B7%E6%9C%BA"><span class="toc-text">3.1 1号机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E8%BF%99%E6%97%B6-2-%E5%8F%B7%E6%9C%BA%E7%9C%8B%E5%88%B0%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-text">3.2 这时 2 号机看到的窗口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%86%8D%E6%AC%A1%E5%AE%9E%E8%B7%B5"><span class="toc-text">4 再次实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%82%B9%E5%87%BB%E5%85%B1%E4%BA%AB%E7%AA%97%E5%8F%A3"><span class="toc-text">4.1 点击共享窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-2%E5%8F%B7%E6%9C%BA%E7%9A%84%E5%B1%8F%E5%B9%95%E6%98%BE%E7%A4%BA"><span class="toc-text">4.2 2号机的屏幕显示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%BB%93%E6%9E%9C%E5%AF%B9%E6%AF%94"><span class="toc-text">5 结果对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%AE%9E%E8%B7%B5%E7%BB%93%E8%AE%BA"><span class="toc-text">6 实践结论</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -283,8 +283,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
-<h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+        <p>@<div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B0%E8%BD%BD%E4%B8%80%E4%B8%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B0%8F%E5%8F%91%E7%8E%B0"><span class="toc-text">记载一下自己的小发现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">1 准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%AC%AC%E4%B8%80%E4%B8%AAPPT%E6%B1%87%E6%8A%A5"><span class="toc-text">2 第一个PPT汇报</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BD%93%E6%88%91%E6%B1%87%E6%8A%A5%E6%97%B6%E5%80%99%E7%82%B9%E5%87%BB%E7%9A%84%E5%85%B1%E4%BA%AB%E7%AA%97%E5%8F%A3"><span class="toc-text">2.1 当我汇报时候点击的共享窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-2-%E5%8F%B7%E6%9C%BA%E7%9C%8B%E5%88%B0%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-text">2.2 2 号机看到的窗口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%AC%AC%E4%BA%8C%E4%B8%AAPPT%E6%B1%87%E6%8A%A5"><span class="toc-text">3 第二个PPT汇报</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-1%E5%8F%B7%E6%9C%BA"><span class="toc-text">3.1 1号机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E8%BF%99%E6%97%B6-2-%E5%8F%B7%E6%9C%BA%E7%9C%8B%E5%88%B0%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-text">3.2 这时 2 号机看到的窗口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%86%8D%E6%AC%A1%E5%AE%9E%E8%B7%B5"><span class="toc-text">4 再次实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%82%B9%E5%87%BB%E5%85%B1%E4%BA%AB%E7%AA%97%E5%8F%A3"><span class="toc-text">4.1 点击共享窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-2%E5%8F%B7%E6%9C%BA%E7%9A%84%E5%B1%8F%E5%B9%95%E6%98%BE%E7%A4%BA"><span class="toc-text">4.2 2号机的屏幕显示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%BB%93%E6%9E%9C%E5%AF%B9%E6%AF%94"><span class="toc-text">5 结果对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%AE%9E%E8%B7%B5%E7%BB%93%E8%AE%BA"><span class="toc-text">6 实践结论</span></a></li></ol></div></p>
+<h1 id="记载一下自己的小发现"><a href="#记载一下自己的小发现" class="headerlink" title="记载一下自己的小发现"></a><del>记载一下自己的小发现</del></h1><p>今天开了两个视频会议，下午的会议是每周的学习汇报，晚上的会议主要是听老师讲的课。<br>在晚上听老师讲课的时候，老师换了一个窗口，和我们看到的窗口不一样，但是老师还是一直在讲，随后同学截屏了我们看到的窗口，老师看到后说她放的不是这个窗口，然后关闭共享再打开之后，才是我们看到的窗口，<br>我在会议结束后，重点实践了一下这个钉钉屏幕共享功能。</p>
+<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><ol>
+<li>一部手机（或电脑）登录另一个钉钉号（以下称2号机）</li>
+<li>一台汇报工作的电脑（我的电脑），登录我的钉钉号（称1号机）<h1 id="2-第一个PPT汇报"><a href="#2-第一个PPT汇报" class="headerlink" title="2 第一个PPT汇报"></a>2 第一个PPT汇报</h1><h2 id="2-1-当我汇报时候点击的共享窗口"><a href="#2-1-当我汇报时候点击的共享窗口" class="headerlink" title="2.1 当我汇报时候点击的共享窗口"></a>2.1 当我汇报时候点击的共享窗口</h2><img src="https://img-blog.csdnimg.cn/20200815201234539.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><h2 id="2-2-2-号机看到的窗口"><a href="#2-2-2-号机看到的窗口" class="headerlink" title="2.2 2 号机看到的窗口"></a>2.2 2 号机看到的窗口</h2><img src="https://img-blog.csdnimg.cn/20200815201651709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>【注意】没有桌面上最下面一栏的各种图标，我没有隐藏，但是仍然不显示</li>
+</ol>
+<h1 id="3-第二个PPT汇报"><a href="#3-第二个PPT汇报" class="headerlink" title="3 第二个PPT汇报"></a>3 第二个PPT汇报</h1><h2 id="3-1-1号机"><a href="#3-1-1号机" class="headerlink" title="3.1 1号机"></a>3.1 1号机</h2><p>1号机此时没有关闭屏幕共享，直接在1号机鼠标从第一个PPT切换到第二个PPT（第一个PPT已经汇报结束）<br><img src="https://img-blog.csdnimg.cn/202008152022493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="3-2-这时-2-号机看到的窗口"><a href="#3-2-这时-2-号机看到的窗口" class="headerlink" title="3.2 这时 2 号机看到的窗口"></a>3.2 这时 2 号机看到的窗口</h2><p><img src="https://img-blog.csdnimg.cn/20200815202948222.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>注：上面的内容是我第一个PPT最后一页的内容</p>
+<h1 id="4-再次实践"><a href="#4-再次实践" class="headerlink" title="4 再次实践"></a>4 再次实践</h1><h2 id="4-1-点击共享窗口"><a href="#4-1-点击共享窗口" class="headerlink" title="4.1 点击共享窗口"></a>4.1 点击共享窗口</h2><p>选择桌面，再点击共享<br><img src="https://img-blog.csdnimg.cn/20200815203647536.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="4-2-2号机的屏幕显示"><a href="#4-2-2号机的屏幕显示" class="headerlink" title="4.2 2号机的屏幕显示"></a>4.2 2号机的屏幕显示</h2><p>1号机打开窗口和前面介绍一样，2号机的屏幕显示如下：<br><img src="https://img-blog.csdnimg.cn/20200815205459951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="5-结果对比"><a href="#5-结果对比" class="headerlink" title="5 结果对比"></a>5 结果对比</h1><p>4.2 截下来的图片与  3 .2 截下来的图片对比，会发现：</p>
+<ol>
+<li>1 号机的桌面最下面一行显示出来了</li>
+<li>从第一个PPT切换到第二个PPT，2 号机可以看到这个切换过程</li>
+</ol>
+<h1 id="6-实践结论"><a href="#6-实践结论" class="headerlink" title="6 实践结论"></a>6 实践结论</h1><ol>
+<li>钉钉视频会议中，如果仅仅让其他会议成员看到自己的其中一个窗口，在共享屏幕的时候，仅需要选择要打开的窗口即可；</li>
+<li>如果要想让其他成员看到自己的几个窗口，有两种办法：<br> 最简单的一种就是，共享窗口的时候选择屏幕共享；<br> 否则，就要结束共享，然后再次屏幕共享，此时选择自己要打开的窗口。</li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395876210@qq.com </span>
