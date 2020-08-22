@@ -238,7 +238,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-22 08:16:51'>2020-08-16 19:08</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-22 08:19:10'>2020-08-16 19:08</time>
         
     </div>
     <div class="article-meta">
@@ -276,7 +276,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>近几周学习了决策树的相关知识，想要阅读一些用到这个知识的文章，但是在知网上浏览了几篇硕博士论文的摘要之后，发现一篇成熟的论文中，决策树这个知识只是整个论文实现目的的一个理论基础，自己现有的知识储备不足以读懂整篇论文，偶然看到了2019.12发表在计算机教育上的一篇期刊文章，对决策树地应用进行了介绍，最后就在对这篇文章进行了详细地阅读。</p>
+        <p>@<div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%96%87%E7%AB%A0%E7%AE%80%E4%BB%8B"><span class="toc-text">1 文章简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%A0%94%E7%A9%B6%E7%8E%B0%E7%8A%B6"><span class="toc-text">2 研究现状</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">3 数据处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9F%BA%E4%BA%8ECART%E5%86%B3%E7%AD%96%E6%A0%91%E7%9A%84%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E5%BB%BA%E6%A8%A1%E7%BB%93%E6%9E%9C"><span class="toc-text">4 基于CART决策树的学生成绩建模结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%BB%93%E6%9E%9C%E5%BB%BA%E8%AE%AE"><span class="toc-text">5 结果建议</span></a></li></ol></div></p>
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>近几周学习了决策树的相关知识，想要阅读一些用到这个知识的文章，但是在知网上浏览了几篇硕博士论文的摘要之后，发现一篇成熟的论文中，决策树这个知识只是整个论文实现目的的一个理论基础，自己现有的知识储备不足以读懂整篇论文，偶然看到了2019.12发表在计算机教育上的一篇期刊文章，对决策树地应用进行了介绍，最后就在对这篇文章进行了详细地阅读。</p>
 <h1 id="1-文章简介"><a href="#1-文章简介" class="headerlink" title="1 文章简介"></a>1 文章简介</h1><p>此文章利用 CART 决策树算法对学生的计算机网络相关课程成绩深入分析，找出影响学生网络课程学习成绩的主要因素，建立合理的成绩分类模型，以便协助教师发现不同学生的学习特征，从而正确地评价、引导学生，使学生得到更好的学习效果。</p>
 <h1 id="2-研究现状"><a href="#2-研究现状" class="headerlink" title="2 研究现状"></a>2 研究现状</h1><p>决策树算法是应用比较广的分类算法之一，最典型的算法是由 Quinlan 提出的 ID3 算法，该算法使用信息增益度量属性进行分类，将决策树和信息论联系起来。由于 ID3 的构造效果不够理想，只能处理离散的数据，Quinlan 又提出了C4.5 算法，对 ID3 进行了改进，选择信息增益率最大的属性作为分类属性。但是发现不管是 ID3 算法还是 C4.5 算法，都有一定的缺点，前面我的几篇文章有详细介绍，最后选择 CART 算法。</p>
 <h1 id="3-数据处理"><a href="#3-数据处理" class="headerlink" title="3 数据处理"></a>3 数据处理</h1><p>使用的数据集为计算机学院信息安全专业2013 级 2 个班（班号分别为130721、130722）、2014 级 1 个班（班号为 140721）、2015 级 1 个班（班号为 150743）本科生的基本信息和学习数据，共 124 人。<br>CART 决策树输入属性包括分组角色（组长与非组长）、性别、民族（汉与非汉）、理论努力程度、实践努力程度 5 个。<br>前 3 个属性原始数据为文本类型，将其转换为数值类型，担任实验组长则该值为 1，非组长为 0，性别为男值为 1，性别为女值为 0，少数民族值为 1，汉族值为 0。理论和实践努力程度分别表示学生平时理论和实践学习的努力程度，CART 决策树训练样本的分类等级即学生成绩等级。本文根据成绩排名进行划分，排名前 20%学生为 A，中间 60% 学生为 B，后 20% 学生为 C。部分实例数据如下：<br><img src="https://img-blog.csdnimg.cn/20200816184840898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
