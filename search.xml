@@ -1,64 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/2020/10/19/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E5%A4%9A%E5%88%86%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A0%94%E7%A9%B6/</url>
-    <content><![CDATA[<hr>
-<p>阅读笔记——基于机器学习的文本情感多分类研究</p>
-<hr>
-<p>[TOC]</p>
-<h1 id="1-文章简介"><a href="#1-文章简介" class="headerlink" title="1 文章简介"></a>1 文章简介</h1><p>文本分类与情感分类是自然语言处理中基础的领域，在机器学习的基础上，分析了线性逻辑回归算法、朴素贝叶斯模型在文本情感分类项目中的应用，并针对数据处理、模型构建、模型训练、模型测试过程中初学者难以解决和易出错的部分进行分析与实现。结合kaggle上的比赛数据实例，实现了完整的文本情感多分类项目并做出详细分析，项目评测结果较为可观，证实可以帮助初学者更易上手文本情感多分类和机器学习。同时提出了基于传统二分类问题的多分类问题解决方法。</p>
-<h1 id="2-文本情感分类概述"><a href="#2-文本情感分类概述" class="headerlink" title="2 文本情感分类概述"></a>2 文本情感分类概述</h1><p>文本情感分类是对带有情感色彩的主观性文本进行分析、处理、归纳和推理的过程，是NLP领域重要的基础领域，涉及文本分词、词语情感分析、机器学习、深度学习等。<br>文本情感分类通过在现有的大量数据中，基于学习算法寻找并学习词语情感的规律，构建相应的分类函数或分类模型（分类器，Classi⁃fie），这样对于给定的其他文本将能做到文本情感分类  。计算机并不能直接识别与处理所提供的自然语言数据，通常要对这些文本数据进行维度上的抽象处理 。<br>基于机器学习算法的文本情感分类通常需要构建学习模型，针对已处理的数据进行重复的训练与测试，通过测试的反馈修正模型参数，使得分类模型具备更高的准确度。文本数据经过模型导出后将被划分到对应情感类别，实现文本情感分类。</p>
-<h1 id="3-文本情感多分类项目设计与实现"><a href="#3-文本情感多分类项目设计与实现" class="headerlink" title="3 文本情感多分类项目设计与实现"></a>3 文本情感多分类项目设计与实现</h1><p>文本情感多分类项目整体流程大致分为数据处理、特征选取、模型的构建、训练与测试，其中对于模型的处理，本文基于机器学习主要给出两种模型算法：线性逻辑回归模型和朴素贝叶斯模型。图1是项目结构框架图。<br><img src="https://img-blog.csdnimg.cn/20200822211314385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="3-1-数据处理"><a href="#3-1-数据处理" class="headerlink" title="3.1 数据处理"></a>3.1 数据处理</h2><p>文本数据来源于 Kaggle 网站竞赛数据，数据包括四列，PhraseId（短语编号）、SentenceId（句子编号）、Phrase（短语）和Sentiment （短语情感分类）。<br>针对数据做出几点说明，一个句子可以划分成若干个短语，所以存在多个短语来源于同一个句子，其句子编号相同；情感分类是对每一个短语进行分类，情感类型划分为五类，用数字0~4标明，代表非常消极、消极、中性、积极、非常积极。对数据梳理清楚后，需要对每个短语进行分词，英文文本分词相对简单，以空格为标志划分出每个单词。这里存在初学者的误区，一些诸如“a”的英文单词是否取舍不应该由停词表来决定。对此本文去掉停词表，对统计到的单词计算每一个单词的频率，频率过大或过小的单词均去除。至此，数据处理完成，得到了所有有效单词的汇总与其频率，成功构建了词袋。</p>
-<h2 id="3-2-特征选取"><a href="#3-2-特征选取" class="headerlink" title="3.2 特征选取"></a>3.2 特征选取</h2><p>如英文单词，这些自然语言计算机无法处理，其二进制码也毫无意义，这使得特征选取工作变得困难。通常采取的是One-Hot 编码（独热编码），统计所有的状态并对每一个状态独立编码，这样任意时刻每个状态的编码中只有一位是有效的 。<br>但One-Hot 编码后的数据维度将十分庞大，无论是计算机内存还是运行时间，其效率都变得十分低下。本文采取TfidfVectorizer函数，利用数据处理过程中得到的词袋，对单词进行状态编码，每一个单词都是被选取的特征。短语由若干个单词组成，这样每一个短语可以表示成单词编码的组合，于是得到了计算机可以处理的数据 。<br>最后，将处理好的数据划分为两类，一类作为训练数据，让模型进行学习，另一类作为测试数据，评价模型效果。</p>
-<h2 id="3-3-线性逻辑回归模型"><a href="#3-3-线性逻辑回归模型" class="headerlink" title="3.3 线性逻辑回归模型"></a>3.3 线性逻辑回归模型</h2><p>线性逻辑回归模型是机器学习中常见的模型算法，可以通过调用sklearn库LogisticRegression函数，其作用是对输入短语的每一个维度数据（单词编码）分配一个可调整参数，使输出结果趋近短语的情感类型数字 。本文采取间接转化的方法，将五分类转化为多次二分类问题，首先中性与非中性数据的分类，然后是积极与消极数据的分类，最后是其内部程度的二分类。<br>模型除了对于输入数据的参数外还有自身的选择性参数，称为超参数，比如学习率等，如何调整合适的模型参数一直是初学者难以把握的问题，本文采用GridSearchCV函数对模型进行自动调参。它是网格搜索和交叉验证的结合，原理是在指定的参数范围内，按步长依次调整参数，利用调整的参数训练学习器，从所有的参数中找到在测试集上精度最高的参数，这其实是一个训练和比较的过程。<br>训练好模型后，对于新的文本数据，只要处理好数据特征，模型将会自动对文本进行情感分类。基于线性逻辑回归模型的文本情感分类，其最终准确度为0.768，较为可观。</p>
-<h2 id="3-4-朴素贝叶斯模型"><a href="#3-4-朴素贝叶斯模型" class="headerlink" title="3.4 朴素贝叶斯模型"></a>3.4 朴素贝叶斯模型</h2><p>朴素贝叶斯模型是常见的分类模型之一，通过假设特征条件之间相互独立的方法，先通过已给定的训练集，学习从输入到输出的联合概率分布，进行模型的训练 。其算法原理是：<br><img src="https://img-blog.csdnimg.cn/20200822212434306.png#pic_center" alt="在这里插入图片描述"><br>其中，d为样本数据集D的下标，x为样本特征数据集X特征，y为情感的类变量。通过MultinomialNB函数可以调用朴素贝叶斯模型。区别于线性逻辑回归模型处理的一点时，这里没有采用GridSearchCV网络搜索，准确度的评价采用cross_val_score函数的十折交叉验证，最终模型准确度为0.743，略低于线性逻辑回归模型。</p>
-<h1 id="4-项目结果与分析"><a href="#4-项目结果与分析" class="headerlink" title="4 项目结果与分析"></a>4 项目结果与分析</h1><p>情感分类本质是函数的映射，评价分类器的效果依据就是映射的准确度，除此之外还有模型的开销（速度与内存），评价的标准各异，本文采取准确率作为评价标准  。项目过程中，通过从Kaggle上收集的比赛数据，进行线性逻辑回归和朴素贝叶斯两种模型的学习与误区难点研究，完成了文本情感多分类项目。两种模型得到的准确度分别为0.768、0.743。详细模型评测数据如表1所示。<br><img src="https://img-blog.csdnimg.cn/20200822212623336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h1><p>本文主要研究初学者在文本情感多分类项目过程中的误区与难点，同时做出了详细说明与解决方法，实现了基于机器学习的线性逻辑回归和朴素贝叶斯两种模型并详细介绍了项目过程中的各个步骤与相关原理，提出了基于传统二分类的多分类问题解决方法，最后给出了两种模型的评测结果。从评测结果来看，项目的准确度完全能满足初学者对于文本情感多分类的入门学习。进一步的研究是模型算法的改进，利用更先进的模型解决文本情感多分类问题，比较其性能效果，提高总体的准确度，同时满足初学者的学习。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>钉钉中的小发现</title>
-    <url>/2020/08/22/%E5%B0%8F%E5%8F%91%E7%8E%B0/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h1 id="记载一下自己的小发现"><a href="#记载一下自己的小发现" class="headerlink" title="记载一下自己的小发现"></a><del>记载一下自己的小发现</del></h1><p>今天开了两个视频会议，下午的会议是每周的学习汇报，晚上的会议主要是听老师讲的课。<br>在晚上听老师讲课的时候，老师换了一个窗口，和我们看到的窗口不一样，但是老师还是一直在讲，随后同学截屏了我们看到的窗口，老师看到后说她放的不是这个窗口，然后关闭共享再打开之后，才是我们看到的窗口，<br>我在会议结束后，重点实践了一下这个钉钉屏幕共享功能。</p>
-<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><ol>
-<li>一部手机（或电脑）登录另一个钉钉号（以下称2号机）</li>
-<li>一台汇报工作的电脑（我的电脑），登录我的钉钉号（称1号机）<h1 id="2-第一个PPT汇报"><a href="#2-第一个PPT汇报" class="headerlink" title="2 第一个PPT汇报"></a>2 第一个PPT汇报</h1><h2 id="2-1-当我汇报时候点击的共享窗口"><a href="#2-1-当我汇报时候点击的共享窗口" class="headerlink" title="2.1 当我汇报时候点击的共享窗口"></a>2.1 当我汇报时候点击的共享窗口</h2><img src="https://img-blog.csdnimg.cn/20200815201234539.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><h2 id="2-2-2-号机看到的窗口"><a href="#2-2-2-号机看到的窗口" class="headerlink" title="2.2 2 号机看到的窗口"></a>2.2 2 号机看到的窗口</h2><img src="https://img-blog.csdnimg.cn/20200815201651709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>【注意】没有桌面上最下面一栏的各种图标，我没有隐藏，但是仍然不显示</li>
-</ol>
-<h1 id="3-第二个PPT汇报"><a href="#3-第二个PPT汇报" class="headerlink" title="3 第二个PPT汇报"></a>3 第二个PPT汇报</h1><h2 id="3-1-1号机"><a href="#3-1-1号机" class="headerlink" title="3.1 1号机"></a>3.1 1号机</h2><p>1号机此时没有关闭屏幕共享，直接在1号机鼠标从第一个PPT切换到第二个PPT（第一个PPT已经汇报结束）<br><img src="https://img-blog.csdnimg.cn/202008152022493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="3-2-这时-2-号机看到的窗口"><a href="#3-2-这时-2-号机看到的窗口" class="headerlink" title="3.2 这时 2 号机看到的窗口"></a>3.2 这时 2 号机看到的窗口</h2><p><img src="https://img-blog.csdnimg.cn/20200815202948222.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>注：上面的内容是我第一个PPT最后一页的内容</p>
-<h1 id="4-再次实践"><a href="#4-再次实践" class="headerlink" title="4 再次实践"></a>4 再次实践</h1><h2 id="4-1-点击共享窗口"><a href="#4-1-点击共享窗口" class="headerlink" title="4.1 点击共享窗口"></a>4.1 点击共享窗口</h2><p>选择桌面，再点击共享<br><img src="https://img-blog.csdnimg.cn/20200815203647536.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="4-2-2号机的屏幕显示"><a href="#4-2-2号机的屏幕显示" class="headerlink" title="4.2 2号机的屏幕显示"></a>4.2 2号机的屏幕显示</h2><p>1号机打开窗口和前面介绍一样，2号机的屏幕显示如下：<br><img src="https://img-blog.csdnimg.cn/20200815205459951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="5-结果对比"><a href="#5-结果对比" class="headerlink" title="5 结果对比"></a>5 结果对比</h1><p>4.2 截下来的图片与  3 .2 截下来的图片对比，会发现：</p>
-<ol>
-<li>1 号机的桌面最下面一行显示出来了</li>
-<li>从第一个PPT切换到第二个PPT，2 号机可以看到这个切换过程</li>
-</ol>
-<h1 id="6-实践结论"><a href="#6-实践结论" class="headerlink" title="6 实践结论"></a>6 实践结论</h1><ol>
-<li>钉钉视频会议中，如果仅仅让其他会议成员看到自己的其中一个窗口，在共享屏幕的时候，仅需要选择要打开的窗口即可；</li>
-<li>如果要想让其他成员看到自己的几个窗口，有两种办法：<br> 最简单的一种就是，共享窗口的时候选择屏幕共享；<br> 否则，就要结束共享，然后再次屏幕共享，此时选择自己要打开的窗口。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析</title>
-    <url>/2020/08/16/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>近几周学习了决策树的相关知识，想要阅读一些用到这个知识的文章，但是在知网上浏览了几篇硕博士论文的摘要之后，发现一篇成熟的论文中，决策树这个知识只是整个论文实现目的的一个理论基础，自己现有的知识储备不足以读懂整篇论文，偶然看到了2019.12发表在计算机教育上的一篇期刊文章，对决策树地应用进行了介绍，最后就在对这篇文章进行了详细地阅读。</p>
-<h1 id="1-文章简介"><a href="#1-文章简介" class="headerlink" title="1 文章简介"></a>1 文章简介</h1><p>此文章利用 CART 决策树算法对学生的计算机网络相关课程成绩深入分析，找出影响学生网络课程学习成绩的主要因素，建立合理的成绩分类模型，以便协助教师发现不同学生的学习特征，从而正确地评价、引导学生，使学生得到更好的学习效果。</p>
-<h1 id="2-研究现状"><a href="#2-研究现状" class="headerlink" title="2 研究现状"></a>2 研究现状</h1><p>决策树算法是应用比较广的分类算法之一，最典型的算法是由 Quinlan 提出的 ID3 算法，该算法使用信息增益度量属性进行分类，将决策树和信息论联系起来。由于 ID3 的构造效果不够理想，只能处理离散的数据，Quinlan 又提出了C4.5 算法，对 ID3 进行了改进，选择信息增益率最大的属性作为分类属性。但是发现不管是 ID3 算法还是 C4.5 算法，都有一定的缺点，前面我的几篇文章有详细介绍，最后选择 CART 算法。</p>
-<h1 id="3-数据处理"><a href="#3-数据处理" class="headerlink" title="3 数据处理"></a>3 数据处理</h1><p>使用的数据集为计算机学院信息安全专业2013 级 2 个班（班号分别为130721、130722）、2014 级 1 个班（班号为 140721）、2015 级 1 个班（班号为 150743）本科生的基本信息和学习数据，共 124 人。<br>CART 决策树输入属性包括分组角色（组长与非组长）、性别、民族（汉与非汉）、理论努力程度、实践努力程度 5 个。<br>前 3 个属性原始数据为文本类型，将其转换为数值类型，担任实验组长则该值为 1，非组长为 0，性别为男值为 1，性别为女值为 0，少数民族值为 1，汉族值为 0。理论和实践努力程度分别表示学生平时理论和实践学习的努力程度，CART 决策树训练样本的分类等级即学生成绩等级。本文根据成绩排名进行划分，排名前 20%学生为 A，中间 60% 学生为 B，后 20% 学生为 C。部分实例数据如下：<br><img src="https://img-blog.csdnimg.cn/20200816184840898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="4-基于CART决策树的学生成绩建模结果"><a href="#4-基于CART决策树的学生成绩建模结果" class="headerlink" title="4 基于CART决策树的学生成绩建模结果"></a>4 基于CART决策树的学生成绩建模结果</h1><p>不再详细赘述，直接放结果：<br><img src="https://img-blog.csdnimg.cn/20200816185041658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200816185150690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="5-结果建议"><a href="#5-结果建议" class="headerlink" title="5 结果建议"></a>5 结果建议</h1><ol>
-<li>A 类学生分类规则分析及教学建议。<br>A 类学生人数占总样本的 22%，其共同特点是实践努力程度较高（&gt;0.694）。在此前提下，理论努力程度和性别差异对学生成绩影响极小。这也比较符合教学事实，因为实践的基础是理论，事实上，实践能让学生能够再次理解和掌握理论知识点。<br>因此，A 类学生分类规则非常符合第一点根据属性对学生成绩影响程度提出的教学建议，即应通过在计算机网络类课程教学过程中加强实验指导和效果跟踪提高学生的学习能力和效果，并且这对培养高水平学生非常重要。</li>
-<li>B 类学生分类规则分析及教学建议。<br>B 类学生人数占样本的 51.5%，共分为 5 个小类。其中前两小类与 A 类同学特点类似，后两小类与 C 类学生特点类似。中间小类学生人数较多，比较有代表性。<br>因此，从 B 类学生分类规则可以得到如下3 个启示及教学建议：实验是区分 A 类和 B 类学生的关键环节，加强实验指导和效果跟踪可以得到更好的学习效果；在实验环节中，教师应注意辨别“搭便车”现象，对这类学生加强启发和检查，使他们得到更好的学习效果；在复习环节加强与学生的互动，提高学生的复习效果。</li>
-<li>C 类学生分类规则分析及教学建议。<br>C 类学生人数占样本的 26.5%，其共同特点是实践和理论努力程度都不高。<br>因此，在教学过程中应及早发现和干预该类学生的学习，在保证基础知识学习的情况下提高他们的学习兴趣和效果。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>修改github中的username</title>
     <url>/2020/08/15/github%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/</url>
     <content><![CDATA[<p>第一次注册时的github时，用户名总是重复，当时随便起了一个，所以现在想要改一下，下面说一下改的过程</p>
@@ -66,6 +8,69 @@
 <h1 id="第二步，account中找到change-username"><a href="#第二步，account中找到change-username" class="headerlink" title="第二步，account中找到change username"></a>第二步，account中找到change username</h1><p><img src="https://img-blog.csdnimg.cn/20200810181409670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="下面点击确定"><a href="#下面点击确定" class="headerlink" title="下面点击确定"></a>下面点击确定</h2><p><img src="https://img-blog.csdnimg.cn/20200810181549189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h1 id="最后，进入改username最后一步"><a href="#最后，进入改username最后一步" class="headerlink" title="最后，进入改username最后一步"></a>最后，进入改username最后一步</h1><p><img src="https://img-blog.csdnimg.cn/20200810181706116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>填入自己想要改的名字就可以了，但是要注意，有内容的仓库的名字也要改，不然仓库里的东西推到远端会出错。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/08/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>python中的bug</title>
+    <url>/2020/08/08/python%E4%B8%AD%E7%9A%84bug/</url>
+    <content><![CDATA[<h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
+<h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>传统的机器学习方法——决策树（上）</title>
+    <url>/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="1-决策树模型介绍"><a href="#1-决策树模型介绍" class="headerlink" title="1 决策树模型介绍"></a>1 决策树模型介绍</h1><h2 id="1-1-决策树模型概述"><a href="#1-1-决策树模型概述" class="headerlink" title="1.1 决策树模型概述"></a>1.1 决策树模型概述</h2><p>   分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有两种类型：内部节点和叶节点，内部节点表示一个特征或属性，叶节点表示一个类。<br>   分类的时候，从根节点开始，当前节点设为根节点，当前节点必定是一种特征，根据实例的该特征的取值，向下移动，直到到达叶节点，将实例分到叶节点对应的类中。<br><img src="https://img-blog.csdnimg.cn/20200802172055879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树模型"></p>
+<h2 id="1-2-决策树与if-then规则"><a href="#1-2-决策树与if-then规则" class="headerlink" title="1.2 决策树与if-then规则"></a>1.2 决策树与if-then规则</h2><p>可以将决策树看成一个if-then规则的集合：由决策树的根节点到叶节点的每一条路径构建一条规则；路径上的内部结点的特征对应着if条件，叶节点对应着then结论。决策树的每一条路径都具有一个重要的性质：互斥且完备。这就是说，任何一个实例都被且仅被一条路径或规则覆盖。这里所谓覆盖是指实例的特征与路径上的特征一致或实例满足规则的条件。<br><em>举个例子：if(明天是晴天）then(我将出去玩)</em></p>
+<h2 id="1-3-决策树主要优点"><a href="#1-3-决策树主要优点" class="headerlink" title="1.3 决策树主要优点"></a>1.3 决策树主要优点</h2><p>1.分类速度快；<br>2.具有可读性；<br>3.学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新数据集，利用决策树模型进行分类。</p>
+<h2 id="1-4-主要步骤"><a href="#1-4-主要步骤" class="headerlink" title="1.4 主要步骤"></a>1.4 主要步骤</h2><p>1.特征选择问题<br>2.决策树的生成<br>3.决策树的剪枝</p>
+<h1 id="2-特征选择"><a href="#2-特征选择" class="headerlink" title="2 特征选择"></a>2 特征选择</h1><h2 id="2-1-特征选择问题"><a href="#2-1-特征选择问题" class="headerlink" title="2.1 特征选择问题"></a>2.1 特征选择问题</h2><p>特征选择在于选取对训练集具有分类能力的特征。如果利用一个特征进行分类的结果与随即分类的结果没有很大差别，则称这个特征没有分类能力。通常特征选则的准则是信息增益或信息增益比。<br>特征选择是决定用哪个特征来划分特征空间。</p>
+<h3 id="2-1-1-举个例子"><a href="#2-1-1-举个例子" class="headerlink" title="2.1.1 举个例子"></a>2.1.1 <em>举个例子</em></h3><p>下表（表5.1）是由15个样本组成的贷款申请训练数据。数据包括贷款申请人的4个特征（属性），具体信息如表所示：<img src="https://img-blog.csdnimg.cn/20200802174557798.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="贷款申请样本数据集"><br>通过上表所给的训练数据构建一个贷款申请的决策树，用以对未来的贷款申请进行分类，即当新的客户提出贷款申请是，根据申请人的特征利用决策树决定是否批准贷款申请。<br><strong>在说明这个例子之前，必须先了解几个定义。</strong></p>
+<h2 id="2-2-重要定义"><a href="#2-2-重要定义" class="headerlink" title="2.2 重要定义"></a>2.2 重要定义</h2><h3 id="2-2-1-熵"><a href="#2-2-1-熵" class="headerlink" title="2.2.1 熵"></a>2.2.1 熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180036468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="熵"><br>由熵的定义可知，熵只依赖与X的分布，而与X的取值无关，所以也可以将X的熵记作H（<em>p</em>）,即<img src="https://img-blog.csdnimg.cn/2020080218034198.png" alt="熵"></p>
+<h3 id="2-2-2-条件熵"><a href="#2-2-2-条件熵" class="headerlink" title="2.2.2 条件熵"></a>2.2.2 条件熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180611704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="条件熵"></p>
+<h3 id="2-2-3-信息增益"><a href="#2-2-3-信息增益" class="headerlink" title="2.2.3 信息增益"></a>2.2.3 信息增益</h3><p><img src="https://img-blog.csdnimg.cn/20200802180734432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益"><br>一般地，熵H(Y)与条件熵H(Y|X)之差成为互信息。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。</p>
+<h2 id="2-3-信息增益的算法"><a href="#2-3-信息增益的算法" class="headerlink" title="2.3 信息增益的算法"></a>2.3 信息增益的算法</h2><h3 id="2-3-1-算法过程"><a href="#2-3-1-算法过程" class="headerlink" title="2.3.1 算法过程"></a>2.3.1 算法过程</h3><p><img src="https://img-blog.csdnimg.cn/20200802181234549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益的算法过程"></p>
+<h3 id="2-3-2-举个例子"><a href="#2-3-2-举个例子" class="headerlink" title="2.3.2 举个例子"></a>2.3.2 <em>举个例子</em></h3><p><img src="https://img-blog.csdnimg.cn/20200802181403214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="计算过程"><img src="https://img-blog.csdnimg.cn/20200802181442245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"></p>
+<h1 id="3-决策树的生成"><a href="#3-决策树的生成" class="headerlink" title="3 决策树的生成"></a>3 决策树的生成</h1><h2 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h2><p>   根据选择的特征评估标准，从上至下递归地生成子节点，直到数据集不可分则停止，决策树停止生长。这个过程实际上就是使用满足划分准则的特征不断的将数据集划分成纯度更高，不确定性更小的子集的过程。对于当前数据集的每一次划分，都希望根据某个特征划分之后的各个子集的纯度更高，不确定性更小。<br>    决策树生成算法不唯一，这里仅介绍两种算法——ID3算法和C4.5算法。</p>
+<h2 id="3-2-ID3算法"><a href="#3-2-ID3算法" class="headerlink" title="3.2 ID3算法"></a>3.2 ID3算法</h2><h3 id="3-2-1-ID3算法核心"><a href="#3-2-1-ID3算法核心" class="headerlink" title="3.2.1 ID3算法核心"></a>3.2.1 ID3算法核心</h3><p>核心：是在决策树各个节点上应用**<strong>信息增益准则**</strong>选择特征递归地构建决策树。</p>
+<h3 id="3-2-2-算法过程"><a href="#3-2-2-算法过程" class="headerlink" title="3.2.2 算法过程"></a>3.2.2 算法过程</h3><p>算法的过程为：<br>　　　1）初始化信息增益的阈值ϵ<br>　　　2）判断样本是否为同一类Di ，如果是则返回单节点树T。标记类别为Di。<br>　　　3）判断特征是否为空，如果是则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　4）计算A中的各个特征（一共n个）对输出D的信息增益，选择信息增益最大的特征Ag。<br>　　　5）如果Ag的信息增益小于阈值ϵ，则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　6）否则，按特征Ag的不同取值Agi将对应的样本输出D分成不同的类别Di。每个类别产生一个子节点。对应特征值为Agi。返回增加了节点的数T。<br>　　　7）对于所有的子节点，令D=Di,A=A−{Ag} ，递归调用2-6步，得到子树Ti并返回。</p>
+<h3 id="3-2-3-举个例子"><a href="#3-2-3-举个例子" class="headerlink" title="3.2.3 举个例子"></a>3.2.3 <em>举个例子</em></h3><p>用ID3算法构建表5.1的决策树过程如下：<img src="https://img-blog.csdnimg.cn/20200802182533696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"><br>构建决策树结果：<br><img src="https://img-blog.csdnimg.cn/2020080218271422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树"></p>
+<h3 id="3-2-4-ID3算法的不足"><a href="#3-2-4-ID3算法的不足" class="headerlink" title="3.2.4 ID3算法的不足"></a>3.2.4 ID3算法的不足</h3><p>  ID3算法虽然提出了新思路，但是还是有很多值得改进的地方。　　</p>
+<ol>
+<li>ID3没有考虑连续特征，比如长度，密度都是连续值，无法在ID3运用。这大大限制了ID3的用途。</li>
+<li>ID3采用信息增益大的特征优先建立决策树的节点。很快就被人发现，在相同条件下，取值比较多的特征比取值少的特征信息增益大。比如一个变量有2个值，各为1/2，另一个变量为3个值，各为1/3，其实他们都是完全不确定的变量，但是取3个值的比取2个值的信息增益大。</li>
+<li>ID3算法对于缺失值的情况没有做考虑。</li>
+<li>没有考虑过拟合的问题。</li>
+</ol>
+<h2 id="3-3-C4-5算法"><a href="#3-3-C4-5算法" class="headerlink" title="3.3 C4.5算法"></a>3.3 C4.5算法</h2><p>C4.5算法与ID3算法很相似，C4.5算法仅仅是对ID3算法做了改进，在生成决策树过程中采用<strong>信息增益比</strong>来选择特征算法过程没有变化，这里不再赘述。</p>
+<h3 id="3-3-1-C4-5算法的不足"><a href="#3-3-1-C4-5算法的不足" class="headerlink" title="3.3.1 C4.5算法的不足"></a>3.3.1 C4.5算法的不足</h3><p>   C4.5虽然改进了ID3算法的几个主要的问题，仍然有优化的空间。</p>
+<ol>
+<li>由于决策树算法非常容易过拟合，因此对于生成的决策树必须要进行剪枝。剪枝的算法有非常多，C4.5的剪枝方法有优化的空间。思路主要是两种，一种是预剪枝，即在生成决策树的时候就决定是否剪枝。另一个是后剪枝，即先生成决策树，再通过交叉验证来剪枝。<ol start="2">
+<li>C4.5生成的是多叉树，即一个父节点可以有多个节点。很多时候，在计算机中二叉树模型会比多叉树运算效率高。如果采用二叉树，可以提高效率。</li>
+<li>C4.5只能用于分类，如果能将决策树用于回归的话可以扩大它的使用范围。</li>
+<li>C4.5由于使用了熵模型，里面有大量的耗时的对数运算,如果是连续值还有大量的排序运算。如果能够加以模型简化可以减少运算强度但又不牺牲太多准确性的话，那就更好了。<br>　   这4个问题在CART树里面部分加以了改进。所以目前如果不考虑集成学习话，在普通的决策树算法里，CART算法算是比较优的算法了。<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1>这篇文章仅简单介绍了决策树的基本内容，主要是决策树的特征选择和生成两部分，后续会继续介绍决策树的剪枝和CART这个比较方便的算法。</li>
+</ol>
+</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -116,66 +121,58 @@
 ]]></content>
   </entry>
   <entry>
-    <title>传统的机器学习方法——决策树（上）</title>
-    <url>/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
+    <title>钉钉中的小发现</title>
+    <url>/2020/08/22/%E5%B0%8F%E5%8F%91%E7%8E%B0/</url>
     <content><![CDATA[<p>[TOC]</p>
-<h1 id="1-决策树模型介绍"><a href="#1-决策树模型介绍" class="headerlink" title="1 决策树模型介绍"></a>1 决策树模型介绍</h1><h2 id="1-1-决策树模型概述"><a href="#1-1-决策树模型概述" class="headerlink" title="1.1 决策树模型概述"></a>1.1 决策树模型概述</h2><p>   分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有两种类型：内部节点和叶节点，内部节点表示一个特征或属性，叶节点表示一个类。<br>   分类的时候，从根节点开始，当前节点设为根节点，当前节点必定是一种特征，根据实例的该特征的取值，向下移动，直到到达叶节点，将实例分到叶节点对应的类中。<br><img src="https://img-blog.csdnimg.cn/20200802172055879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树模型"></p>
-<h2 id="1-2-决策树与if-then规则"><a href="#1-2-决策树与if-then规则" class="headerlink" title="1.2 决策树与if-then规则"></a>1.2 决策树与if-then规则</h2><p>可以将决策树看成一个if-then规则的集合：由决策树的根节点到叶节点的每一条路径构建一条规则；路径上的内部结点的特征对应着if条件，叶节点对应着then结论。决策树的每一条路径都具有一个重要的性质：互斥且完备。这就是说，任何一个实例都被且仅被一条路径或规则覆盖。这里所谓覆盖是指实例的特征与路径上的特征一致或实例满足规则的条件。<br><em>举个例子：if(明天是晴天）then(我将出去玩)</em></p>
-<h2 id="1-3-决策树主要优点"><a href="#1-3-决策树主要优点" class="headerlink" title="1.3 决策树主要优点"></a>1.3 决策树主要优点</h2><p>1.分类速度快；<br>2.具有可读性；<br>3.学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新数据集，利用决策树模型进行分类。</p>
-<h2 id="1-4-主要步骤"><a href="#1-4-主要步骤" class="headerlink" title="1.4 主要步骤"></a>1.4 主要步骤</h2><p>1.特征选择问题<br>2.决策树的生成<br>3.决策树的剪枝</p>
-<h1 id="2-特征选择"><a href="#2-特征选择" class="headerlink" title="2 特征选择"></a>2 特征选择</h1><h2 id="2-1-特征选择问题"><a href="#2-1-特征选择问题" class="headerlink" title="2.1 特征选择问题"></a>2.1 特征选择问题</h2><p>特征选择在于选取对训练集具有分类能力的特征。如果利用一个特征进行分类的结果与随即分类的结果没有很大差别，则称这个特征没有分类能力。通常特征选则的准则是信息增益或信息增益比。<br>特征选择是决定用哪个特征来划分特征空间。</p>
-<h3 id="2-1-1-举个例子"><a href="#2-1-1-举个例子" class="headerlink" title="2.1.1 举个例子"></a>2.1.1 <em>举个例子</em></h3><p>下表（表5.1）是由15个样本组成的贷款申请训练数据。数据包括贷款申请人的4个特征（属性），具体信息如表所示：<img src="https://img-blog.csdnimg.cn/20200802174557798.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="贷款申请样本数据集"><br>通过上表所给的训练数据构建一个贷款申请的决策树，用以对未来的贷款申请进行分类，即当新的客户提出贷款申请是，根据申请人的特征利用决策树决定是否批准贷款申请。<br><strong>在说明这个例子之前，必须先了解几个定义。</strong></p>
-<h2 id="2-2-重要定义"><a href="#2-2-重要定义" class="headerlink" title="2.2 重要定义"></a>2.2 重要定义</h2><h3 id="2-2-1-熵"><a href="#2-2-1-熵" class="headerlink" title="2.2.1 熵"></a>2.2.1 熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180036468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="熵"><br>由熵的定义可知，熵只依赖与X的分布，而与X的取值无关，所以也可以将X的熵记作H（<em>p</em>）,即<img src="https://img-blog.csdnimg.cn/2020080218034198.png" alt="熵"></p>
-<h3 id="2-2-2-条件熵"><a href="#2-2-2-条件熵" class="headerlink" title="2.2.2 条件熵"></a>2.2.2 条件熵</h3><p><img src="https://img-blog.csdnimg.cn/20200802180611704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="条件熵"></p>
-<h3 id="2-2-3-信息增益"><a href="#2-2-3-信息增益" class="headerlink" title="2.2.3 信息增益"></a>2.2.3 信息增益</h3><p><img src="https://img-blog.csdnimg.cn/20200802180734432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益"><br>一般地，熵H(Y)与条件熵H(Y|X)之差成为互信息。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。</p>
-<h2 id="2-3-信息增益的算法"><a href="#2-3-信息增益的算法" class="headerlink" title="2.3 信息增益的算法"></a>2.3 信息增益的算法</h2><h3 id="2-3-1-算法过程"><a href="#2-3-1-算法过程" class="headerlink" title="2.3.1 算法过程"></a>2.3.1 算法过程</h3><p><img src="https://img-blog.csdnimg.cn/20200802181234549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="信息增益的算法过程"></p>
-<h3 id="2-3-2-举个例子"><a href="#2-3-2-举个例子" class="headerlink" title="2.3.2 举个例子"></a>2.3.2 <em>举个例子</em></h3><p><img src="https://img-blog.csdnimg.cn/20200802181403214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="计算过程"><img src="https://img-blog.csdnimg.cn/20200802181442245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"></p>
-<h1 id="3-决策树的生成"><a href="#3-决策树的生成" class="headerlink" title="3 决策树的生成"></a>3 决策树的生成</h1><h2 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h2><p>   根据选择的特征评估标准，从上至下递归地生成子节点，直到数据集不可分则停止，决策树停止生长。这个过程实际上就是使用满足划分准则的特征不断的将数据集划分成纯度更高，不确定性更小的子集的过程。对于当前数据集的每一次划分，都希望根据某个特征划分之后的各个子集的纯度更高，不确定性更小。<br>    决策树生成算法不唯一，这里仅介绍两种算法——ID3算法和C4.5算法。</p>
-<h2 id="3-2-ID3算法"><a href="#3-2-ID3算法" class="headerlink" title="3.2 ID3算法"></a>3.2 ID3算法</h2><h3 id="3-2-1-ID3算法核心"><a href="#3-2-1-ID3算法核心" class="headerlink" title="3.2.1 ID3算法核心"></a>3.2.1 ID3算法核心</h3><p>核心：是在决策树各个节点上应用**<strong>信息增益准则**</strong>选择特征递归地构建决策树。</p>
-<h3 id="3-2-2-算法过程"><a href="#3-2-2-算法过程" class="headerlink" title="3.2.2 算法过程"></a>3.2.2 算法过程</h3><p>算法的过程为：<br>　　　1）初始化信息增益的阈值ϵ<br>　　　2）判断样本是否为同一类Di ，如果是则返回单节点树T。标记类别为Di。<br>　　　3）判断特征是否为空，如果是则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　4）计算A中的各个特征（一共n个）对输出D的信息增益，选择信息增益最大的特征Ag。<br>　　　5）如果Ag的信息增益小于阈值ϵ，则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>　　　6）否则，按特征Ag的不同取值Agi将对应的样本输出D分成不同的类别Di。每个类别产生一个子节点。对应特征值为Agi。返回增加了节点的数T。<br>　　　7）对于所有的子节点，令D=Di,A=A−{Ag} ，递归调用2-6步，得到子树Ti并返回。</p>
-<h3 id="3-2-3-举个例子"><a href="#3-2-3-举个例子" class="headerlink" title="3.2.3 举个例子"></a>3.2.3 <em>举个例子</em></h3><p>用ID3算法构建表5.1的决策树过程如下：<img src="https://img-blog.csdnimg.cn/20200802182533696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="例子"><br>构建决策树结果：<br><img src="https://img-blog.csdnimg.cn/2020080218271422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="决策树"></p>
-<h3 id="3-2-4-ID3算法的不足"><a href="#3-2-4-ID3算法的不足" class="headerlink" title="3.2.4 ID3算法的不足"></a>3.2.4 ID3算法的不足</h3><p>  ID3算法虽然提出了新思路，但是还是有很多值得改进的地方。　　</p>
-<ol>
-<li>ID3没有考虑连续特征，比如长度，密度都是连续值，无法在ID3运用。这大大限制了ID3的用途。</li>
-<li>ID3采用信息增益大的特征优先建立决策树的节点。很快就被人发现，在相同条件下，取值比较多的特征比取值少的特征信息增益大。比如一个变量有2个值，各为1/2，另一个变量为3个值，各为1/3，其实他们都是完全不确定的变量，但是取3个值的比取2个值的信息增益大。</li>
-<li>ID3算法对于缺失值的情况没有做考虑。</li>
-<li>没有考虑过拟合的问题。</li>
+<h1 id="记载一下自己的小发现"><a href="#记载一下自己的小发现" class="headerlink" title="记载一下自己的小发现"></a><del>记载一下自己的小发现</del></h1><p>今天开了两个视频会议，下午的会议是每周的学习汇报，晚上的会议主要是听老师讲的课。<br>在晚上听老师讲课的时候，老师换了一个窗口，和我们看到的窗口不一样，但是老师还是一直在讲，随后同学截屏了我们看到的窗口，老师看到后说她放的不是这个窗口，然后关闭共享再打开之后，才是我们看到的窗口，<br>我在会议结束后，重点实践了一下这个钉钉屏幕共享功能。</p>
+<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><ol>
+<li>一部手机（或电脑）登录另一个钉钉号（以下称2号机）</li>
+<li>一台汇报工作的电脑（我的电脑），登录我的钉钉号（称1号机）<h1 id="2-第一个PPT汇报"><a href="#2-第一个PPT汇报" class="headerlink" title="2 第一个PPT汇报"></a>2 第一个PPT汇报</h1><h2 id="2-1-当我汇报时候点击的共享窗口"><a href="#2-1-当我汇报时候点击的共享窗口" class="headerlink" title="2.1 当我汇报时候点击的共享窗口"></a>2.1 当我汇报时候点击的共享窗口</h2><img src="https://img-blog.csdnimg.cn/20200815201234539.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><h2 id="2-2-2-号机看到的窗口"><a href="#2-2-2-号机看到的窗口" class="headerlink" title="2.2 2 号机看到的窗口"></a>2.2 2 号机看到的窗口</h2><img src="https://img-blog.csdnimg.cn/20200815201651709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>【注意】没有桌面上最下面一栏的各种图标，我没有隐藏，但是仍然不显示</li>
 </ol>
-<h2 id="3-3-C4-5算法"><a href="#3-3-C4-5算法" class="headerlink" title="3.3 C4.5算法"></a>3.3 C4.5算法</h2><p>C4.5算法与ID3算法很相似，C4.5算法仅仅是对ID3算法做了改进，在生成决策树过程中采用<strong>信息增益比</strong>来选择特征算法过程没有变化，这里不再赘述。</p>
-<h3 id="3-3-1-C4-5算法的不足"><a href="#3-3-1-C4-5算法的不足" class="headerlink" title="3.3.1 C4.5算法的不足"></a>3.3.1 C4.5算法的不足</h3><p>   C4.5虽然改进了ID3算法的几个主要的问题，仍然有优化的空间。</p>
+<h1 id="3-第二个PPT汇报"><a href="#3-第二个PPT汇报" class="headerlink" title="3 第二个PPT汇报"></a>3 第二个PPT汇报</h1><h2 id="3-1-1号机"><a href="#3-1-1号机" class="headerlink" title="3.1 1号机"></a>3.1 1号机</h2><p>1号机此时没有关闭屏幕共享，直接在1号机鼠标从第一个PPT切换到第二个PPT（第一个PPT已经汇报结束）<br><img src="https://img-blog.csdnimg.cn/202008152022493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="3-2-这时-2-号机看到的窗口"><a href="#3-2-这时-2-号机看到的窗口" class="headerlink" title="3.2 这时 2 号机看到的窗口"></a>3.2 这时 2 号机看到的窗口</h2><p><img src="https://img-blog.csdnimg.cn/20200815202948222.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>注：上面的内容是我第一个PPT最后一页的内容</p>
+<h1 id="4-再次实践"><a href="#4-再次实践" class="headerlink" title="4 再次实践"></a>4 再次实践</h1><h2 id="4-1-点击共享窗口"><a href="#4-1-点击共享窗口" class="headerlink" title="4.1 点击共享窗口"></a>4.1 点击共享窗口</h2><p>选择桌面，再点击共享<br><img src="https://img-blog.csdnimg.cn/20200815203647536.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="4-2-2号机的屏幕显示"><a href="#4-2-2号机的屏幕显示" class="headerlink" title="4.2 2号机的屏幕显示"></a>4.2 2号机的屏幕显示</h2><p>1号机打开窗口和前面介绍一样，2号机的屏幕显示如下：<br><img src="https://img-blog.csdnimg.cn/20200815205459951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="5-结果对比"><a href="#5-结果对比" class="headerlink" title="5 结果对比"></a>5 结果对比</h1><p>4.2 截下来的图片与  3 .2 截下来的图片对比，会发现：</p>
 <ol>
-<li>由于决策树算法非常容易过拟合，因此对于生成的决策树必须要进行剪枝。剪枝的算法有非常多，C4.5的剪枝方法有优化的空间。思路主要是两种，一种是预剪枝，即在生成决策树的时候就决定是否剪枝。另一个是后剪枝，即先生成决策树，再通过交叉验证来剪枝。<ol start="2">
-<li>C4.5生成的是多叉树，即一个父节点可以有多个节点。很多时候，在计算机中二叉树模型会比多叉树运算效率高。如果采用二叉树，可以提高效率。</li>
-<li>C4.5只能用于分类，如果能将决策树用于回归的话可以扩大它的使用范围。</li>
-<li>C4.5由于使用了熵模型，里面有大量的耗时的对数运算,如果是连续值还有大量的排序运算。如果能够加以模型简化可以减少运算强度但又不牺牲太多准确性的话，那就更好了。<br>　   这4个问题在CART树里面部分加以了改进。所以目前如果不考虑集成学习话，在普通的决策树算法里，CART算法算是比较优的算法了。<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1>这篇文章仅简单介绍了决策树的基本内容，主要是决策树的特征选择和生成两部分，后续会继续介绍决策树的剪枝和CART这个比较方便的算法。</li>
+<li>1 号机的桌面最下面一行显示出来了</li>
+<li>从第一个PPT切换到第二个PPT，2 号机可以看到这个切换过程</li>
 </ol>
-</li>
+<h1 id="6-实践结论"><a href="#6-实践结论" class="headerlink" title="6 实践结论"></a>6 实践结论</h1><ol>
+<li>钉钉视频会议中，如果仅仅让其他会议成员看到自己的其中一个窗口，在共享屏幕的时候，仅需要选择要打开的窗口即可；</li>
+<li>如果要想让其他成员看到自己的几个窗口，有两种办法：<br> 最简单的一种就是，共享窗口的时候选择屏幕共享；<br> 否则，就要结束共享，然后再次屏幕共享，此时选择自己要打开的窗口。</li>
 </ol>
 ]]></content>
   </entry>
   <entry>
-    <title>python中的bug</title>
-    <url>/2020/08/08/python%E4%B8%AD%E7%9A%84bug/</url>
-    <content><![CDATA[<h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
-<h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+    <title>阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析</title>
+    <url>/2020/08/16/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>近几周学习了决策树的相关知识，想要阅读一些用到这个知识的文章，但是在知网上浏览了几篇硕博士论文的摘要之后，发现一篇成熟的论文中，决策树这个知识只是整个论文实现目的的一个理论基础，自己现有的知识储备不足以读懂整篇论文，偶然看到了2019.12发表在计算机教育上的一篇期刊文章，对决策树地应用进行了介绍，最后就在对这篇文章进行了详细地阅读。</p>
+<h1 id="1-文章简介"><a href="#1-文章简介" class="headerlink" title="1 文章简介"></a>1 文章简介</h1><p>此文章利用 CART 决策树算法对学生的计算机网络相关课程成绩深入分析，找出影响学生网络课程学习成绩的主要因素，建立合理的成绩分类模型，以便协助教师发现不同学生的学习特征，从而正确地评价、引导学生，使学生得到更好的学习效果。</p>
+<h1 id="2-研究现状"><a href="#2-研究现状" class="headerlink" title="2 研究现状"></a>2 研究现状</h1><p>决策树算法是应用比较广的分类算法之一，最典型的算法是由 Quinlan 提出的 ID3 算法，该算法使用信息增益度量属性进行分类，将决策树和信息论联系起来。由于 ID3 的构造效果不够理想，只能处理离散的数据，Quinlan 又提出了C4.5 算法，对 ID3 进行了改进，选择信息增益率最大的属性作为分类属性。但是发现不管是 ID3 算法还是 C4.5 算法，都有一定的缺点，前面我的几篇文章有详细介绍，最后选择 CART 算法。</p>
+<h1 id="3-数据处理"><a href="#3-数据处理" class="headerlink" title="3 数据处理"></a>3 数据处理</h1><p>使用的数据集为计算机学院信息安全专业2013 级 2 个班（班号分别为130721、130722）、2014 级 1 个班（班号为 140721）、2015 级 1 个班（班号为 150743）本科生的基本信息和学习数据，共 124 人。<br>CART 决策树输入属性包括分组角色（组长与非组长）、性别、民族（汉与非汉）、理论努力程度、实践努力程度 5 个。<br>前 3 个属性原始数据为文本类型，将其转换为数值类型，担任实验组长则该值为 1，非组长为 0，性别为男值为 1，性别为女值为 0，少数民族值为 1，汉族值为 0。理论和实践努力程度分别表示学生平时理论和实践学习的努力程度，CART 决策树训练样本的分类等级即学生成绩等级。本文根据成绩排名进行划分，排名前 20%学生为 A，中间 60% 学生为 B，后 20% 学生为 C。部分实例数据如下：<br><img src="https://img-blog.csdnimg.cn/20200816184840898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="4-基于CART决策树的学生成绩建模结果"><a href="#4-基于CART决策树的学生成绩建模结果" class="headerlink" title="4 基于CART决策树的学生成绩建模结果"></a>4 基于CART决策树的学生成绩建模结果</h1><p>不再详细赘述，直接放结果：<br><img src="https://img-blog.csdnimg.cn/20200816185041658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200816185150690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="5-结果建议"><a href="#5-结果建议" class="headerlink" title="5 结果建议"></a>5 结果建议</h1><ol>
+<li>A 类学生分类规则分析及教学建议。<br>A 类学生人数占总样本的 22%，其共同特点是实践努力程度较高（&gt;0.694）。在此前提下，理论努力程度和性别差异对学生成绩影响极小。这也比较符合教学事实，因为实践的基础是理论，事实上，实践能让学生能够再次理解和掌握理论知识点。<br>因此，A 类学生分类规则非常符合第一点根据属性对学生成绩影响程度提出的教学建议，即应通过在计算机网络类课程教学过程中加强实验指导和效果跟踪提高学生的学习能力和效果，并且这对培养高水平学生非常重要。</li>
+<li>B 类学生分类规则分析及教学建议。<br>B 类学生人数占样本的 51.5%，共分为 5 个小类。其中前两小类与 A 类同学特点类似，后两小类与 C 类学生特点类似。中间小类学生人数较多，比较有代表性。<br>因此，从 B 类学生分类规则可以得到如下3 个启示及教学建议：实验是区分 A 类和 B 类学生的关键环节，加强实验指导和效果跟踪可以得到更好的学习效果；在实验环节中，教师应注意辨别“搭便车”现象，对这类学生加强启发和检查，使他们得到更好的学习效果；在复习环节加强与学生的互动，提高学生的复习效果。</li>
+<li>C 类学生分类规则分析及教学建议。<br>C 类学生人数占样本的 26.5%，其共同特点是实践和理论努力程度都不高。<br>因此，在教学过程中应及早发现和干预该类学生的学习，在保证基础知识学习的情况下提高他们的学习兴趣和效果。</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/08/02/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>阅读笔记——基于机器学习的文本情感多分类研究</title>
+    <url>/2020/10/19/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E5%A4%9A%E5%88%86%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A0%94%E7%A9%B6/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="1-文章简介"><a href="#1-文章简介" class="headerlink" title="1 文章简介"></a>1 文章简介</h1><p>文本分类与情感分类是自然语言处理中基础的领域，在机器学习的基础上，分析了线性逻辑回归算法、朴素贝叶斯模型在文本情感分类项目中的应用，并针对数据处理、模型构建、模型训练、模型测试过程中初学者难以解决和易出错的部分进行分析与实现。结合kaggle上的比赛数据实例，实现了完整的文本情感多分类项目并做出详细分析，项目评测结果较为可观，证实可以帮助初学者更易上手文本情感多分类和机器学习。同时提出了基于传统二分类问题的多分类问题解决方法。</p>
+<h1 id="2-文本情感分类概述"><a href="#2-文本情感分类概述" class="headerlink" title="2 文本情感分类概述"></a>2 文本情感分类概述</h1><p>文本情感分类是对带有情感色彩的主观性文本进行分析、处理、归纳和推理的过程，是NLP领域重要的基础领域，涉及文本分词、词语情感分析、机器学习、深度学习等。<br>文本情感分类通过在现有的大量数据中，基于学习算法寻找并学习词语情感的规律，构建相应的分类函数或分类模型（分类器，Classi⁃fie），这样对于给定的其他文本将能做到文本情感分类  。计算机并不能直接识别与处理所提供的自然语言数据，通常要对这些文本数据进行维度上的抽象处理 。<br>基于机器学习算法的文本情感分类通常需要构建学习模型，针对已处理的数据进行重复的训练与测试，通过测试的反馈修正模型参数，使得分类模型具备更高的准确度。文本数据经过模型导出后将被划分到对应情感类别，实现文本情感分类。</p>
+<h1 id="3-文本情感多分类项目设计与实现"><a href="#3-文本情感多分类项目设计与实现" class="headerlink" title="3 文本情感多分类项目设计与实现"></a>3 文本情感多分类项目设计与实现</h1><p>文本情感多分类项目整体流程大致分为数据处理、特征选取、模型的构建、训练与测试，其中对于模型的处理，本文基于机器学习主要给出两种模型算法：线性逻辑回归模型和朴素贝叶斯模型。图1是项目结构框架图。<br><img src="https://img-blog.csdnimg.cn/20200822211314385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="3-1-数据处理"><a href="#3-1-数据处理" class="headerlink" title="3.1 数据处理"></a>3.1 数据处理</h2><p>文本数据来源于 Kaggle 网站竞赛数据，数据包括四列，PhraseId（短语编号）、SentenceId（句子编号）、Phrase（短语）和Sentiment （短语情感分类）。<br>针对数据做出几点说明，一个句子可以划分成若干个短语，所以存在多个短语来源于同一个句子，其句子编号相同；情感分类是对每一个短语进行分类，情感类型划分为五类，用数字0~4标明，代表非常消极、消极、中性、积极、非常积极。对数据梳理清楚后，需要对每个短语进行分词，英文文本分词相对简单，以空格为标志划分出每个单词。这里存在初学者的误区，一些诸如“a”的英文单词是否取舍不应该由停词表来决定。对此本文去掉停词表，对统计到的单词计算每一个单词的频率，频率过大或过小的单词均去除。至此，数据处理完成，得到了所有有效单词的汇总与其频率，成功构建了词袋。</p>
+<h2 id="3-2-特征选取"><a href="#3-2-特征选取" class="headerlink" title="3.2 特征选取"></a>3.2 特征选取</h2><p>如英文单词，这些自然语言计算机无法处理，其二进制码也毫无意义，这使得特征选取工作变得困难。通常采取的是One-Hot 编码（独热编码），统计所有的状态并对每一个状态独立编码，这样任意时刻每个状态的编码中只有一位是有效的 。<br>但One-Hot 编码后的数据维度将十分庞大，无论是计算机内存还是运行时间，其效率都变得十分低下。本文采取TfidfVectorizer函数，利用数据处理过程中得到的词袋，对单词进行状态编码，每一个单词都是被选取的特征。短语由若干个单词组成，这样每一个短语可以表示成单词编码的组合，于是得到了计算机可以处理的数据 。<br>最后，将处理好的数据划分为两类，一类作为训练数据，让模型进行学习，另一类作为测试数据，评价模型效果。</p>
+<h2 id="3-3-线性逻辑回归模型"><a href="#3-3-线性逻辑回归模型" class="headerlink" title="3.3 线性逻辑回归模型"></a>3.3 线性逻辑回归模型</h2><p>线性逻辑回归模型是机器学习中常见的模型算法，可以通过调用sklearn库LogisticRegression函数，其作用是对输入短语的每一个维度数据（单词编码）分配一个可调整参数，使输出结果趋近短语的情感类型数字 。本文采取间接转化的方法，将五分类转化为多次二分类问题，首先中性与非中性数据的分类，然后是积极与消极数据的分类，最后是其内部程度的二分类。<br>模型除了对于输入数据的参数外还有自身的选择性参数，称为超参数，比如学习率等，如何调整合适的模型参数一直是初学者难以把握的问题，本文采用GridSearchCV函数对模型进行自动调参。它是网格搜索和交叉验证的结合，原理是在指定的参数范围内，按步长依次调整参数，利用调整的参数训练学习器，从所有的参数中找到在测试集上精度最高的参数，这其实是一个训练和比较的过程。<br>训练好模型后，对于新的文本数据，只要处理好数据特征，模型将会自动对文本进行情感分类。基于线性逻辑回归模型的文本情感分类，其最终准确度为0.768，较为可观。</p>
+<h2 id="3-4-朴素贝叶斯模型"><a href="#3-4-朴素贝叶斯模型" class="headerlink" title="3.4 朴素贝叶斯模型"></a>3.4 朴素贝叶斯模型</h2><p>朴素贝叶斯模型是常见的分类模型之一，通过假设特征条件之间相互独立的方法，先通过已给定的训练集，学习从输入到输出的联合概率分布，进行模型的训练 。其算法原理是：<br><img src="https://img-blog.csdnimg.cn/20200822212434306.png#pic_center" alt="在这里插入图片描述"><br>其中，d为样本数据集D的下标，x为样本特征数据集X特征，y为情感的类变量。通过MultinomialNB函数可以调用朴素贝叶斯模型。区别于线性逻辑回归模型处理的一点时，这里没有采用GridSearchCV网络搜索，准确度的评价采用cross_val_score函数的十折交叉验证，最终模型准确度为0.743，略低于线性逻辑回归模型。</p>
+<h1 id="4-项目结果与分析"><a href="#4-项目结果与分析" class="headerlink" title="4 项目结果与分析"></a>4 项目结果与分析</h1><p>情感分类本质是函数的映射，评价分类器的效果依据就是映射的准确度，除此之外还有模型的开销（速度与内存），评价的标准各异，本文采取准确率作为评价标准  。项目过程中，通过从Kaggle上收集的比赛数据，进行线性逻辑回归和朴素贝叶斯两种模型的学习与误区难点研究，完成了文本情感多分类项目。两种模型得到的准确度分别为0.768、0.743。详细模型评测数据如表1所示。<br><img src="https://img-blog.csdnimg.cn/20200822212623336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h1><p>本文主要研究初学者在文本情感多分类项目过程中的误区与难点，同时做出了详细说明与解决方法，实现了基于机器学习的线性逻辑回归和朴素贝叶斯两种模型并详细介绍了项目过程中的各个步骤与相关原理，提出了基于传统二分类的多分类问题解决方法，最后给出了两种模型的评测结果。从评测结果来看，项目的准确度完全能满足初学者对于文本情感多分类的入门学习。进一步的研究是模型算法的改进，利用更先进的模型解决文本情感多分类问题，比较其性能效果，提高总体的准确度，同时满足初学者的学习。</p>
 ]]></content>
   </entry>
 </search>
