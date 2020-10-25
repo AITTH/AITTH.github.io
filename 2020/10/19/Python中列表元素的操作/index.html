@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>milkcoffee</title>
+  <title>Python-列表、字典、元组、集合 | milkcoffee</title>
   <meta name="keywords" content="">
-  <meta name="description" content="milkcoffee">
+  <meta name="description" content="Python-列表、字典、元组、集合 | milkcoffee">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="列表元素的增加操作   方法&#x2F;其他 操作描述    append（） 在列表的末尾添加一个元素   extend() 在列表的末尾至少添加一个元素   insert() 在列表的任意位置添加一个元素   切片 在列表的任意位置添加至少一个元素   列表元素的删除操作   方法&#x2F;其他 操作描述    remove 一次删除一个元素    重复元素只删除一个    元素不存在抛出ValueError">
 <meta property="og:type" content="article">
@@ -54,7 +54,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/1.jpg" />
@@ -240,12 +240,43 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Python中列表元素的操作" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li></ol></li></ol>
+        <h1 class="article-title">Python-列表、字典、元组、集合</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-10-21 18:51:50'>2020-10-19 10:23</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E5%A2%9E%E5%8A%A0%E6%93%8D%E4%BD%9C"><span class="toc-text">列表元素的增加操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">列表元素的删除操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">元组的创建方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E5%B0%8F%E6%8B%AC%E5%8F%B7"><span class="toc-text">1.直接小括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0tuple"><span class="toc-text">2.使用内置函数tuple</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%AA%E5%8C%85%E5%90%AB%E4%B8%80%E4%B8%AA%E5%85%83%E7%BB%84%E7%9A%84%E5%85%83%E7%B4%A0%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E9%80%97%E5%8F%B7%E5%92%8C%E5%B0%8F%E6%8B%AC%E5%8F%B7"><span class="toc-text">3.只包含一个元组的元素需要使用逗号和小括号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E3%80%81%E5%AD%97%E5%85%B8%E3%80%81%E5%85%83%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93"><span class="toc-text">列表、字典、元组、集合总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -258,32 +289,143 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="列表元素的增加操作"><a href="#列表元素的增加操作" class="headerlink" title="列表元素的增加操作"></a>列表元素的增加操作</h1><table>
+<thead>
+<tr>
+<th align="center">方法/其他</th>
+<th align="center">操作描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">append（）</td>
+<td align="center">在列表的末尾添加一个元素</td>
+</tr>
+<tr>
+<td align="center">extend()</td>
+<td align="center">在列表的末尾至少添加一个元素</td>
+</tr>
+<tr>
+<td align="center">insert()</td>
+<td align="center">在列表的任意位置添加一个元素</td>
+</tr>
+<tr>
+<td align="center">切片</td>
+<td align="center">在列表的任意位置添加至少一个元素</td>
+</tr>
+</tbody></table>
+<h1 id="列表元素的删除操作"><a href="#列表元素的删除操作" class="headerlink" title="列表元素的删除操作"></a>列表元素的删除操作</h1><table>
+<thead>
+<tr>
+<th align="center">方法/其他</th>
+<th align="center">操作描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">remove</td>
+<td align="center">一次删除一个元素</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">重复元素只删除一个</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">元素不存在抛出ValueError</td>
+</tr>
+<tr>
+<td align="center">pop()</td>
+<td align="center">删除一个指定索引位置上的元素</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">指定索引不存在抛出IndexError</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">不指定索引，删除列表中最后一个元素</td>
+</tr>
+<tr>
+<td align="center">切片</td>
+<td align="center">一次至少删除一个元素</td>
+</tr>
+<tr>
+<td align="center">del</td>
+<td align="center">删除元素</td>
+</tr>
+<tr>
+<td align="center">clear()</td>
+<td align="center">清空列表</td>
+</tr>
+</tbody></table>
+<h1 id="元组的创建方式"><a href="#元组的创建方式" class="headerlink" title="元组的创建方式"></a>元组的创建方式</h1><h2 id="1-直接小括号"><a href="#1-直接小括号" class="headerlink" title="1.直接小括号"></a>1.直接小括号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t&#x3D;(&#39;Python&#39;,&#39;hello&#39;,90)</span><br></pre></td></tr></table></figure>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+<h2 id="2-使用内置函数tuple"><a href="#2-使用内置函数tuple" class="headerlink" title="2.使用内置函数tuple"></a>2.使用内置函数tuple</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t&#x3D;tuple((&#39;Python&#39;,&#39;hello&#39;,90))</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-只包含一个元组的元素需要使用逗号和小括号"><a href="#3-只包含一个元组的元素需要使用逗号和小括号" class="headerlink" title="3.只包含一个元组的元素需要使用逗号和小括号"></a>3.只包含一个元组的元素需要使用逗号和小括号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t&#x3D;(10,)</span><br></pre></td></tr></table></figure>
+
+<h1 id="列表、字典、元组、集合总结"><a href="#列表、字典、元组、集合总结" class="headerlink" title="列表、字典、元组、集合总结"></a>列表、字典、元组、集合总结</h1><table>
+<thead>
+<tr>
+<th align="center">数据结构</th>
+<th align="center">是否可变</th>
+<th align="center">是否重复</th>
+<th align="center">是否有序</th>
+<th align="center">定义符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">列表（list）</td>
+<td align="center">可变</td>
+<td align="center">可重复</td>
+<td align="center">有序</td>
+<td align="center">[]</td>
+</tr>
+<tr>
+<td align="center">元组（tuple）</td>
+<td align="center">不可变</td>
+<td align="center">可重复</td>
+<td align="center">有序</td>
+<td align="center">（）</td>
+</tr>
+<tr>
+<td align="center">字典（dict）</td>
+<td align="center">可变</td>
+<td align="center">key不可重复/value可重复</td>
+<td align="center">无序</td>
+<td align="center">{key:value}</td>
+</tr>
+<tr>
+<td align="center">集合（set）</td>
+<td align="center">可变</td>
+<td align="center">不可重复</td>
+<td align="center">无序</td>
+<td align="center">{}</td>
+</tr>
+</tbody></table>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395876210@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -292,11 +434,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

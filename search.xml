@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python-列表、字典、元组、集合</title>
+    <url>/2020/10/19/Python%E4%B8%AD%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="列表元素的增加操作"><a href="#列表元素的增加操作" class="headerlink" title="列表元素的增加操作"></a>列表元素的增加操作</h1><table>
+<thead>
+<tr>
+<th align="center">方法/其他</th>
+<th align="center">操作描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">append（）</td>
+<td align="center">在列表的末尾添加一个元素</td>
+</tr>
+<tr>
+<td align="center">extend()</td>
+<td align="center">在列表的末尾至少添加一个元素</td>
+</tr>
+<tr>
+<td align="center">insert()</td>
+<td align="center">在列表的任意位置添加一个元素</td>
+</tr>
+<tr>
+<td align="center">切片</td>
+<td align="center">在列表的任意位置添加至少一个元素</td>
+</tr>
+</tbody></table>
+<h1 id="列表元素的删除操作"><a href="#列表元素的删除操作" class="headerlink" title="列表元素的删除操作"></a>列表元素的删除操作</h1><table>
+<thead>
+<tr>
+<th align="center">方法/其他</th>
+<th align="center">操作描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">remove</td>
+<td align="center">一次删除一个元素</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">重复元素只删除一个</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">元素不存在抛出ValueError</td>
+</tr>
+<tr>
+<td align="center">pop()</td>
+<td align="center">删除一个指定索引位置上的元素</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">指定索引不存在抛出IndexError</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">不指定索引，删除列表中最后一个元素</td>
+</tr>
+<tr>
+<td align="center">切片</td>
+<td align="center">一次至少删除一个元素</td>
+</tr>
+<tr>
+<td align="center">del</td>
+<td align="center">删除元素</td>
+</tr>
+<tr>
+<td align="center">clear()</td>
+<td align="center">清空列表</td>
+</tr>
+</tbody></table>
+<h1 id="元组的创建方式"><a href="#元组的创建方式" class="headerlink" title="元组的创建方式"></a>元组的创建方式</h1><h2 id="1-直接小括号"><a href="#1-直接小括号" class="headerlink" title="1.直接小括号"></a>1.直接小括号</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t&#x3D;(&#39;Python&#39;,&#39;hello&#39;,90)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用内置函数tuple"><a href="#2-使用内置函数tuple" class="headerlink" title="2.使用内置函数tuple"></a>2.使用内置函数tuple</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t&#x3D;tuple((&#39;Python&#39;,&#39;hello&#39;,90))</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-只包含一个元组的元素需要使用逗号和小括号"><a href="#3-只包含一个元组的元素需要使用逗号和小括号" class="headerlink" title="3.只包含一个元组的元素需要使用逗号和小括号"></a>3.只包含一个元组的元素需要使用逗号和小括号</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t&#x3D;(10,)</span><br></pre></td></tr></table></figure>
+
+<h1 id="列表、字典、元组、集合总结"><a href="#列表、字典、元组、集合总结" class="headerlink" title="列表、字典、元组、集合总结"></a>列表、字典、元组、集合总结</h1><table>
+<thead>
+<tr>
+<th align="center">数据结构</th>
+<th align="center">是否可变</th>
+<th align="center">是否重复</th>
+<th align="center">是否有序</th>
+<th align="center">定义符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">列表（list）</td>
+<td align="center">可变</td>
+<td align="center">可重复</td>
+<td align="center">有序</td>
+<td align="center">[]</td>
+</tr>
+<tr>
+<td align="center">元组（tuple）</td>
+<td align="center">不可变</td>
+<td align="center">可重复</td>
+<td align="center">有序</td>
+<td align="center">（）</td>
+</tr>
+<tr>
+<td align="center">字典（dict）</td>
+<td align="center">可变</td>
+<td align="center">key不可重复/value可重复</td>
+<td align="center">无序</td>
+<td align="center">{key:value}</td>
+</tr>
+<tr>
+<td align="center">集合（set）</td>
+<td align="center">可变</td>
+<td align="center">不可重复</td>
+<td align="center">无序</td>
+<td align="center">{}</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
     <title>阅读笔记——基于机器学习的文本情感多分类的学习与研究</title>
     <url>/2020/10/19/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E5%A4%9A%E5%88%86%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A0%94%E7%A9%B6/</url>
     <content><![CDATA[<p>[TOC]</p>
