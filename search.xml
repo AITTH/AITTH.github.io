@@ -1,8 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2020/10/21/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<hr>
+<h2 id="title：Python——字符串"><a href="#title：Python——字符串" class="headerlink" title="title：Python——字符串"></a>title：Python——字符串</h2><h1 id="1、字符串的驻留机制"><a href="#1、字符串的驻留机制" class="headerlink" title="1、字符串的驻留机制"></a>1、字符串的驻留机制</h1><p>  仅保留一份相同且不可变字符串的方法，不同的值被存放在字符串的驻留池中，Python的驻留机制对相同的字符串只保留一份拷贝，后续创建相同的字符串时，不会开辟新空间，而是把该字符串的地址赋给新创建的变量。</p>
+<h2 id="1-1-驻留机制的几种情况（交互模式）"><a href="#1-1-驻留机制的几种情况（交互模式）" class="headerlink" title="1.1 驻留机制的几种情况（交互模式）"></a>1.1 驻留机制的几种情况（交互模式）</h2><ol>
+<li><p>字符串的长度为0或1时</p>
+</li>
+<li><p>符合标识符的字符串</p>
+</li>
+<li><p>字符串只在编译时进行驻留，而非运行时</p>
+</li>
+<li><p>[-5,256]之间的整数数字</p>
+<h2 id="1-2-sys中的intern方法强制2个字符串指向同一个对象"><a href="#1-2-sys中的intern方法强制2个字符串指向同一个对象" class="headerlink" title="1.2 sys中的intern方法强制2个字符串指向同一个对象"></a>1.2 sys中的intern方法强制2个字符串指向同一个对象</h2><h2 id="1-3-Pycharm对字符串进项了优化处理"><a href="#1-3-Pycharm对字符串进项了优化处理" class="headerlink" title="1.3 Pycharm对字符串进项了优化处理"></a>1.3 Pycharm对字符串进项了优化处理</h2><h2 id="1-4-字符串驻留机制的优缺点"><a href="#1-4-字符串驻留机制的优缺点" class="headerlink" title="1.4 字符串驻留机制的优缺点"></a>1.4 字符串驻留机制的优缺点</h2><p>在需要进行字符串拼接时建议使用str类型的join方法，而非+，因为join()方法是先计算出所有字符中的长度，然后再拷贝，只new一次对象，效率要比“+”效率高。</p>
+</li>
+</ol>
+<h1 id="2、字符串的常用操作"><a href="#2、字符串的常用操作" class="headerlink" title="2、字符串的常用操作"></a>2、字符串的常用操作</h1><h2 id="2-1-字符串的查询操作的方法"><a href="#2-1-字符串的查询操作的方法" class="headerlink" title="2.1 字符串的查询操作的方法"></a>2.1 字符串的查询操作的方法</h2><table>
+<thead>
+<tr>
+<th align="center">方法名称</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">index（）</td>
+<td align="left">查找子串substr第一次出现的位置，如果查找的子串不存在时，则抛出ValueError</td>
+</tr>
+<tr>
+<td align="center">rindex()</td>
+<td align="left">查找子串substr最后一次出现的位置，如果查找的子串不存在四，则抛出ValueError</td>
+</tr>
+<tr>
+<td align="center">find()</td>
+<td align="left">查找子串substr第一次出现的位置，如果查找的子串不存在时，则返回-1</td>
+</tr>
+<tr>
+<td align="center">rfind()</td>
+<td align="left">查找子串substr最后一次出现的位置，如果查找的子串不存在时，则返回-1</td>
+</tr>
+</tbody></table>
+<h2 id="2-2-字符串的大小写转换操作的方法"><a href="#2-2-字符串的大小写转换操作的方法" class="headerlink" title="2.2 字符串的大小写转换操作的方法"></a>2.2 字符串的大小写转换操作的方法</h2><table>
+<thead>
+<tr>
+<th align="center">方法名称</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">upper()</td>
+<td align="left">把字符串所有字符都转成大写字母</td>
+</tr>
+<tr>
+<td align="center">lower()</td>
+<td align="left">把字符串中所有字符都转成小写字母</td>
+</tr>
+<tr>
+<td align="center">swapcase()</td>
+<td align="left">把字符串中所有大写字母转成小写字母，把所有小写字母都转成大写字母</td>
+</tr>
+<tr>
+<td align="center">capitalize()</td>
+<td align="left">把第一个字符转换为大写，把其余字符转换为小写</td>
+</tr>
+<tr>
+<td align="center">title()</td>
+<td align="left">把每个单词的第一个字符转换为大写，把每个单词的剩余字符转换为小写</td>
+</tr>
+</tbody></table>
+<h2 id="2-3-字符串内容对齐操作的方法"><a href="#2-3-字符串内容对齐操作的方法" class="headerlink" title="2.3 字符串内容对齐操作的方法"></a>2.3 字符串内容对齐操作的方法</h2><table>
+<thead>
+<tr>
+<th align="center">方法名称</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">center()</td>
+<td align="left">居中对齐，第1个参数指定宽度，第2个参数指定填充符，第2个参数是可选的，默认是空格，如果设置宽度小于实际宽度则返回原字符串</td>
+</tr>
+<tr>
+<td align="center">ljust()</td>
+<td align="left">左对齐，第1个参数指定宽度，第2个参数指定填充符，第2个参数是可选的，默认是空格，如果设置宽度小于实际宽度则返回原字符串</td>
+</tr>
+<tr>
+<td align="center">rjust()</td>
+<td align="left">右对齐，第1个参数指定宽度，第2个参数指定填充符，第2个参数是可选的，默认是空格，如果设置宽度小于实际宽度，则返回原字符串</td>
+</tr>
+<tr>
+<td align="center">afill()</td>
+<td align="left">右对齐，左边用0填充，该方法只接收一个参数，用于指定字符串的宽度，如果指定的宽度小于等于字符串的长度，返回字符串本身</td>
+</tr>
+</tbody></table>
+<h2 id="2-4-字符串劈分操作的方法"><a href="#2-4-字符串劈分操作的方法" class="headerlink" title="2.4 字符串劈分操作的方法"></a>2.4 字符串劈分操作的方法</h2><table>
+<thead>
+<tr>
+<th align="center">方法名称</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="left">从字符串的左边开始劈分，默认的劈分字符是空格字符串，返回的值都是一个列表</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="left">以通过参数sep指定劈分字符串的是劈分符</td>
+</tr>
+<tr>
+<td align="center">split()</td>
+<td align="left">通过参数maxsplit指定劈分字符串时的是最大劈分次数，在经过最大次劈分之后，剩余的子串会单独作为一部分</td>
+</tr>
+<tr>
+<td align="center">rsplit()</td>
+<td align="left">从字符串的右边开始劈分，默认的劈分字符串是空格字符串，返回的值都是一个列表</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="left">以通过参数sep指定劈分字符串是的劈分符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="left">通过参数maxsplit指定劈分字符串时的最大劈分次数，在经过最大次劈分之后，剩余的子串会单独作为一部分</td>
+</tr>
+</tbody></table>
+<h2 id="2-5-判断字符串操作的方法"><a href="#2-5-判断字符串操作的方法" class="headerlink" title="2.5 判断字符串操作的方法"></a>2.5 判断字符串操作的方法</h2><table>
+<thead>
+<tr>
+<th align="center">方法名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">isidentifier()</td>
+<td>判断指定的字符串是不是合法的标识符</td>
+</tr>
+<tr>
+<td align="center">isspace()</td>
+<td>判断指定的字符串是否全部由空白字符组成（回车、换行、水平制表符）</td>
+</tr>
+<tr>
+<td align="center">isalpha()</td>
+<td>判断指定的字符串是否全部由字母组成</td>
+</tr>
+<tr>
+<td align="center">isdecimal()</td>
+<td>判断指定字符串是否全部由十进制的数字组成</td>
+</tr>
+<tr>
+<td align="center">isnumeric()</td>
+<td>判断指定的字符串是否全部由数字组成</td>
+</tr>
+<tr>
+<td align="center">isalnum()</td>
+<td>判断指定字符串是否全部由字母和数字组成</td>
+</tr>
+</tbody></table>
+<h2 id="2-6-字符串操作的其他方法"><a href="#2-6-字符串操作的其他方法" class="headerlink" title="2.6 字符串操作的其他方法"></a>2.6 字符串操作的其他方法</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>方法名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字符串替换</td>
+<td>replace()</td>
+<td>第1个参数指定被替换的子串，第2个参数指定替换子串的字符串，该方法返回替换后得到的字符串，替换前的子串不发生变化，调用该方法时可以通过第3个参数指定最大替换次数</td>
+</tr>
+<tr>
+<td>字符串的合并</td>
+<td>join()</td>
+<td>将列表或元组中的字符串合并成一个字符串</td>
+</tr>
+</tbody></table>
+<h1 id="3、字符串的比较"><a href="#3、字符串的比较" class="headerlink" title="3、字符串的比较"></a>3、字符串的比较</h1><p>比较原理：两个字符进行比较时，比较的是其ordinal value(原始值)，调用内置函数ord可以得到指定字符的ordinal value。**<em>与内置函数ord对应的是内置函数chr**</em>,调用内置函数chr时指定ordinal value可以得到其对应的字符。</p>
+<h1 id="4、字符串的切片操作"><a href="#4、字符串的切片操作" class="headerlink" title="4、字符串的切片操作"></a>4、字符串的切片操作</h1><p>字符串是不可变类型：</p>
+<ol>
+<li>不具备增、删、改等操作</li>
+<li>切片操作将产生新的对象</li>
+</ol>
+<h1 id="5、格式化字符串"><a href="#5、格式化字符串" class="headerlink" title="5、格式化字符串"></a>5、格式化字符串</h1><p>两种方式：</p>
+<ol>
+<li><p>%作占位符：%s 表示字符串；%i 或%d 表示整数；%f 表示浮点数</p>
+</li>
+<li><p>{}作占位符</p>
+</li>
+<li><p>format()</p>
+</li>
+</ol>
+<h1 id="6、字符串的编码转换"><a href="#6、字符串的编码转换" class="headerlink" title="6、字符串的编码转换"></a>6、字符串的编码转换</h1><h2 id="6-1-编码和解码的方式"><a href="#6-1-编码和解码的方式" class="headerlink" title="6.1 编码和解码的方式"></a>6.1 编码和解码的方式</h2><ol>
+<li>编码：将字符串转换为二进制数据（bytes）</li>
+<li>解码：将bytes类型的数据转换成字符串类型</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>Python-列表、字典、元组、集合</title>
-    <url>/2020/10/19/Python%E4%B8%AD%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    <url>/2020/10/19/Python-%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/</url>
     <content><![CDATA[<h1 id="列表元素的增加操作"><a href="#列表元素的增加操作" class="headerlink" title="列表元素的增加操作"></a>列表元素的增加操作</h1><table>
 <thead>
 <tr>
