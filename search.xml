@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>Python——字符串</title>
     <url>/2020/10/21/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<hr>
-<h2 id="title：Python——字符串"><a href="#title：Python——字符串" class="headerlink" title="title：Python——字符串"></a>title：Python——字符串</h2><h1 id="1、字符串的驻留机制"><a href="#1、字符串的驻留机制" class="headerlink" title="1、字符串的驻留机制"></a>1、字符串的驻留机制</h1><p>  仅保留一份相同且不可变字符串的方法，不同的值被存放在字符串的驻留池中，Python的驻留机制对相同的字符串只保留一份拷贝，后续创建相同的字符串时，不会开辟新空间，而是把该字符串的地址赋给新创建的变量。</p>
+    <content><![CDATA[<h1 id="1、字符串的驻留机制"><a href="#1、字符串的驻留机制" class="headerlink" title="1、字符串的驻留机制"></a>1、字符串的驻留机制</h1><p>  仅保留一份相同且不可变字符串的方法，不同的值被存放在字符串的驻留池中，Python的驻留机制对相同的字符串只保留一份拷贝，后续创建相同的字符串时，不会开辟新空间，而是把该字符串的地址赋给新创建的变量。</p>
 <h2 id="1-1-驻留机制的几种情况（交互模式）"><a href="#1-1-驻留机制的几种情况（交互模式）" class="headerlink" title="1.1 驻留机制的几种情况（交互模式）"></a>1.1 驻留机制的几种情况（交互模式）</h2><ol>
 <li><p>字符串的长度为0或1时</p>
 </li>
