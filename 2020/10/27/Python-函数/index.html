@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Python——函数 | milkcoffee</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Python——函数 | milkcoffee">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="[TOC] 1. 函数的创建和调用1.1 函数的定义函数就是执行特定任何以完成特定功能的一段代码 1.2 函数的创建123def 函数名([输入参数]):    函数体    [return xxx]  2. 函数的参数传递2.1 位置实参根据形参对应的位置进行实参传递 2.2 关键字实参根据形参名称进行实参传递 3. 函数的返回值1234函数的返回值：函数在定义时，是否需要返回值，视情况而定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python——函数">
+<meta property="og:url" content="http://yoursite.com/2020/10/27/Python-%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="milkcoffee">
+<meta property="og:description" content="[TOC] 1. 函数的创建和调用1.1 函数的定义函数就是执行特定任何以完成特定功能的一段代码 1.2 函数的创建123def 函数名([输入参数]):    函数体    [return xxx]  2. 函数的参数传递2.1 位置实参根据形参对应的位置进行实参传递 2.2 关键字实参根据形参名称进行实参传递 3. 函数的返回值1234函数的返回值：函数在定义时，是否需要返回值，视情况而定">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-27T02:07:23.445Z">
+<meta property="article:modified_time" content="2020-10-29T02:51:28.657Z">
+<meta property="article:author" content="和婷婷">
+<meta property="article:tag" content="个人博客，学习，生活">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/1.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/1.jpg" />
+</a>
+<div class="author">
+    <span>和婷婷</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/AITTH" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="csdn" href="https://blog.csdn.net/weixin_49313319" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-csdn"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(11)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="11">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 "
+           href="/2020/10/27/Python-%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——函数">Python——函数</span>
+            <span class="post-date" title="2020-10-27 10:07:23">2020/10/27</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/21/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——字符串">Python——字符串</span>
+            <span class="post-date" title="2020-10-21 20:41:05">2020/10/21</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/19/Python-%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——列表、字典、元组、集合">Python——列表、字典、元组、集合</span>
+            <span class="post-date" title="2020-10-19 10:23:12">2020/10/19</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/19/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E5%A4%9A%E5%88%86%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A0%94%E7%A9%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="阅读笔记——基于机器学习的文本情感多分类的学习与研究">阅读笔记——基于机器学习的文本情感多分类的学习与研究</span>
+            <span class="post-date" title="2020-10-19 08:26:39">2020/10/19</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/22/%E5%B0%8F%E5%8F%91%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="钉钉中的小发现">钉钉中的小发现</span>
+            <span class="post-date" title="2020-08-22 08:13:49">2020/08/22</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/16/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析">阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析</span>
+            <span class="post-date" title="2020-08-16 19:08:23">2020/08/16</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/15/github%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改github中的username">修改github中的username</span>
+            <span class="post-date" title="2020-08-15 17:43:11">2020/08/15</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/10/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8B%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="传统的机器学习方法——决策树（下）">传统的机器学习方法——决策树（下）</span>
+            <span class="post-date" title="2020-08-10 17:40:25">2020/08/10</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="传统的机器学习方法——决策树（上）">传统的机器学习方法——决策树（上）</span>
+            <span class="post-date" title="2020-08-09 09:47:01">2020/08/09</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/08/python%E4%B8%AD%E7%9A%84bug/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python中的bug">python中的bug</span>
+            <span class="post-date" title="2020-08-08 20:26:01">2020/08/08</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/02/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2020-08-02 08:23:27">2020/08/02</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Python-函数" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Python——函数</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-10-29 10:51:28'>2020-10-27 10:07</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E8%B0%83%E7%94%A8"><span class="toc-text">1. 函数的创建和调用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1 函数的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">1.2 函数的创建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-text">2. 函数的参数传递</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E5%8F%82"><span class="toc-text">2.1 位置实参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%85%B3%E9%94%AE%E5%AD%97%E5%AE%9E%E5%8F%82"><span class="toc-text">2.2 关键字实参</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">3. 函数的返回值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-text">4. 函数的参数定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E9%BB%98%E8%AE%A4%E5%80%BC%E5%8F%82%E6%95%B0"><span class="toc-text">4.1 函数定义默认值参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E4%B8%AA%E6%95%B0%E5%8F%AF%E5%8F%98%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-text">4.2 个数可变的位置参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E4%B8%AA%E6%95%B0%E5%8F%AF%E5%8F%98%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E5%BD%A2%E5%8F%82"><span class="toc-text">4.3 个数可变的关键字形参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93"><span class="toc-text">4.4 函数的参数总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9F%9F"><span class="toc-text">5. 变量的定义域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0"><span class="toc-text">6.递归参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-text">6.1 什么是递归函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-text">6.2 递归函数的组成部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E9%80%92%E5%BD%92%E7%9A%84%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">6.3 递归的调用过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E9%80%92%E5%BD%92%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">6.4 递归的优缺点</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E8%B0%83%E7%94%A8"><span class="toc-text">1. 函数的创建和调用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1 函数的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">1.2 函数的创建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-text">2. 函数的参数传递</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E5%8F%82"><span class="toc-text">2.1 位置实参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%85%B3%E9%94%AE%E5%AD%97%E5%AE%9E%E5%8F%82"><span class="toc-text">2.2 关键字实参</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">3. 函数的返回值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-text">4. 函数的参数定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E9%BB%98%E8%AE%A4%E5%80%BC%E5%8F%82%E6%95%B0"><span class="toc-text">4.1 函数定义默认值参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E4%B8%AA%E6%95%B0%E5%8F%AF%E5%8F%98%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-text">4.2 个数可变的位置参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E4%B8%AA%E6%95%B0%E5%8F%AF%E5%8F%98%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E5%BD%A2%E5%8F%82"><span class="toc-text">4.3 个数可变的关键字形参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93"><span class="toc-text">4.4 函数的参数总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9F%9F"><span class="toc-text">5. 变量的定义域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0"><span class="toc-text">6.递归参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-text">6.1 什么是递归函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-text">6.2 递归函数的组成部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E9%80%92%E5%BD%92%E7%9A%84%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">6.3 递归的调用过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E9%80%92%E5%BD%92%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">6.4 递归的优缺点</span></a></li></ol></li></ol></div></p>
+<h1 id="1-函数的创建和调用"><a href="#1-函数的创建和调用" class="headerlink" title="1. 函数的创建和调用"></a>1. 函数的创建和调用</h1><h2 id="1-1-函数的定义"><a href="#1-1-函数的定义" class="headerlink" title="1.1 函数的定义"></a>1.1 函数的定义</h2><p>函数就是执行特定任何以完成特定功能的一段代码</p>
+<h2 id="1-2-函数的创建"><a href="#1-2-函数的创建" class="headerlink" title="1.2 函数的创建"></a>1.2 函数的创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def 函数名([输入参数]):</span><br><span class="line">    函数体</span><br><span class="line">    [return xxx]</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-函数的参数传递"><a href="#2-函数的参数传递" class="headerlink" title="2. 函数的参数传递"></a>2. 函数的参数传递</h1><h2 id="2-1-位置实参"><a href="#2-1-位置实参" class="headerlink" title="2.1 位置实参"></a>2.1 位置实参</h2><p>根据形参对应的位置进行实参传递</p>
+<h2 id="2-2-关键字实参"><a href="#2-2-关键字实参" class="headerlink" title="2.2 关键字实参"></a>2.2 关键字实参</h2><p>根据形参名称进行实参传递</p>
+<h1 id="3-函数的返回值"><a href="#3-函数的返回值" class="headerlink" title="3. 函数的返回值"></a>3. 函数的返回值</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数的返回值：函数在定义时，是否需要返回值，视情况而定</span><br><span class="line">    （1）如果函数没有返回值【函数执行完毕之后，不需要给调用处提供数据】 return 可以省略不写</span><br><span class="line">    （2）函数的返回值，如果是1个，直接返回类型</span><br><span class="line">    （3）函数的返回值，如果是多个，返回的结果为元组</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-函数的参数定义"><a href="#4-函数的参数定义" class="headerlink" title="4. 函数的参数定义"></a>4. 函数的参数定义</h1><h2 id="4-1-函数定义默认值参数"><a href="#4-1-函数定义默认值参数" class="headerlink" title="4.1 函数定义默认值参数"></a>4.1 函数定义默认值参数</h2><p>函数定义时，给形参设置默认值，只有与默认值不符的时候才需要传递实参</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def fun(a,b&#x3D;10):    #b称为默认值参数</span><br><span class="line">    print(a,b)</span><br><span class="line"></span><br><span class="line">#函数的调用</span><br><span class="line">fun(100)</span><br><span class="line">fun(20,30)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-个数可变的位置参数"><a href="#4-2-个数可变的位置参数" class="headerlink" title="4.2 个数可变的位置参数"></a>4.2 个数可变的位置参数</h2><ol>
+<li><p>定义函数时，可能无法事先确定传递的位置实参的个数时，使用可变的位置参数</p>
+</li>
+<li><p>使用*定义个数可变的位置形参</p>
+</li>
+<li><p>结果为一个元组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def fun(*args): #函数定义时的，可变的位置参数</span><br><span class="line">    print(args)</span><br><span class="line">    #print(args[0])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fun(10)</span><br><span class="line">fun(10,30)</span><br><span class="line">fun(30,405,50)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>运行结果：</p>
+<p>(10,)<br>(10, 30)<br>(30, 405, 50)</p>
+<h2 id="4-3-个数可变的关键字形参"><a href="#4-3-个数可变的关键字形参" class="headerlink" title="4.3 个数可变的关键字形参"></a>4.3 个数可变的关键字形参</h2><ol>
+<li>定义函数时，无法事先确定传递的关键字实参的个数，使用可变的关键字形参</li>
+<li>使用**定义个数可变的关键字形参</li>
+<li>结果为一个字典</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def fun1(**args):</span><br><span class="line">    print(args)</span><br><span class="line"></span><br><span class="line">fun1(a&#x3D;10)</span><br><span class="line">fun1(a&#x3D;20,b&#x3D;30,c&#x3D;40)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p>{‘a’: 10}<br>{‘a’: 20, ‘b’: 30, ‘c’: 40}</p>
+<h2 id="4-4-函数的参数总结"><a href="#4-4-函数的参数总结" class="headerlink" title="4.4 函数的参数总结"></a>4.4 函数的参数总结</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数的类型</th>
+<th align="center">函数的定义</th>
+<th align="center">函数的调用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>位置实参</td>
+<td align="center"></td>
+<td align="center">√</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>将序列中的每个元素都转换为位置实参</td>
+<td align="center"></td>
+<td align="center">√</td>
+<td>使用*</td>
+</tr>
+<tr>
+<td>2</td>
+<td>关键字实参</td>
+<td align="center"></td>
+<td align="center">√</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>将字典中的每个键值对都转换为关键字实参</td>
+<td align="center"></td>
+<td align="center">√</td>
+<td>使用**</td>
+</tr>
+<tr>
+<td>3</td>
+<td>默认值形参</td>
+<td align="center">√</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>关键字形参</td>
+<td align="center">√</td>
+<td align="center"></td>
+<td>使用*</td>
+</tr>
+<tr>
+<td>5</td>
+<td>个数可变的位置参数</td>
+<td align="center">√</td>
+<td align="center"></td>
+<td>使用*</td>
+</tr>
+<tr>
+<td>6</td>
+<td>个数可变的关键字形参</td>
+<td align="center">√</td>
+<td align="center"></td>
+<td>使用**</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">def fun(a,b,c): #a,b,c在函数的定义处，所以是形式参数</span><br><span class="line">    print(&#39;a&#x3D;&#39;,a)</span><br><span class="line">    print(&#39;b&#x3D;&#39;,b)</span><br><span class="line">    print(&#39;c&#x3D;&#39;,c)</span><br><span class="line"></span><br><span class="line">#函数的调用</span><br><span class="line">fun(10,20,30)   #函数调用时的参数传递，称为位置传参</span><br><span class="line">lst&#x3D;[11,22,33]</span><br><span class="line">fun(*lst)   #在函数调用时，将列表中的每个元素都转换为位置实参传入</span><br><span class="line">print(&#39;-------------------------&#39;)</span><br><span class="line">fun(a&#x3D;100,c&#x3D;300,b&#x3D;200)  #函数的调用，所以是关键字实参</span><br><span class="line">dic&#x3D;&#123;&#39;a&#39;:111,&#39;b&#39;:222,&#39;c&#39;:333&#125;</span><br><span class="line">fun(**dic)  #函数调用时，将字典中的键值对都转换为关键字实参转入</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">def fun(a,b&#x3D;10):    #b是在函数的定义处，所以b是形参，而且进行了赋值，所以b称为默认值形参</span><br><span class="line">    print(&#39;a&#x3D;&#39;,a)</span><br><span class="line">    print(&#39;b&#x3D;&#39;,b)</span><br><span class="line"></span><br><span class="line">def fun2(*args):    #个数可变的位置形参</span><br><span class="line">    print(args)</span><br><span class="line">def fun3(**args2):  #个数可变的关键字形参</span><br><span class="line">    print(args2)</span><br><span class="line"></span><br><span class="line">fun2(10,20,30,40)</span><br><span class="line">fun3(a&#x3D;11,b&#x3D;22,c&#x3D;33,d&#x3D;44,e&#x3D;55)</span><br><span class="line"></span><br><span class="line">def fun4(a,b,*,c,d):    #从*之后的参数，在函数调用时，只能采用关键字参数传递</span><br><span class="line">    print(&#39;a&#x3D;&#39;,a)</span><br><span class="line">    print(&#39;b&#x3D;&#39;,b)</span><br><span class="line">    print(&#39;c&#x3D;&#39;,c)</span><br><span class="line">    print(&#39;d&#x3D;&#39;,d)</span><br><span class="line"></span><br><span class="line">#调用fun4函数</span><br><span class="line">#fun4(10,20,30,40)   #位置实参传递</span><br><span class="line">fun4(a&#x3D;10,b&#x3D;20,c&#x3D;30,d&#x3D;40)   #关键字实参传递</span><br><span class="line">fun4(10,20,c&#x3D;30,d&#x3D;40)   #前两个参数，采用的是位置实参传递，而c,d采用的是关键字实参传递</span><br><span class="line">&#39;&#39;&#39; 需求：c,d只能采用关键字实参传递&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;函数定义时的形参的顺序问题&#39;&#39;&#39;</span><br><span class="line">def fun5(a,b,*,c,d,**args):</span><br><span class="line">    pass</span><br><span class="line">def fun6(*args,**args2):</span><br><span class="line">    pass</span><br><span class="line">def fun7(a,b&#x3D;10,*args,**args2):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-变量的定义域"><a href="#5-变量的定义域" class="headerlink" title="5. 变量的定义域"></a>5. 变量的定义域</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">def fun(a,b):</span><br><span class="line">    c&#x3D;a+b   #c,就称为局部变量，因为c是在函数体内进行定义的变量，a,b为函数的形参，作用范围也是函数内部，相当于局部变量</span><br><span class="line">    print(c)</span><br><span class="line"></span><br><span class="line">#print(c)   #报错，因为a,c超出了起作用的范围（超出了作用域）</span><br><span class="line">#print(a)</span><br><span class="line"></span><br><span class="line">name&#x3D;&#39;杨老师&#39;</span><br><span class="line">print(name) #name的作用范围为函数内部和外部都可以使用 ——&gt;称为全局变量</span><br><span class="line">def fun2():</span><br><span class="line">    print(name)</span><br><span class="line"></span><br><span class="line">#调用函数</span><br><span class="line">fun2()</span><br><span class="line"></span><br><span class="line">def fun3():</span><br><span class="line">    global age  #函数内部定义的变量，局部变量，局部变量使用global声明，这个变量实际上就变成了全局变量</span><br><span class="line">    age&#x3D;20</span><br><span class="line">    print(age)</span><br><span class="line">fun3()</span><br></pre></td></tr></table></figure>
+
+<h1 id="6-递归参数"><a href="#6-递归参数" class="headerlink" title="6.递归参数"></a>6.递归参数</h1><h2 id="6-1-什么是递归函数"><a href="#6-1-什么是递归函数" class="headerlink" title="6.1 什么是递归函数"></a>6.1 什么是递归函数</h2><p>如果在一个函数的函数体内调用了该函数本身，这个函数就称为递归函数</p>
+<h2 id="6-2-递归函数的组成部分"><a href="#6-2-递归函数的组成部分" class="headerlink" title="6.2 递归函数的组成部分"></a>6.2 递归函数的组成部分</h2><p>递归调用与递归终止条件</p>
+<h2 id="6-3-递归的调用过程"><a href="#6-3-递归的调用过程" class="headerlink" title="6.3 递归的调用过程"></a>6.3 递归的调用过程</h2><ol>
+<li>每递归调用一次函数，都会在栈内存分配一个栈帧</li>
+<li>每执行完一次函数，都会释放相应的空间</li>
+</ol>
+<h2 id="6-4-递归的优缺点"><a href="#6-4-递归的优缺点" class="headerlink" title="6.4 递归的优缺点"></a>6.4 递归的优缺点</h2><p>缺点：占用内存多，效率低下</p>
+<p>优点：思路和代码简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">def fib(n):</span><br><span class="line">    if n&#x3D;&#x3D;1:</span><br><span class="line">        return 1</span><br><span class="line">    elif n&#x3D;&#x3D;2:</span><br><span class="line">        return 1</span><br><span class="line">    else:</span><br><span class="line">        return fib(n-1)+fib(n-2)</span><br><span class="line"></span><br><span class="line">#斐波那契数列第6位上的数字</span><br><span class="line">print(fib(6))</span><br><span class="line"></span><br><span class="line">print(&#39;---------------------&#39;)</span><br><span class="line">#输出这个数列的前6位上的数字</span><br><span class="line">for i in range(1,7):</span><br><span class="line">    print(fib(i))</span><br></pre></td></tr></table></figure>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395876210@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 ting-ting-he
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
