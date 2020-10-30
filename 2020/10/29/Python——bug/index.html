@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Python——Bug | milkcoffee</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Python——Bug | milkcoffee">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="[TOC] 1. Bug的由来及分类1.1 Bug的常见类型1.1.1 粗心导致的语法错误SyntaxError12345# coding&#x3D;gbkage&#x3D;input(&#39;请输入你的年龄&#39;)print(type(age))if age&gt;&#x3D;18:    print(&#39;成年人...&#39;)  TypeError: ‘&gt;&#x3D;’ not su">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python——Bug">
+<meta property="og:url" content="http://yoursite.com/2020/10/29/Python%E2%80%94%E2%80%94bug/index.html">
+<meta property="og:site_name" content="milkcoffee">
+<meta property="og:description" content="[TOC] 1. Bug的由来及分类1.1 Bug的常见类型1.1.1 粗心导致的语法错误SyntaxError12345# coding&#x3D;gbkage&#x3D;input(&#39;请输入你的年龄&#39;)print(type(age))if age&gt;&#x3D;18:    print(&#39;成年人...&#39;)  TypeError: ‘&gt;&#x3D;’ not su">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20201030093343627.png">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20201030094213637.png">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20201030094344693.png">
+<meta property="article:published_time" content="2020-10-29T03:23:52.300Z">
+<meta property="article:modified_time" content="2020-10-30T01:46:16.850Z">
+<meta property="article:author" content="和婷婷">
+<meta property="article:tag" content="个人博客，学习，生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20201030093343627.png">
+
+
+<link rel="icon" href="/img/1.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/1.jpg" />
+</a>
+<div class="author">
+    <span>和婷婷</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/AITTH" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="csdn" href="https://blog.csdn.net/weixin_49313319" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-csdn"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(12)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="12">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 "
+           href="/2020/10/29/Python%E2%80%94%E2%80%94bug/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——Bug">Python——Bug</span>
+            <span class="post-date" title="2020-10-29 11:23:52">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/27/Python-%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——函数">Python——函数</span>
+            <span class="post-date" title="2020-10-27 10:07:23">2020/10/27</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/21/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——字符串">Python——字符串</span>
+            <span class="post-date" title="2020-10-21 20:41:05">2020/10/21</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/19/Python-%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——列表、字典、元组、集合">Python——列表、字典、元组、集合</span>
+            <span class="post-date" title="2020-10-19 10:23:12">2020/10/19</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/19/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E5%A4%9A%E5%88%86%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A0%94%E7%A9%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="阅读笔记——基于机器学习的文本情感多分类的学习与研究">阅读笔记——基于机器学习的文本情感多分类的学习与研究</span>
+            <span class="post-date" title="2020-10-19 08:26:39">2020/10/19</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/22/%E5%B0%8F%E5%8F%91%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="钉钉中的小发现">钉钉中的小发现</span>
+            <span class="post-date" title="2020-08-22 08:13:49">2020/08/22</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/16/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析">阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析</span>
+            <span class="post-date" title="2020-08-16 19:08:23">2020/08/16</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/15/github%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改github中的username">修改github中的username</span>
+            <span class="post-date" title="2020-08-15 17:43:11">2020/08/15</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/10/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8B%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="传统的机器学习方法——决策树（下）">传统的机器学习方法——决策树（下）</span>
+            <span class="post-date" title="2020-08-10 17:40:25">2020/08/10</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="传统的机器学习方法——决策树（上）">传统的机器学习方法——决策树（上）</span>
+            <span class="post-date" title="2020-08-09 09:47:01">2020/08/09</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/08/python-bug%E4%BF%AE%E6%94%B9/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python中的bug">python中的bug</span>
+            <span class="post-date" title="2020-08-08 20:26:01">2020/08/08</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/02/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2020-08-02 08:23:27">2020/08/02</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Python——bug" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Python——Bug</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-10-30 09:46:16'>2020-10-29 11:23</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Bug%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="toc-text">1. Bug的由来及分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Bug%E7%9A%84%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.1 Bug的常见类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E7%B2%97%E5%BF%83%E5%AF%BC%E8%87%B4%E7%9A%84%E8%AF%AD%E6%B3%95%E9%94%99%E8%AF%AFSyntaxError"><span class="toc-text">1.1.1 粗心导致的语法错误SyntaxError</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E7%9F%A5%E8%AF%86%E4%B8%8D%E7%86%9F%E7%BB%83%E5%AF%BC%E8%87%B4%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-text">1.1.2 知识不熟练导致的错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E6%80%9D%E8%B7%AF%E4%B8%8D%E6%B8%85%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">1.1.3 思路不清导致的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%B8%8D%E5%90%8C%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-text">2. 不同异常类型的处理方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-try%E2%80%A6except%E2%80%A6except%E7%BB%93%E6%9E%84"><span class="toc-text">2.1 try…except…except结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-try%E2%80%A6except%E2%80%A6else%E7%BB%93%E6%9E%84"><span class="toc-text">2.2 try…except…else结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-try%E2%80%A6except%E2%80%A6else%E2%80%A6finally%E7%BB%93%E6%9E%84"><span class="toc-text">2.3 try…except…else…finally结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Python%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93"><span class="toc-text">2.4 Python中常见的异常类型总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Python%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-text">3. Python的异常处理机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-PyCharm%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">4. PyCharm开发环境的调试模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%96%AD%E7%94%B5"><span class="toc-text">4.1 断电</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E8%BF%9B%E5%85%A5%E8%B0%83%E8%AF%95%E8%A7%86%E5%9B%BE"><span class="toc-text">4.2 进入调试视图</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Bug%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="toc-text">1. Bug的由来及分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Bug%E7%9A%84%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.1 Bug的常见类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E7%B2%97%E5%BF%83%E5%AF%BC%E8%87%B4%E7%9A%84%E8%AF%AD%E6%B3%95%E9%94%99%E8%AF%AFSyntaxError"><span class="toc-text">1.1.1 粗心导致的语法错误SyntaxError</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E7%9F%A5%E8%AF%86%E4%B8%8D%E7%86%9F%E7%BB%83%E5%AF%BC%E8%87%B4%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-text">1.1.2 知识不熟练导致的错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E6%80%9D%E8%B7%AF%E4%B8%8D%E6%B8%85%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">1.1.3 思路不清导致的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%B8%8D%E5%90%8C%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-text">2. 不同异常类型的处理方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-try%E2%80%A6except%E2%80%A6except%E7%BB%93%E6%9E%84"><span class="toc-text">2.1 try…except…except结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-try%E2%80%A6except%E2%80%A6else%E7%BB%93%E6%9E%84"><span class="toc-text">2.2 try…except…else结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-try%E2%80%A6except%E2%80%A6else%E2%80%A6finally%E7%BB%93%E6%9E%84"><span class="toc-text">2.3 try…except…else…finally结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Python%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93"><span class="toc-text">2.4 Python中常见的异常类型总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Python%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-text">3. Python的异常处理机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-PyCharm%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">4. PyCharm开发环境的调试模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%96%AD%E7%94%B5"><span class="toc-text">4.1 断电</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E8%BF%9B%E5%85%A5%E8%B0%83%E8%AF%95%E8%A7%86%E5%9B%BE"><span class="toc-text">4.2 进入调试视图</span></a></li></ol></li></ol></div></p>
+<h1 id="1-Bug的由来及分类"><a href="#1-Bug的由来及分类" class="headerlink" title="1. Bug的由来及分类"></a>1. Bug的由来及分类</h1><h2 id="1-1-Bug的常见类型"><a href="#1-1-Bug的常见类型" class="headerlink" title="1.1 Bug的常见类型"></a>1.1 Bug的常见类型</h2><h3 id="1-1-1-粗心导致的语法错误SyntaxError"><a href="#1-1-1-粗心导致的语法错误SyntaxError" class="headerlink" title="1.1.1 粗心导致的语法错误SyntaxError"></a>1.1.1 粗心导致的语法错误SyntaxError</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">age&#x3D;input(&#39;请输入你的年龄&#39;)</span><br><span class="line">print(type(age))</span><br><span class="line">if age&gt;&#x3D;18:</span><br><span class="line">    print(&#39;成年人...&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>TypeError: ‘&gt;=’ not supported between instances of ‘str’ and ‘int’</p>
+<p>改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">age&#x3D;input(&#39;请输入你的年龄&#39;)</span><br><span class="line">print(type(age))</span><br><span class="line">if int(age)&gt;&#x3D;18:</span><br><span class="line">    print(&#39;成年人...&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>粗心导致错误的自查宝典：</p>
+<p>（1）漏了末尾的冒号，如if语句，循环语句，else子句等</p>
+<p>（2）缩进错误，该缩进的没缩进，不该缩进的瞎缩进</p>
+<p>（3）把英文符号写成中文符号，比如说：引号，冒号，括号</p>
+<p>（4）字符串拼接的时候，把字符串和数字拼在一起</p>
+<p>（5）没有定义变量，比如说while的循环条件的变量</p>
+<p>（6）“==”比较运算符和“=”赋值运算符的混用</p>
+<h3 id="1-1-2-知识不熟练导致的错误"><a href="#1-1-2-知识不熟练导致的错误" class="headerlink" title="1.1.2 知识不熟练导致的错误"></a>1.1.2 知识不熟练导致的错误</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">lst&#x3D;[11,22,33,44]</span><br><span class="line">print(lst[4])</span><br></pre></td></tr></table></figure>
+
+<p>IndexError: list index out of range</p>
+<h3 id="1-1-3-思路不清导致的问题"><a href="#1-1-3-思路不清导致的问题" class="headerlink" title="1.1.3 思路不清导致的问题"></a>1.1.3 思路不清导致的问题</h3><p>解决方案：</p>
+<p>（1）使用print()函数</p>
+<p>（2）使用“#”暂时注释部分代码</p>
+<h1 id="2-不同异常类型的处理方式"><a href="#2-不同异常类型的处理方式" class="headerlink" title="2. 不同异常类型的处理方式"></a>2. 不同异常类型的处理方式</h1><p>程序代码逻辑没有错，只是因为用户错误操作或者一些“例外情况”而导致的程序崩溃</p>
+<p>解决方案：</p>
+<h2 id="2-1-try…except…except结构"><a href="#2-1-try…except…except结构" class="headerlink" title="2.1 try…except…except结构"></a>2.1 try…except…except结构</h2><p>（1）Python提供了异常处理机制，可以在异常出现时即时捕获，然后内部“消化”，让程序继续运行</p>
+<p>（2）多个except结构：捕获异常的顺序按照先子类后父类的顺序，为了避免遗漏可能出现的异常，可以在最后增加BaseException</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">try:</span><br><span class="line">    a&#x3D;int(input(&#39;请输入第一个整数&#39;))</span><br><span class="line">    b&#x3D;int(input(&#39;请输入第二个整数&#39;))</span><br><span class="line">    result&#x3D;a&#x2F;b</span><br><span class="line">    print(&#39;结果为：&#39;,result)</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    print(&#39;对不起，除数不允许为0&#39;)</span><br><span class="line">except ValueError:</span><br><span class="line">    print(&#39;只能输入数字串&#39;)</span><br><span class="line">print(&#39;程序结束&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-try…except…else结构"><a href="#2-2-try…except…else结构" class="headerlink" title="2.2 try…except…else结构"></a>2.2 try…except…else结构</h2><p>如果try快中没有抛出异常，则执行else块，如果try中抛出异常，则执行except块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">try:</span><br><span class="line">    a&#x3D;int(input(&#39;请输入第一个整数&#39;))</span><br><span class="line">    b&#x3D;int(input(&#39;请输入第二个整数&#39;))</span><br><span class="line">    result&#x3D;a&#x2F;b</span><br><span class="line">except BaseException as e:</span><br><span class="line">    print(&#39;出错了&#39;,e)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;计算结果为：&#39;,result)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-try…except…else…finally结构"><a href="#2-3-try…except…else…finally结构" class="headerlink" title="2.3 try…except…else…finally结构"></a>2.3 try…except…else…finally结构</h2><p>finally块无论是否发生异常都会被执行，能常用来释放try块中申请的资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">try:</span><br><span class="line">    a&#x3D;int(input(&#39;请输入第一个整数&#39;))</span><br><span class="line">    b&#x3D;int(input(&#39;请输入第二个整数&#39;))</span><br><span class="line">    result&#x3D;a&#x2F;b</span><br><span class="line">except BaseException as e:</span><br><span class="line">    print(&#39;出错了&#39;,e)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;计算结果为：&#39;,result)</span><br><span class="line">finally:</span><br><span class="line">    print(&#39;谢谢您的使用&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Python中常见的异常类型总结"><a href="#2-4-Python中常见的异常类型总结" class="headerlink" title="2.4 Python中常见的异常类型总结"></a>2.4 Python中常见的异常类型总结</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>异常类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ZeroDivisionError</td>
+<td>除（或取模）零（所有数据类型）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IndexError</td>
+<td>序列中没有此索引（index）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>KeyError</td>
+<td>映射中没有这个键</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NameError</td>
+<td>未声明/初始化对象（没有属性）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SyntaxError</td>
+<td>Python语法错误</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ValueError</td>
+<td>传入无效的参数</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">#(1)数学运算异常</span><br><span class="line"># print(10&#x2F;0) #ZeroDivisionError</span><br><span class="line"></span><br><span class="line">lst&#x3D;[11,22,33,44]</span><br><span class="line">#print(lst[4])   #IndexError 索引从0开始</span><br><span class="line"></span><br><span class="line">dic&#x3D;&#123;&#39;name&#39;:&#39;张三&#39;,&#39;age&#39;:20&#125;</span><br><span class="line">#print(dic[&#39;gender&#39;])    #KeyError</span><br><span class="line"></span><br><span class="line">#print(num)  #NameError</span><br><span class="line"></span><br><span class="line">#int a&#x3D;20    #SyntaxError</span><br><span class="line"></span><br><span class="line">#a&#x3D;int(&#39;hello&#39;)  #ValueError</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-Python的异常处理机制"><a href="#3-Python的异常处理机制" class="headerlink" title="3. Python的异常处理机制"></a>3. Python的异常处理机制</h1><p> traceback模块：使用traceback模块打印异常信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">#print(10&#x2F;0)</span><br><span class="line">import traceback</span><br><span class="line">try:</span><br><span class="line">    print(&#39;1.-------------&#39;)</span><br><span class="line">    print(1&#x2F;0)</span><br><span class="line">except:</span><br><span class="line">    traceback.print_exc()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20201030093343627.png" alt="image-20201030093343627"></p>
+<h1 id="4-PyCharm开发环境的调试模式"><a href="#4-PyCharm开发环境的调试模式" class="headerlink" title="4. PyCharm开发环境的调试模式"></a>4. PyCharm开发环境的调试模式</h1><h2 id="4-1-断电"><a href="#4-1-断电" class="headerlink" title="4.1 断电"></a>4.1 断电</h2><p>程序运行到此处，暂时挂起，停止执行。此时可以详细观察程序的运行情况，方便做出进一步判断。</p>
+<h2 id="4-2-进入调试视图"><a href="#4-2-进入调试视图" class="headerlink" title="4.2 进入调试视图"></a>4.2 进入调试视图</h2><p>进入调试视图的三种方式：</p>
+<p>（1）单击工具栏上的按钮<img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20201030094213637.png" alt="image-20201030094213637"></p>
+<p>（2）右键单击编辑区：点击：debug‘模块名’</p>
+<p>（3）快捷键：shift+F9</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20201030094344693.png" alt="image-20201030094344693"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395876210@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 ting-ting-he
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

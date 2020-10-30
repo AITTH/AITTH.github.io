@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python——Bug</title>
+    <url>/2020/10/29/Python%E2%80%94%E2%80%94bug/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="1-Bug的由来及分类"><a href="#1-Bug的由来及分类" class="headerlink" title="1. Bug的由来及分类"></a>1. Bug的由来及分类</h1><h2 id="1-1-Bug的常见类型"><a href="#1-1-Bug的常见类型" class="headerlink" title="1.1 Bug的常见类型"></a>1.1 Bug的常见类型</h2><h3 id="1-1-1-粗心导致的语法错误SyntaxError"><a href="#1-1-1-粗心导致的语法错误SyntaxError" class="headerlink" title="1.1.1 粗心导致的语法错误SyntaxError"></a>1.1.1 粗心导致的语法错误SyntaxError</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">age&#x3D;input(&#39;请输入你的年龄&#39;)</span><br><span class="line">print(type(age))</span><br><span class="line">if age&gt;&#x3D;18:</span><br><span class="line">    print(&#39;成年人...&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>TypeError: ‘&gt;=’ not supported between instances of ‘str’ and ‘int’</p>
+<p>改：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">age&#x3D;input(&#39;请输入你的年龄&#39;)</span><br><span class="line">print(type(age))</span><br><span class="line">if int(age)&gt;&#x3D;18:</span><br><span class="line">    print(&#39;成年人...&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>粗心导致错误的自查宝典：</p>
+<p>（1）漏了末尾的冒号，如if语句，循环语句，else子句等</p>
+<p>（2）缩进错误，该缩进的没缩进，不该缩进的瞎缩进</p>
+<p>（3）把英文符号写成中文符号，比如说：引号，冒号，括号</p>
+<p>（4）字符串拼接的时候，把字符串和数字拼在一起</p>
+<p>（5）没有定义变量，比如说while的循环条件的变量</p>
+<p>（6）“==”比较运算符和“=”赋值运算符的混用</p>
+<h3 id="1-1-2-知识不熟练导致的错误"><a href="#1-1-2-知识不熟练导致的错误" class="headerlink" title="1.1.2 知识不熟练导致的错误"></a>1.1.2 知识不熟练导致的错误</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">lst&#x3D;[11,22,33,44]</span><br><span class="line">print(lst[4])</span><br></pre></td></tr></table></figure>
+
+<p>IndexError: list index out of range</p>
+<h3 id="1-1-3-思路不清导致的问题"><a href="#1-1-3-思路不清导致的问题" class="headerlink" title="1.1.3 思路不清导致的问题"></a>1.1.3 思路不清导致的问题</h3><p>解决方案：</p>
+<p>（1）使用print()函数</p>
+<p>（2）使用“#”暂时注释部分代码</p>
+<h1 id="2-不同异常类型的处理方式"><a href="#2-不同异常类型的处理方式" class="headerlink" title="2. 不同异常类型的处理方式"></a>2. 不同异常类型的处理方式</h1><p>程序代码逻辑没有错，只是因为用户错误操作或者一些“例外情况”而导致的程序崩溃</p>
+<p>解决方案：</p>
+<h2 id="2-1-try…except…except结构"><a href="#2-1-try…except…except结构" class="headerlink" title="2.1 try…except…except结构"></a>2.1 try…except…except结构</h2><p>（1）Python提供了异常处理机制，可以在异常出现时即时捕获，然后内部“消化”，让程序继续运行</p>
+<p>（2）多个except结构：捕获异常的顺序按照先子类后父类的顺序，为了避免遗漏可能出现的异常，可以在最后增加BaseException</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">try:</span><br><span class="line">    a&#x3D;int(input(&#39;请输入第一个整数&#39;))</span><br><span class="line">    b&#x3D;int(input(&#39;请输入第二个整数&#39;))</span><br><span class="line">    result&#x3D;a&#x2F;b</span><br><span class="line">    print(&#39;结果为：&#39;,result)</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    print(&#39;对不起，除数不允许为0&#39;)</span><br><span class="line">except ValueError:</span><br><span class="line">    print(&#39;只能输入数字串&#39;)</span><br><span class="line">print(&#39;程序结束&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-try…except…else结构"><a href="#2-2-try…except…else结构" class="headerlink" title="2.2 try…except…else结构"></a>2.2 try…except…else结构</h2><p>如果try快中没有抛出异常，则执行else块，如果try中抛出异常，则执行except块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">try:</span><br><span class="line">    a&#x3D;int(input(&#39;请输入第一个整数&#39;))</span><br><span class="line">    b&#x3D;int(input(&#39;请输入第二个整数&#39;))</span><br><span class="line">    result&#x3D;a&#x2F;b</span><br><span class="line">except BaseException as e:</span><br><span class="line">    print(&#39;出错了&#39;,e)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;计算结果为：&#39;,result)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-try…except…else…finally结构"><a href="#2-3-try…except…else…finally结构" class="headerlink" title="2.3 try…except…else…finally结构"></a>2.3 try…except…else…finally结构</h2><p>finally块无论是否发生异常都会被执行，能常用来释放try块中申请的资源</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">try:</span><br><span class="line">    a&#x3D;int(input(&#39;请输入第一个整数&#39;))</span><br><span class="line">    b&#x3D;int(input(&#39;请输入第二个整数&#39;))</span><br><span class="line">    result&#x3D;a&#x2F;b</span><br><span class="line">except BaseException as e:</span><br><span class="line">    print(&#39;出错了&#39;,e)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;计算结果为：&#39;,result)</span><br><span class="line">finally:</span><br><span class="line">    print(&#39;谢谢您的使用&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Python中常见的异常类型总结"><a href="#2-4-Python中常见的异常类型总结" class="headerlink" title="2.4 Python中常见的异常类型总结"></a>2.4 Python中常见的异常类型总结</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>异常类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ZeroDivisionError</td>
+<td>除（或取模）零（所有数据类型）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IndexError</td>
+<td>序列中没有此索引（index）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>KeyError</td>
+<td>映射中没有这个键</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NameError</td>
+<td>未声明/初始化对象（没有属性）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SyntaxError</td>
+<td>Python语法错误</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ValueError</td>
+<td>传入无效的参数</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">#(1)数学运算异常</span><br><span class="line"># print(10&#x2F;0) #ZeroDivisionError</span><br><span class="line"></span><br><span class="line">lst&#x3D;[11,22,33,44]</span><br><span class="line">#print(lst[4])   #IndexError 索引从0开始</span><br><span class="line"></span><br><span class="line">dic&#x3D;&#123;&#39;name&#39;:&#39;张三&#39;,&#39;age&#39;:20&#125;</span><br><span class="line">#print(dic[&#39;gender&#39;])    #KeyError</span><br><span class="line"></span><br><span class="line">#print(num)  #NameError</span><br><span class="line"></span><br><span class="line">#int a&#x3D;20    #SyntaxError</span><br><span class="line"></span><br><span class="line">#a&#x3D;int(&#39;hello&#39;)  #ValueError</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-Python的异常处理机制"><a href="#3-Python的异常处理机制" class="headerlink" title="3. Python的异常处理机制"></a>3. Python的异常处理机制</h1><p> traceback模块：使用traceback模块打印异常信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">#print(10&#x2F;0)</span><br><span class="line">import traceback</span><br><span class="line">try:</span><br><span class="line">    print(&#39;1.-------------&#39;)</span><br><span class="line">    print(1&#x2F;0)</span><br><span class="line">except:</span><br><span class="line">    traceback.print_exc()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20201030093343627.png" alt="image-20201030093343627"></p>
+<h1 id="4-PyCharm开发环境的调试模式"><a href="#4-PyCharm开发环境的调试模式" class="headerlink" title="4. PyCharm开发环境的调试模式"></a>4. PyCharm开发环境的调试模式</h1><h2 id="4-1-断电"><a href="#4-1-断电" class="headerlink" title="4.1 断电"></a>4.1 断电</h2><p>程序运行到此处，暂时挂起，停止执行。此时可以详细观察程序的运行情况，方便做出进一步判断。</p>
+<h2 id="4-2-进入调试视图"><a href="#4-2-进入调试视图" class="headerlink" title="4.2 进入调试视图"></a>4.2 进入调试视图</h2><p>进入调试视图的三种方式：</p>
+<p>（1）单击工具栏上的按钮<img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20201030094213637.png" alt="image-20201030094213637"></p>
+<p>（2）右键单击编辑区：点击：debug‘模块名’</p>
+<p>（3）快捷键：shift+F9</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20201030094344693.png" alt="image-20201030094344693"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Python——函数</title>
     <url>/2020/10/27/Python-%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>[TOC]</p>
@@ -581,7 +670,7 @@
   </entry>
   <entry>
     <title>python中的bug</title>
-    <url>/2020/08/08/python%E4%B8%AD%E7%9A%84bug/</url>
+    <url>/2020/08/08/python-bug%E4%BF%AE%E6%94%B9/</url>
     <content><![CDATA[<h1 id="python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题"><a href="#python中解决SyntaxError-Non-UTF-8-code-starting-with-‘-xc7’-in-file-的问题" class="headerlink" title="python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题"></a>python中解决SyntaxError: Non-UTF-8 code starting with ‘\xc7’ in file 的问题</h1><p>在pycharm中运行.py程序，出现如下问题：<br><img src="https://img-blog.csdnimg.cn/20200808105956116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="1"><br>只需要一步就可以解决：<br>在程序的第一行前面加上：**# coding=gbk**   </p>
 <h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
