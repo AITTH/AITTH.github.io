@@ -693,4 +693,64 @@
 <h2 id="注意：coding与-，-与gbk之间没有空格"><a href="#注意：coding与-，-与gbk之间没有空格" class="headerlink" title="注意：coding与=，=与gbk之间没有空格"></a>注意：coding与=，=与gbk之间没有空格</h2><p>程序运行结果就可以出来（如下）：<br><img src="https://img-blog.csdnimg.cn/20200808110656861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80OTMxMzMxOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>Python——类与对象</title>
+    <url>/2020/10/30/Python%E2%80%94%E2%80%94%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="1-两大编程思想"><a href="#1-两大编程思想" class="headerlink" title="1. 两大编程思想"></a>1. 两大编程思想</h1><h1 id="1-1-编程界的两大阵营"><a href="#1-1-编程界的两大阵营" class="headerlink" title="1.1 编程界的两大阵营"></a>1.1 编程界的两大阵营</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>面向过程</th>
+<th>面向对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>区别</td>
+<td>事物比较简单，可以用线性的思维去解决</td>
+<td>事物比较复杂，使用简单的线性思维无法解决</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>面向过程and面向对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>共同点</td>
+<td>面向过程和面向对象都是解决实际问题的一种思维方式</td>
+</tr>
+<tr>
+<td></td>
+<td>二者相辅相成，并不是对立的</td>
+</tr>
+<tr>
+<td></td>
+<td>解决复杂问题，通过面向对象方式便于我们从宏观上把握事物之间复杂的关系，方便我们分析整个系统；具体到微观操作，仍然使用面向对象过程方式来处理</td>
+</tr>
+</tbody></table>
+<h1 id="2-类和对象的创建"><a href="#2-类和对象的创建" class="headerlink" title="2. 类和对象的创建"></a>2. 类和对象的创建</h1><h2 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h2><h3 id="2-1-1-类"><a href="#2-1-1-类" class="headerlink" title="2.1.1 类"></a>2.1.1 类</h3><p>类是多个类型事物组成的群里的统称。能够帮助我们快速理解和判断事物的性质。</p>
+<h3 id="2-1-2-数据类型"><a href="#2-1-2-数据类型" class="headerlink" title="2.1.2 数据类型"></a>2.1.2 数据类型</h3><p>（1）不同的数据类型属于不同的类</p>
+<p>（2）使用内置函数查看数据类型</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(type(100))</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-3-对象"><a href="#2-1-3-对象" class="headerlink" title="2.1.3 对象"></a>2.1.3 对象</h3><p>100、99、520都是int类之下包含的相似的不同个例，这个个例专业术语称为实例或对象。</p>
+<h2 id="2-2-类的创建"><a href="#2-2-类的创建" class="headerlink" title="2.2 类的创建"></a>2.2 类的创建</h2><h3 id="2-2-1-创建类的语法"><a href="#2-2-1-创建类的语法" class="headerlink" title="2.2.1 创建类的语法"></a>2.2.1 创建类的语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">class Stduent:  #Student为类的名称（类名）由一个或多个单词组成，每个单词的首字母大写，其余小写</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">#Python中一切皆对象，Student是对象吗？内存有开空间吗？</span><br><span class="line">print(id(Stduent))  #1439610926952</span><br><span class="line">print(type(Stduent))    #&lt;class &#39;type&#39;&gt;</span><br><span class="line">print(Stduent)  #&lt;class &#39;__main__.Stduent&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-类的组成"><a href="#2-2-2-类的组成" class="headerlink" title="2.2.2  类的组成"></a>2.2.2  类的组成</h3><p>（1）类属性；（2）实例方法；（3）静态方法；（4）类方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">class Stduent:  #Student为类的名称（类名）由一个或多个单词组成，每个单词的首字母大写，其余小写</span><br><span class="line">    native_pace&#x3D;&#39;吉林&#39;    #直接写在类里的变量，称为类属性</span><br><span class="line">    def __init_(self,name,age):</span><br><span class="line">        self.name&#x3D;name  #self.name称为实体属性，进行了一个赋值的操作，将局部变量的name的值赋给实体属性</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">        </span><br><span class="line">    #实例方法</span><br><span class="line">    def eat(self):</span><br><span class="line">        print(&#39;学生在吃饭...&#39;)</span><br><span class="line">        </span><br><span class="line">    #静态方法</span><br><span class="line">    @staticmethod</span><br><span class="line">    def method():</span><br><span class="line">        print(&#39;我使用了staticmethod进行修饰，所以我是静态方法&#39;)</span><br><span class="line">    </span><br><span class="line">    #类方法</span><br><span class="line">    @classmethod</span><br><span class="line">    def cm(cls):</span><br><span class="line">        print(&#39;我是类方法，因为我使用了classmethod进行修饰&#39;)</span><br><span class="line">    </span><br><span class="line">#在类之外定义的称为函数，在类之内定义的称为方法</span><br><span class="line">def drink():</span><br><span class="line">    print(&#39;喝水&#39;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-3-对象的创建"><a href="#2-2-3-对象的创建" class="headerlink" title="2.2.3 对象的创建"></a>2.2.3 对象的创建</h3><p>对象的创建又称为类的实例化</p>
+<p>语法：实例名=类名（）</p>
+<h1 id="3-类属性、类方法、静态方法"><a href="#3-类属性、类方法、静态方法" class="headerlink" title="3. 类属性、类方法、静态方法"></a>3. 类属性、类方法、静态方法</h1><p>类属性</p>
+<p>定义：类中方法外的变量称为类属性，被该类的所有对象所共享</p>
+<p>类方法：</p>
+<p>定义：使用@classmethod修饰的方法，使用类名直接访问的方法</p>
+<p>静态方法：</p>
+<p>定义：使用@staticmethod修饰的主法，使用类名直接访问的方法</p>
+<h1 id="4-动态绑定属性和方法"><a href="#4-动态绑定属性和方法" class="headerlink" title="4. 动态绑定属性和方法"></a>4. 动态绑定属性和方法</h1><p>Python是动态语言，在创建对象之后，可以动态地绑定属性和方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">class Student:</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">    def eat(self):</span><br><span class="line">        print(self.name+&#39;在吃饭&#39;)</span><br><span class="line"></span><br><span class="line">stu1&#x3D;Student(&#39;张三&#39;,20)</span><br><span class="line">stu2&#x3D;Student(&#39;李四&#39;,30)</span><br><span class="line">print(id(stu1))</span><br><span class="line">print(id(stu2))</span><br><span class="line">print(&#39;---------为stu2动态绑定性别属性------------------&#39;)</span><br><span class="line">stu1.gender&#x3D;&#39;女&#39;</span><br><span class="line">#print(stu1.name,stu1.age,stu1.gender)</span><br><span class="line">print(stu1.name,stu1.age,stu1.gender)</span><br><span class="line">print(stu2.name,stu2.age)</span><br><span class="line">print(&#39;-----------------&#39;)</span><br><span class="line">stu1.eat()</span><br><span class="line">stu2.eat()</span><br><span class="line"></span><br><span class="line">def show():</span><br><span class="line">    print(&#39;定义在类之外的，称函数&#39;)</span><br><span class="line">stu1.show&#x3D;show</span><br><span class="line">stu1.show()</span><br><span class="line"></span><br><span class="line">#stu2.show()    因为stu2并没有绑定show方法</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>
