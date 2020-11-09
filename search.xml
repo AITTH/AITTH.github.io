@@ -753,4 +753,107 @@
 <h1 id="4-动态绑定属性和方法"><a href="#4-动态绑定属性和方法" class="headerlink" title="4. 动态绑定属性和方法"></a>4. 动态绑定属性和方法</h1><p>Python是动态语言，在创建对象之后，可以动态地绑定属性和方法</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">class Student:</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">    def eat(self):</span><br><span class="line">        print(self.name+&#39;在吃饭&#39;)</span><br><span class="line"></span><br><span class="line">stu1&#x3D;Student(&#39;张三&#39;,20)</span><br><span class="line">stu2&#x3D;Student(&#39;李四&#39;,30)</span><br><span class="line">print(id(stu1))</span><br><span class="line">print(id(stu2))</span><br><span class="line">print(&#39;---------为stu2动态绑定性别属性------------------&#39;)</span><br><span class="line">stu1.gender&#x3D;&#39;女&#39;</span><br><span class="line">#print(stu1.name,stu1.age,stu1.gender)</span><br><span class="line">print(stu1.name,stu1.age,stu1.gender)</span><br><span class="line">print(stu2.name,stu2.age)</span><br><span class="line">print(&#39;-----------------&#39;)</span><br><span class="line">stu1.eat()</span><br><span class="line">stu2.eat()</span><br><span class="line"></span><br><span class="line">def show():</span><br><span class="line">    print(&#39;定义在类之外的，称函数&#39;)</span><br><span class="line">stu1.show&#x3D;show</span><br><span class="line">stu1.show()</span><br><span class="line"></span><br><span class="line">#stu2.show()    因为stu2并没有绑定show方法</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
+  <entry>
+    <title>python——面向对象特征</title>
+    <url>/2020/11/09/python%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81/</url>
+    <content><![CDATA[<h1 id="0-面向对象的三大特征"><a href="#0-面向对象的三大特征" class="headerlink" title="0. 面向对象的三大特征"></a>0. 面向对象的三大特征</h1><ol>
+<li><p>封装：提高程序的安全性</p>
+<p>（1）将数据（属性）和行为（方法）包装到类对象中。在方法内部对属性进行操作，在类对象的外部调用方法。这样，无需关心方法内部的具体实现细节，从而隔离了复杂度。</p>
+<p>（2）在Python中没有专门的修饰符用于属性的私有，如果该属性不希望在类对象外部被访问，前边使用两个“_”。</p>
+</li>
+<li><p>继承：提高代码的复用性。</p>
+</li>
+<li><p>多态：提高程序的可扩展性和可维护性。</p>
+</li>
+</ol>
+<h1 id="1-封装"><a href="#1-封装" class="headerlink" title="1. 封装"></a>1. 封装</h1><p>封装的实现：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">class Student:</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.__age&#x3D;age  #年龄不希望在类的外部被使用，所以加了两个__</span><br><span class="line">    def show(self):</span><br><span class="line">        print(self.name,self.__age)</span><br><span class="line"></span><br><span class="line">stu&#x3D;Student(&#39;张三&#39;,20)</span><br><span class="line">stu.show()</span><br><span class="line"># 在类的外部使用name和age</span><br><span class="line">print(stu.name)</span><br><span class="line">#print(stu.__age)</span><br><span class="line">#print(dir(stu))</span><br><span class="line">print(stu._Student__age)    #在类的外部可以通过 _student__age 进行访问</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h1><ol>
+<li><p>语法格式：</p>
+<p>class 子类类名（父类1，父类2……）</p>
+<p>​    pass</p>
+</li>
+<li><p>如果一个类没有继承任何类，则默认继承object</p>
+</li>
+<li><p>Python支持多继承</p>
+</li>
+<li><p>定义子类时，必须在其构造函数中调用父类的构造函数</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">class Person(object):   #Person继承object类</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">    def info(self):</span><br><span class="line">        print(self.name,self.age)</span><br><span class="line"></span><br><span class="line">class Student(Person):</span><br><span class="line">    def __init__(self,name,age,stu_no):</span><br><span class="line">        super().__init__(name,age)</span><br><span class="line">        self.stu_no&#x3D;stu_no</span><br><span class="line"></span><br><span class="line">class Teacher(Person):</span><br><span class="line">    def __init__(self,name,age,teachofyer):</span><br><span class="line">        super().__init__(name,age)</span><br><span class="line">        self.teachofyer&#x3D;teachofyer</span><br><span class="line"></span><br><span class="line">stu&#x3D;Student(&#39;张三&#39;,&#39;20&#39;,&#39;1001&#39;)</span><br><span class="line">teacher&#x3D;Teacher(&#39;李四&#39;,34,10)</span><br><span class="line"></span><br><span class="line">stu.info()</span><br><span class="line">teacher.info()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">class A(object):</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">class B(object):</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">class C(A,B):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-方法重写"><a href="#3-方法重写" class="headerlink" title="3. 方法重写"></a>3. 方法重写</h1><ol>
+<li>如果子类对继承自父类的某个属性或方法不满意，可以在子类中对其（方法体）进行重新编写</li>
+<li>子类重写后的方法中可以通过super().xxx()调用父类中被重写的方法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">class Person(object):   #Person继承object类</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">    def info(self):</span><br><span class="line">        print(self.name,self.age)</span><br><span class="line"></span><br><span class="line">class Student(Person):</span><br><span class="line">    def __init__(self,name,age,stu_no):</span><br><span class="line">        super().__init__(name,age)</span><br><span class="line">        self.stu_no&#x3D;stu_no</span><br><span class="line">    def info(self):</span><br><span class="line">        super().info()</span><br><span class="line">        print(self.stu_no)</span><br><span class="line"></span><br><span class="line">class Teacher(Person):</span><br><span class="line">    def __init__(self,name,age,teachofyer):</span><br><span class="line">        super().__init__(name,age)</span><br><span class="line">        self.teachofyer&#x3D;teachofyer</span><br><span class="line">    def info(self):</span><br><span class="line">        super().info()</span><br><span class="line">        print(&#39;教龄&#39;,self.teachofyer)</span><br><span class="line"></span><br><span class="line">stu&#x3D;Student(&#39;张三&#39;,&#39;20&#39;,&#39;1001&#39;)</span><br><span class="line">teacher&#x3D;Teacher(&#39;李四&#39;,34,10)</span><br><span class="line"></span><br><span class="line">stu.info()</span><br><span class="line">print(&#39;--------------------&#39;)</span><br><span class="line">teacher.info()</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-objeck类"><a href="#4-objeck类" class="headerlink" title="4. objeck类"></a>4. objeck类</h1><ol>
+<li>objeck类是所有类的父类，因此所有类都有objeck类的属性和方法。</li>
+<li>内置函数dir()可以查看指定对象所有属性。</li>
+<li>Objeck有一个<strong>str</strong>()方法，用于返回一个对于“对象的描述”，对应于内置函数str()经常用于print()方法，帮我们查看对象的信息，所以我们经常会对<strong>str</strong>()进行重写。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">class Student:</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &#39;我的名字是&#123;0&#125;，今年&#123;1&#125;岁&#39;.format(self.name,self.age)</span><br><span class="line"></span><br><span class="line">stu&#x3D;Student(&#39;张三&#39;,20)</span><br><span class="line">print(dir(stu))</span><br><span class="line">print(stu)  #默认调用__str__()这样的方法</span><br><span class="line">print(type(stu))</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-多态"><a href="#5-多态" class="headerlink" title="5. 多态"></a>5. 多态</h1><p>简单地说，多态就是“具有多种形态”，它指的是：即便不知道一个变量所引用的对象到底是什么类型，仍然可以通过这个变量调用方法，在运行过程中根据变量所引用对象的类型，动态决定调用哪个对象中的方法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">class Animal(object):</span><br><span class="line">    def eat(self):</span><br><span class="line">        print(&#39;动物会吃&#39;)</span><br><span class="line">class Dog(Animal):</span><br><span class="line">    def eat(self):</span><br><span class="line">        print(&#39;狗吃骨头...&#39;)</span><br><span class="line">class Cat(Animal):</span><br><span class="line">    def eat(self):</span><br><span class="line">        print(&#39;猫吃鱼...&#39;)</span><br><span class="line"></span><br><span class="line">class Person:</span><br><span class="line">    def eat(self):</span><br><span class="line">        print(&#39;人吃五谷杂粮&#39;)</span><br><span class="line"></span><br><span class="line">#定义一个函数</span><br><span class="line">def fun(object):</span><br><span class="line">    object.eat()</span><br><span class="line"></span><br><span class="line">#开始调用函数</span><br><span class="line">fun(Cat())</span><br><span class="line">fun(Dog())</span><br><span class="line">fun(Animal())</span><br><span class="line">print(&#39;---------------------&#39;)</span><br><span class="line">fun(Person())</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-1-静态语言与动态语言"><a href="#5-1-静态语言与动态语言" class="headerlink" title="5.1 静态语言与动态语言"></a>5.1 静态语言与动态语言</h2><p>静态语言和动态语言关于多态的区别：</p>
+<ol>
+<li>静态语言实现多态的三个必要条件</li>
+</ol>
+<p>（1）继承</p>
+<p>（2）方法重写</p>
+<p>（3）父类引用指向子类对象</p>
+<ol start="2">
+<li>动态语言的多态崇尚“鸭子类型”，当看到一只鸟走起来像鸭子、游起来像鸭子、收起来也像鸭子，那么这只鸟就可以被称为鸭子。在鸭子类型中，不需要关心对象是什么类型，到底是不是鸭子，只关心对象的行为。</li>
+</ol>
+<h1 id="6-特殊方法和特殊属性"><a href="#6-特殊方法和特殊属性" class="headerlink" title="6. 特殊方法和特殊属性"></a>6. 特殊方法和特殊属性</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>特殊属性</td>
+<td><strong>dict</strong></td>
+<td>获得类对象或实例对象所绑定的所有属性和方法的字典</td>
+</tr>
+<tr>
+<td>特殊方法</td>
+<td><strong>len</strong>()</td>
+<td>通过重写<strong>len</strong>()方法，让内置函数len()的参数可以是自定义类型</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>add</strong>()</td>
+<td>通过重写<strong>add</strong>()方法，可使用自定义对象具有“+”功能</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>new</strong>()</td>
+<td>用于创建对象</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>init</strong>()</td>
+<td>对创建的对象进行初始化</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">#print(dir(object))</span><br><span class="line">class A:</span><br><span class="line">    pass</span><br><span class="line">class B:</span><br><span class="line">    pass</span><br><span class="line">class C(A,B):</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">class D(A):</span><br><span class="line">    pass</span><br><span class="line">#创建C类的对象</span><br><span class="line">x&#x3D;C(&#39;Jack&#39;,20) #x是C类型的一个实例对象</span><br><span class="line">print(x.__dict__)   #实例对象的属性字典</span><br><span class="line">print(C.__dict__)</span><br><span class="line">print(&#39;----------------&#39;)</span><br><span class="line">print(x.__class__)  #&lt;class &#39;__main__.C&#39;&gt;输出了对象所属的类</span><br><span class="line">print(C.__bases__)  #C类的父类类型的元素</span><br><span class="line">print(C.__base__)</span><br><span class="line">print(C.__mro__)    #类的层次结构</span><br><span class="line">print(A.__subclasses__())   #子类的列表</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">a&#x3D;20</span><br><span class="line">b&#x3D;100</span><br><span class="line">c&#x3D;a+b   #两个整数类型的对象的相加操作</span><br><span class="line">d&#x3D;a.__add__(b)</span><br><span class="line"></span><br><span class="line">print(c)</span><br><span class="line">print(d)</span><br><span class="line"></span><br><span class="line">class Student:</span><br><span class="line">    def __init__(self,name):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">    def __add__(self, other):</span><br><span class="line">        return self.name+other.name</span><br><span class="line">    def __len__(self):</span><br><span class="line">        return len(self.name)</span><br><span class="line"></span><br><span class="line">stu1&#x3D;Student(&#39;JACK&#39;)</span><br><span class="line">stu2&#x3D;Student(&#39;李四&#39;)</span><br><span class="line"></span><br><span class="line">s&#x3D;stu1+stu2 #实现了两个对象的加法运算（因为在Student类中，编写__add__()特殊的方法）</span><br><span class="line">print(s)</span><br><span class="line">s&#x3D;stu1.__add__(stu2)</span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line">print(&#39;-------------------&#39;)</span><br><span class="line">lst&#x3D;[11,22,33,44]</span><br><span class="line">print(len(lst)) #len是内容函数len</span><br><span class="line">print(lst.__len__())</span><br><span class="line">print(len(stu1))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">class Person(object):</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line">    def __new__(cls, *args, **kwargs):</span><br><span class="line">        print(&#39;__new__被调用执行了，cls的id值为&#123;0&#125;&#39;.format(id(cls)))</span><br><span class="line">        obj&#x3D;super().__new__(cls)</span><br><span class="line">        print(&#39;创建的对象的id为：&#123;0&#125;&#39;.format(id(obj)))</span><br><span class="line">        return obj</span><br><span class="line">    def __init__(self,name,age):</span><br><span class="line">        print(&#39;__init__被调用了，self的id值为：&#123;0&#125;&#39;.format(id(self)))</span><br><span class="line">        self.name&#x3D;name</span><br><span class="line">        self.age&#x3D;age</span><br><span class="line"></span><br><span class="line">print(&#39;object这个类的对象的id为：&#123;0&#125;&#39;.format(id(object)))</span><br><span class="line">print(&#39;Person这个类对象的id为：&#123;0&#125;&#39;.format(id(Person)))</span><br><span class="line"></span><br><span class="line">#创建Person类的实例对象</span><br><span class="line">p1&#x3D;Person(&#39;张三&#39;,20)</span><br><span class="line">print(&#39;p1这个Person类的实例对象的id:&#123;0&#125;&#39;.format(id(p1)))</span><br></pre></td></tr></table></figure>
+
+<h1 id="7-类的浅拷贝与深拷贝"><a href="#7-类的浅拷贝与深拷贝" class="headerlink" title="7. 类的浅拷贝与深拷贝"></a>7. 类的浅拷贝与深拷贝</h1><p>（1）变量的赋值操作，只是形成两个变量，实际上还是指向同一个对象</p>
+<p>（2）浅拷贝：Python拷贝一般都是浅拷贝，拷贝时，对象包含的子对象内容不拷贝，因此，源对象与拷贝对象会引用同一个子对象</p>
+<p>（3）深拷贝：使用copy模块的deepcopy函数，递归拷贝对象中包含的子对象，源对象和拷贝对象所有的子对象也不相同</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">class CPU:</span><br><span class="line">    pass</span><br><span class="line">class Disk:</span><br><span class="line">    pass</span><br><span class="line">class Compute:</span><br><span class="line">    def __init__(self,cpu,disk):</span><br><span class="line">        self.cpu&#x3D;cpu</span><br><span class="line">        self.disk&#x3D;disk</span><br><span class="line"></span><br><span class="line">#(1)变量的赋值</span><br><span class="line">cpu1&#x3D;CPU()</span><br><span class="line">cpu2&#x3D;cpu1</span><br><span class="line">print(cpu1,id(cpu1))</span><br><span class="line">print(cpu2,id(cpu2))</span><br><span class="line"></span><br><span class="line">#(2)类的浅拷贝</span><br><span class="line">print(&#39;-------------------&#39;)</span><br><span class="line">disk&#x3D;Disk() #创建一个硬盘类的对象</span><br><span class="line">computer&#x3D;Compute(cpu1,disk) #创建一个计算机类的对象</span><br><span class="line"></span><br><span class="line">#浅拷贝</span><br><span class="line">import  copy</span><br><span class="line">print(disk)</span><br><span class="line">computer2&#x3D;copy.copy(computer)</span><br><span class="line">print(computer,computer.cpu,computer.disk)</span><br><span class="line">print(computer2,computer2.cpu,computer2.disk)</span><br><span class="line">print(&#39;----------------&#39;)</span><br><span class="line">#深拷贝</span><br><span class="line">computer3&#x3D;copy.deepcopy(computer)</span><br><span class="line">print(computer,computer.cpu,computer.disk)</span><br><span class="line">print(computer3,computer3.cpu,computer3.disk)</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>
