@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python——模块与包</title>
+    <url>/2020/11/10/Python%E2%80%94%E2%80%94%E6%A8%A1%E5%9D%97%E3%80%81%E5%8C%85/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="1-什么叫模块"><a href="#1-什么叫模块" class="headerlink" title="1. 什么叫模块"></a>1. 什么叫模块</h1><p>（1）模块英文为Modules</p>
+<p>（2）函数与模块的关系：一个模块中可以包含N多个函数</p>
+<p>（3）在Python中一个扩展名为.py的文件就是一个模块</p>
+<p>（4）使用模块的好处：</p>
+<p>①方便其他程序和脚本的导入并使用</p>
+<p>②避免函数名和变量名冲突</p>
+<p>③提高代码的可维护性</p>
+<p>④提高代码的可重用性</p>
+<h1 id="2-自定义模块"><a href="#2-自定义模块" class="headerlink" title="2. 自定义模块"></a>2. 自定义模块</h1><h2 id="2-1-创建模块"><a href="#2-1-创建模块" class="headerlink" title="2.1 创建模块"></a>2.1 创建模块</h2><p>新建一个.py文件，名称尽量不要与Python自带的标准模块名称相同</p>
+<h2 id="2-2-导入模块"><a href="#2-2-导入模块" class="headerlink" title="2.2 导入模块"></a>2.2 导入模块</h2><p>import 模块名称 [as别名]</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">import math</span><br><span class="line">print(id(math))</span><br><span class="line">print(type(math))</span><br><span class="line">print(math)</span><br><span class="line">print(math.pi)</span><br><span class="line">print(&#39;--------------------&#39;)</span><br><span class="line">print(dir(math))</span><br><span class="line">print(math.pow(2,3),type(math.pow(2,3)))</span><br><span class="line">print(math.ceil(9.001))</span><br><span class="line">print(math.floor(9.99999))</span><br></pre></td></tr></table></figure>
+
+<p>from 模块名称 import 函数/变量/类</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">from math import pi</span><br><span class="line">from math import pow</span><br><span class="line">print(pi)</span><br><span class="line">print(pow(2,3))</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-以主程序的形式执行"><a href="#3-以主程序的形式执行" class="headerlink" title="3. 以主程序的形式执行"></a>3. 以主程序的形式执行</h1><p>在每个模块的定义中都包括一个记录模块名称的变量<strong>name</strong>,程序可以检查该变量，以确定他们在哪个模块中执行。如果一个模块不是被导入到其他程序中执行，那么它可能在解释器的顶级模块中执行。顶级模块的<strong>name__变量的值为__main</strong>.</p>
+<p>if <strong>name</strong> =’<strong>main</strong>‘:</p>
+<p>​    pass</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk 文件名是calc2.py</span><br><span class="line">def add(a,b):</span><br><span class="line">    return a+b</span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    print(add(10,20))   #只有当点击运行calc2时，才会执行运算</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-python中的包"><a href="#4-python中的包" class="headerlink" title="4. python中的包"></a>4. python中的包</h1><p>（1）包是一个分层次的目录结构，它将一组功能相近的模块组织在一个目录下</p>
+<p>（2）作用：代码规范；避免模块名称冲突</p>
+<p>（3）包与目录的区别：</p>
+<p>①包含<strong>init</strong>.py文件的目录称为包</p>
+<p>②目录里通常不包含<strong>init</strong>.py文件</p>
+<p>（4）包的导入：</p>
+<p>import 包名.模块名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"># 导入带有包的模块是注意事项</span><br><span class="line">import pageage1</span><br><span class="line">import calc</span><br><span class="line">#使用import方式进行导入时，只能跟包名或者模块名</span><br><span class="line"></span><br><span class="line">from pageage1 import module_A</span><br><span class="line">from pageage1.module_A import a</span><br><span class="line">#使用from ...import可以导入包，模块，函数，变量</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-Python中常用的内置模块"><a href="#5-Python中常用的内置模块" class="headerlink" title="5. Python中常用的内置模块"></a>5. Python中常用的内置模块</h1><table>
+<thead>
+<tr>
+<th>模块名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sys</td>
+<td>与Python解释器及其环境操作相关的标准库</td>
+</tr>
+<tr>
+<td>time</td>
+<td>提供与时间相关的各种函数的标准库</td>
+</tr>
+<tr>
+<td>os</td>
+<td>提供了访问操作系统服务功能的标准库</td>
+</tr>
+<tr>
+<td>calendar</td>
+<td>提供与日期相关的各种函数的标准库</td>
+</tr>
+<tr>
+<td>urllib</td>
+<td>用于读取来自网上（服务器）的数据标准库</td>
+</tr>
+<tr>
+<td>json</td>
+<td>用于使用JSON序列化和反序列化对象</td>
+</tr>
+<tr>
+<td>re</td>
+<td>用于在字符串中执行正则表达式匹配和替换</td>
+</tr>
+<tr>
+<td>math</td>
+<td>提供标准算术运算函数的标准库</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>用于进行精确控制运算精度、有效数位和四舍五入操作的十进制运算</td>
+</tr>
+<tr>
+<td>logging</td>
+<td>提供了灵活的记录事件、错误、警告和调试信息等日志信息的功能</td>
+</tr>
+</tbody></table>
+<h1 id="6-第三方模块的安装及使用"><a href="#6-第三方模块的安装及使用" class="headerlink" title="6. 第三方模块的安装及使用"></a>6. 第三方模块的安装及使用</h1><h2 id="6-1-第三方模块的安装"><a href="#6-1-第三方模块的安装" class="headerlink" title="6.1 第三方模块的安装"></a>6.1 第三方模块的安装</h2><p>pip install 模块名</p>
+<h2 id="6-2-第三方模块的使用"><a href="#6-2-第三方模块的使用" class="headerlink" title="6.2 第三方模块的使用"></a>6.2 第三方模块的使用</h2><p>import 模块名</p>
+]]></content>
+  </entry>
+  <entry>
     <title>python——面向对象特征</title>
     <url>/2020/11/09/python%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81/</url>
     <content><![CDATA[<p>[TOC]</p>
