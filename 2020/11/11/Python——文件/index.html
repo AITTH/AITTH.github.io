@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Python——模块与包 | milkcoffee</title>
+  <title>milkcoffee</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Python——模块与包 | milkcoffee">
+  <meta name="description" content="milkcoffee">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="title:Python——文件[TOC] 1. 编码格式介绍常见的字符编码格式： （1）Python的解释器使用的是Unicoude(内存) （2）.py文件在磁盘上使用UTF-8存储（外存） 2. 文件读写操作2.1 内置函数open（）创建文件对象2.2 语法规则：file&#x3D;open(filename [,mode,encoding])file:被创建的文件对象 open:创建文件对象的函">
 <meta property="og:type" content="article">
@@ -298,9 +298,7 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Python——模块、包" class="article article-type-post" itemscope itemprop="blogPost">
-    
-        <h1 class="article-title">Python——模块与包</h1>
+        <article id="post-Python——文件" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
@@ -310,7 +308,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-11-13 16:41:36'>2020-11-10 17:36</time>
+            发布时间 : <time class="date" title='最后更新: 2020-11-15 22:01:58'>2020-11-11 16:50</time>
         
     </div>
     <div class="article-meta">
@@ -332,7 +330,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E5%8F%AB%E6%A8%A1%E5%9D%97"><span class="toc-text">1. 什么叫模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97"><span class="toc-text">2. 自定义模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9D%97"><span class="toc-text">2.1 创建模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">2.2 导入模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BB%A5%E4%B8%BB%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BD%A2%E5%BC%8F%E6%89%A7%E8%A1%8C"><span class="toc-text">3. 以主程序的形式执行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-python%E4%B8%AD%E7%9A%84%E5%8C%85"><span class="toc-text">4. python中的包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Python%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97"><span class="toc-text">5. Python中常用的内置模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="toc-text">6. 第三方模块的安装及使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">6.1 第三方模块的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">6.2 第三方模块的使用</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-Python%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6"><span class="toc-text">title:Python——文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">1. 编码格式介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C"><span class="toc-text">2. 文件读写操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0open%EF%BC%88%EF%BC%89%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="toc-text">2.1 内置函数open（）创建文件对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99%EF%BC%9Afile-open-filename-mode-encoding"><span class="toc-text">2.2 语法规则：file&#x3D;open(filename [,mode,encoding])</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="toc-text">2.3 常用的文件打开模式：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">3. 文件对象的常用方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-with%E8%AF%AD%E5%8F%A5%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="toc-text">4. with语句（上下文管理器）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-text">5. 目录操作</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -348,92 +346,175 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E5%8F%AB%E6%A8%A1%E5%9D%97"><span class="toc-text">1. 什么叫模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97"><span class="toc-text">2. 自定义模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9D%97"><span class="toc-text">2.1 创建模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">2.2 导入模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BB%A5%E4%B8%BB%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BD%A2%E5%BC%8F%E6%89%A7%E8%A1%8C"><span class="toc-text">3. 以主程序的形式执行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-python%E4%B8%AD%E7%9A%84%E5%8C%85"><span class="toc-text">4. python中的包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Python%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97"><span class="toc-text">5. Python中常用的内置模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="toc-text">6. 第三方模块的安装及使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">6.1 第三方模块的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">6.2 第三方模块的使用</span></a></li></ol></li></ol></div></p>
-<h1 id="1-什么叫模块"><a href="#1-什么叫模块" class="headerlink" title="1. 什么叫模块"></a>1. 什么叫模块</h1><p>（1）模块英文为Modules</p>
-<p>（2）函数与模块的关系：一个模块中可以包含N多个函数</p>
-<p>（3）在Python中一个扩展名为.py的文件就是一个模块</p>
-<p>（4）使用模块的好处：</p>
-<p>①方便其他程序和脚本的导入并使用</p>
-<p>②避免函数名和变量名冲突</p>
-<p>③提高代码的可维护性</p>
-<p>④提高代码的可重用性</p>
-<h1 id="2-自定义模块"><a href="#2-自定义模块" class="headerlink" title="2. 自定义模块"></a>2. 自定义模块</h1><h2 id="2-1-创建模块"><a href="#2-1-创建模块" class="headerlink" title="2.1 创建模块"></a>2.1 创建模块</h2><p>新建一个.py文件，名称尽量不要与Python自带的标准模块名称相同</p>
-<h2 id="2-2-导入模块"><a href="#2-2-导入模块" class="headerlink" title="2.2 导入模块"></a>2.2 导入模块</h2><p>import 模块名称 [as别名]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">import math</span><br><span class="line">print(id(math))</span><br><span class="line">print(type(math))</span><br><span class="line">print(math)</span><br><span class="line">print(math.pi)</span><br><span class="line">print(&#39;--------------------&#39;)</span><br><span class="line">print(dir(math))</span><br><span class="line">print(math.pow(2,3),type(math.pow(2,3)))</span><br><span class="line">print(math.ceil(9.001))</span><br><span class="line">print(math.floor(9.99999))</span><br></pre></td></tr></table></figure>
-
-<p>from 模块名称 import 函数/变量/类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">from math import pi</span><br><span class="line">from math import pow</span><br><span class="line">print(pi)</span><br><span class="line">print(pow(2,3))</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-以主程序的形式执行"><a href="#3-以主程序的形式执行" class="headerlink" title="3. 以主程序的形式执行"></a>3. 以主程序的形式执行</h1><p>在每个模块的定义中都包括一个记录模块名称的变量<strong>name</strong>,程序可以检查该变量，以确定他们在哪个模块中执行。如果一个模块不是被导入到其他程序中执行，那么它可能在解释器的顶级模块中执行。顶级模块的<strong>name__变量的值为__main</strong>.</p>
-<p>if <strong>name</strong> =’<strong>main</strong>‘:</p>
-<p>​    pass</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk 文件名是calc2.py</span><br><span class="line">def add(a,b):</span><br><span class="line">    return a+b</span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    print(add(10,20))   #只有当点击运行calc2时，才会执行运算</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-python中的包"><a href="#4-python中的包" class="headerlink" title="4. python中的包"></a>4. python中的包</h1><p>（1）包是一个分层次的目录结构，它将一组功能相近的模块组织在一个目录下</p>
-<p>（2）作用：代码规范；避免模块名称冲突</p>
-<p>（3）包与目录的区别：</p>
-<p>①包含<strong>init</strong>.py文件的目录称为包</p>
-<p>②目录里通常不包含<strong>init</strong>.py文件</p>
-<p>（4）包的导入：</p>
-<p>import 包名.模块名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"># 导入带有包的模块是注意事项</span><br><span class="line">import pageage1</span><br><span class="line">import calc</span><br><span class="line">#使用import方式进行导入时，只能跟包名或者模块名</span><br><span class="line"></span><br><span class="line">from pageage1 import module_A</span><br><span class="line">from pageage1.module_A import a</span><br><span class="line">#使用from ...import可以导入包，模块，函数，变量</span><br></pre></td></tr></table></figure>
-
-<h1 id="5-Python中常用的内置模块"><a href="#5-Python中常用的内置模块" class="headerlink" title="5. Python中常用的内置模块"></a>5. Python中常用的内置模块</h1><table>
+        <hr>
+<h2 id="title-Python——文件"><a href="#title-Python——文件" class="headerlink" title="title:Python——文件"></a>title:Python——文件</h2><p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-Python%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6"><span class="toc-text">title:Python——文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">1. 编码格式介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C"><span class="toc-text">2. 文件读写操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0open%EF%BC%88%EF%BC%89%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="toc-text">2.1 内置函数open（）创建文件对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99%EF%BC%9Afile-open-filename-mode-encoding"><span class="toc-text">2.2 语法规则：file&#x3D;open(filename [,mode,encoding])</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="toc-text">2.3 常用的文件打开模式：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">3. 文件对象的常用方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-with%E8%AF%AD%E5%8F%A5%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="toc-text">4. with语句（上下文管理器）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-text">5. 目录操作</span></a></div></p>
+<h1 id="1-编码格式介绍"><a href="#1-编码格式介绍" class="headerlink" title="1. 编码格式介绍"></a>1. 编码格式介绍</h1><p>常见的字符编码格式：</p>
+<p>（1）Python的解释器使用的是Unicoude(内存)</p>
+<p>（2）.py文件在磁盘上使用UTF-8存储（外存）</p>
+<h1 id="2-文件读写操作"><a href="#2-文件读写操作" class="headerlink" title="2. 文件读写操作"></a>2. 文件读写操作</h1><h2 id="2-1-内置函数open（）创建文件对象"><a href="#2-1-内置函数open（）创建文件对象" class="headerlink" title="2.1 内置函数open（）创建文件对象"></a>2.1 内置函数open（）创建文件对象</h2><h2 id="2-2-语法规则：file-open-filename-mode-encoding"><a href="#2-2-语法规则：file-open-filename-mode-encoding" class="headerlink" title="2.2 语法规则：file=open(filename [,mode,encoding])"></a>2.2 语法规则：file=open(filename [,mode,encoding])</h2><p>file:被创建的文件对象</p>
+<p>open:创建文件对象的函数</p>
+<p>filename：要创建或打开的文件名称</p>
+<p>mode：打开模式默认只读</p>
+<p>encoding:默认文本文件中字符的编写格式为gbk</p>
+<h2 id="2-3-常用的文件打开模式："><a href="#2-3-常用的文件打开模式：" class="headerlink" title="2.3 常用的文件打开模式："></a>2.3 常用的文件打开模式：</h2><p>文件的类型：</p>
+<p>按文件中数据的组织形式，文件分为以下两大类：</p>
+<p>（1）文本文件：存储的是普通“字符”文本，默认为unicode字符集，可以使用记事本程序打开</p>
+<p>（2）二进制文件：把数据内容用“字节”进行存储，无法用记事本打开，必须使用专用的软件打开，举例：</p>
+<p>mp3音频文件，.jpg图片，.doc文档等</p>
+<table>
 <thead>
 <tr>
-<th>模块名</th>
+<th>打开模式</th>
 <th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>sys</td>
-<td>与Python解释器及其环境操作相关的标准库</td>
+<td>r</td>
+<td>以只读模式打开文件，文件的指针将会放在文件的开头</td>
 </tr>
 <tr>
-<td>time</td>
-<td>提供与时间相关的各种函数的标准库</td>
+<td>w</td>
+<td>以只写模式打开文件，如果文件不存在则创建，如果文件存在，则覆盖原有内容，文件指针在文件的开头</td>
 </tr>
 <tr>
-<td>os</td>
-<td>提供了访问操作系统服务功能的标准库</td>
+<td>a</td>
+<td>以追加模式打开文件，如果文件不存在则创建，文件指针在文件开头，如果文件存在，则在文件末尾追加内容，文件指针在原文件末尾</td>
 </tr>
 <tr>
-<td>calendar</td>
-<td>提供与日期相关的各种函数的标准库</td>
+<td>b</td>
+<td>以二进制方式打开文件，不能单独使用，需要与其它模式一起使用，rb,或者wb</td>
 </tr>
 <tr>
-<td>urllib</td>
-<td>用于读取来自网上（服务器）的数据标准库</td>
-</tr>
-<tr>
-<td>json</td>
-<td>用于使用JSON序列化和反序列化对象</td>
-</tr>
-<tr>
-<td>re</td>
-<td>用于在字符串中执行正则表达式匹配和替换</td>
-</tr>
-<tr>
-<td>math</td>
-<td>提供标准算术运算函数的标准库</td>
-</tr>
-<tr>
-<td>decimal</td>
-<td>用于进行精确控制运算精度、有效数位和四舍五入操作的十进制运算</td>
-</tr>
-<tr>
-<td>logging</td>
-<td>提供了灵活的记录事件、错误、警告和调试信息等日志信息的功能</td>
+<td>+</td>
+<td>以读写方式打开文件，不能单独使用，需要与其他模式一起使用，a+</td>
 </tr>
 </tbody></table>
-<h1 id="6-第三方模块的安装及使用"><a href="#6-第三方模块的安装及使用" class="headerlink" title="6. 第三方模块的安装及使用"></a>6. 第三方模块的安装及使用</h1><h2 id="6-1-第三方模块的安装"><a href="#6-1-第三方模块的安装" class="headerlink" title="6.1 第三方模块的安装"></a>6.1 第三方模块的安装</h2><p>pip install 模块名</p>
-<p><img src="https://cdn.jsdelivr.net/gh/AITTH/AITTH.github.io@v1.0/tuxiang/%E5%8C%85%E3%80%81.png" alt="包、"></p>
-<h2 id="6-2-第三方模块的使用"><a href="#6-2-第三方模块的使用" class="headerlink" title="6.2 第三方模块的使用"></a>6.2 第三方模块的使用</h2><p>import 模块名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">import schedule</span><br><span class="line">import time</span><br><span class="line">def job():</span><br><span class="line">    print(&#39;哈哈--------&#39;)</span><br><span class="line"></span><br><span class="line">schedule.every(3).seconds.do(job)</span><br><span class="line">while True:</span><br><span class="line">    schedule.run_pending()</span><br><span class="line">    time.sleep(1)</span><br></pre></td></tr></table></figure>
+<h1 id="3-文件对象的常用方法"><a href="#3-文件对象的常用方法" class="headerlink" title="3. 文件对象的常用方法"></a>3. 文件对象的常用方法</h1><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read([size])</td>
+<td>从文件中读取size个字节或字符的内容返回。若省略[size]，则读取到文件的末尾，即一次读取文件所有内容</td>
+</tr>
+<tr>
+<td>readline()</td>
+<td>从文本文件中读取一行内容</td>
+</tr>
+<tr>
+<td>readlines()</td>
+<td>把文本文件中每一行都作为独立的字符串对象，并将这些对象放入列表返回</td>
+</tr>
+<tr>
+<td>write(str)</td>
+<td>将字符串str内容写入文件</td>
+</tr>
+<tr>
+<td>writelines(s_list)</td>
+<td>将字符串列表s_list写入文本文件，不添加换行符</td>
+</tr>
+<tr>
+<td>seek(offset[,whence])</td>
+<td>把文件指针移动到新的位置，offset表示相对于whence的位置:(1)offset：为正往结束方向移动，为负往开始方向移动（2）whence不同的值代表不同的含义： 0：从文件头开始计算（默认值） 1：从当前位置开始计算  2：从文件尾开始计算</td>
+</tr>
+<tr>
+<td>tell()</td>
+<td>返回文件指针的当前位置</td>
+</tr>
+<tr>
+<td>flush()</td>
+<td>把缓冲区的内容写入文件，但不关闭文件</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>把缓冲区的内容写入文件，同时关闭文件，释放文件对象相关资源</td>
+</tr>
+</tbody></table>
+<h1 id="4-with语句（上下文管理器）"><a href="#4-with语句（上下文管理器）" class="headerlink" title="4. with语句（上下文管理器）"></a>4. with语句（上下文管理器）</h1><p>介绍：with语句可以自动管理上下文资源，不论什么原因跳出with块，都能确保文件正确的关闭，以此来达到释放资源的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">MyContentMgr实现了特殊方法__enter__(),__exit__()称为该类对象遵守了上下文管理器协议</span><br><span class="line">该类对象的实例对象，称为上下文管理器</span><br><span class="line"></span><br><span class="line">MyContentMgr()</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">class MyContentMgr(object):</span><br><span class="line">    def __enter__(self):</span><br><span class="line">        print(&#39;enter方法被调用执行了&#39;)</span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line">    def __exit__(self, exc_type, exc_val, exc_tb):</span><br><span class="line">        print(&#39;exit方法被调用执行了&#39;)</span><br><span class="line"></span><br><span class="line">    def show(self):</span><br><span class="line">        print(&#39;show方法被调用执行了&#39;)</span><br><span class="line"></span><br><span class="line">with MyContentMgr() as file:  #相当于file&#x3D;MyContentMgr()</span><br><span class="line">    file.show()</span><br></pre></td></tr></table></figure>
 
+<h1 id="5-目录操作"><a href="#5-目录操作" class="headerlink" title="5. 目录操作"></a>5. 目录操作</h1><p>（1）os模块是Python内置的与操作系统功能和文件系统相关的模块，该模块中的语句的执行结果通常与操作系统有关，在不同的操作系统上运行，得到的结果可能不一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">#os模块与操作系统相关的一个模块</span><br><span class="line">import os</span><br><span class="line">#os.system(&#39;notepad.exe&#39;)</span><br><span class="line">#os.system(&#39;calc.exe&#39;)</span><br><span class="line">#直接调用可执行文件</span><br><span class="line">os.startfile(&#39;D:\\Program Files (x86)(安装的软件)\\软件\\Tencent\\QQ\\Bin\\qq.exe&#39;) #‘’里为QQ所在文件位置</span><br></pre></td></tr></table></figure>
 
-
-
+<p>（2）os模块与os.path模块用于对目录或文件进行操作</p>
+<p><strong><u>os模块操作目录相关函数</u></strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getcwd()</td>
+<td>返回当前的工作目录</td>
+</tr>
+<tr>
+<td>listdir(path)</td>
+<td>返回指定路径下的文件和目录信息</td>
+</tr>
+<tr>
+<td>mkdir(path[,mode])</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>makedirs(path1/path2…[,mode])</td>
+<td>创建多级目录</td>
+</tr>
+<tr>
+<td>rmdir(path)</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>removedirs(path1/path2……)</td>
+<td>删除多级目录</td>
+</tr>
+<tr>
+<td>chdir(path)</td>
+<td>将path设置为当前工作目录</td>
+</tr>
+</tbody></table>
+<p><strong><u>os.path模块操作目录相关函数</u></strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abspath(path)</td>
+<td>用于获取文件或目录的绝对路径</td>
+</tr>
+<tr>
+<td>exists(path)</td>
+<td>用于判断文件或目录是否存在，如果存在返回True，否则返回False</td>
+</tr>
+<tr>
+<td>join(path,name)</td>
+<td>将目录与目录或者文件名拼接起来</td>
+</tr>
+<tr>
+<td>splitext()</td>
+<td>分离文件名和扩展名</td>
+</tr>
+<tr>
+<td>basename(path)</td>
+<td>从一个目录中提取文件名</td>
+</tr>
+<tr>
+<td>dirnam(path)</td>
+<td>从一个路径中提取文件路径，不包括文件名</td>
+</tr>
+<tr>
+<td>isdir(path)</td>
+<td>用于判断是否为路径</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">path&#x3D;os.getcwd()</span><br><span class="line">lst_files&#x3D;os.walk(path)</span><br><span class="line">print(lst_files)</span><br><span class="line">for dirpath,dirname,filename in lst_files:</span><br><span class="line">    &#39;&#39;&#39;print(dirpath)</span><br><span class="line">    print(dirname)</span><br><span class="line">    print(filename)</span><br><span class="line">    print(&#39;-----------------------------------&#39;)&#39;&#39;&#39;</span><br><span class="line">    for dir in dirname:</span><br><span class="line">        print(os.path.join(dirpath,dir))</span><br><span class="line">    print(&#39;---------------------------------&#39;)</span><br><span class="line">    for file in filename:</span><br><span class="line">        print(os.path.join(dirpath,file))</span><br><span class="line">    print(&#39;---------------------------------&#39;)</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395876210@qq.com </span>
     </div>
