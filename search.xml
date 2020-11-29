@@ -3,7 +3,8 @@
   <entry>
     <title>Python案例——学生信息管理系统</title>
     <url>/2020/11/16/Python%E6%A1%88%E4%BE%8B%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h1><h2 id="学生管理系统应具备的功能"><a href="#学生管理系统应具备的功能" class="headerlink" title="学生管理系统应具备的功能"></a>学生管理系统应具备的功能</h2><ol>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h1><h2 id="学生管理系统应具备的功能"><a href="#学生管理系统应具备的功能" class="headerlink" title="学生管理系统应具备的功能"></a>学生管理系统应具备的功能</h2><ol>
 <li>添加学生及成绩信息</li>
 <li>将学生信息保存到文件中</li>
 <li>修改和删除学生信息</li>
