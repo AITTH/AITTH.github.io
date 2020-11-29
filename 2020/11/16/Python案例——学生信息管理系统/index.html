@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Python案例——学生信息管理系统 | milkcoffee</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Python案例——学生信息管理系统 | milkcoffee">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="hetingting的个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta property="og:site_name" content="milkcoffee">
+<meta property="og:description" content="hetingting的个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-08T13:19:19.000Z">
+<meta property="article:modified_time" content="2020-08-08T13:19:19.969Z">
+<meta property="article:author" content="和婷婷">
+<meta property="article:tag" content="个人博客，学习，生活">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/1.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/1.jpg" />
+</a>
+<div class="author">
+    <span>和婷婷</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/AITTH" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="csdn" href="https://blog.csdn.net/weixin_49313319" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-csdn"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(17)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="17">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 "
+           href="/2020/11/16/Python%E6%A1%88%E4%BE%8B%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python案例——学生信息管理系统">Python案例——学生信息管理系统</span>
+            <span class="post-date" title="2020-11-16 20:38:00">2020/11/16</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/11/11/Python%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——文件">Python——文件</span>
+            <span class="post-date" title="2020-11-11 16:50:53">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/11/10/Python%E2%80%94%E2%80%94%E6%A8%A1%E5%9D%97%E3%80%81%E5%8C%85/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——模块与包">Python——模块与包</span>
+            <span class="post-date" title="2020-11-10 17:36:16">2020/11/10</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/11/09/python%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python——面向对象特征">python——面向对象特征</span>
+            <span class="post-date" title="2020-11-09 21:33:19">2020/11/09</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/30/Python%E2%80%94%E2%80%94%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——类与对象">Python——类与对象</span>
+            <span class="post-date" title="2020-10-30 10:34:03">2020/10/30</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/29/Python%E2%80%94%E2%80%94bug/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——Bug">Python——Bug</span>
+            <span class="post-date" title="2020-10-29 11:23:52">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/27/Python-%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——函数">Python——函数</span>
+            <span class="post-date" title="2020-10-27 10:07:23">2020/10/27</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/21/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——字符串">Python——字符串</span>
+            <span class="post-date" title="2020-10-21 20:41:05">2020/10/21</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/19/Python-%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python——列表、字典、元组、集合">Python——列表、字典、元组、集合</span>
+            <span class="post-date" title="2020-10-19 10:23:12">2020/10/19</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/10/19/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E5%A4%9A%E5%88%86%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A0%94%E7%A9%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="阅读笔记——基于机器学习的文本情感多分类的学习与研究">阅读笔记——基于机器学习的文本情感多分类的学习与研究</span>
+            <span class="post-date" title="2020-10-19 08:26:39">2020/10/19</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/22/%E5%B0%8F%E5%8F%91%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="钉钉中的小发现">钉钉中的小发现</span>
+            <span class="post-date" title="2020-08-22 08:13:49">2020/08/22</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/16/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析">阅读笔记——基于 CART 决策树的计算机网络课程学生成绩分析</span>
+            <span class="post-date" title="2020-08-16 19:08:23">2020/08/16</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/15/github%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改github中的username">修改github中的username</span>
+            <span class="post-date" title="2020-08-15 17:43:11">2020/08/15</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/10/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8B%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="传统的机器学习方法——决策树（下）">传统的机器学习方法——决策树（下）</span>
+            <span class="post-date" title="2020-08-10 17:40:25">2020/08/10</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/09/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="传统的机器学习方法——决策树（上）">传统的机器学习方法——决策树（上）</span>
+            <span class="post-date" title="2020-08-09 09:47:01">2020/08/09</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/08/python-bug%E4%BF%AE%E6%94%B9/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python中的bug">python中的bug</span>
+            <span class="post-date" title="2020-08-08 20:26:01">2020/08/08</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/08/02/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2020-08-02 08:23:27">2020/08/02</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Python案例——学生信息管理系统" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Python案例——学生信息管理系统</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-11-29 08:49:06'>2020-11-16 20:38</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">1. 需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BA%94%E5%85%B7%E5%A4%87%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">学生管理系统应具备的功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">2. 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E7%BB%93%E6%9E%84"><span class="toc-text">系统功能结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%BF%85%E5%A4%87"><span class="toc-text">3. 系统开发必备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%9A"><span class="toc-text">系统开发环境：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%B8%BB%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1"><span class="toc-text">4. 主函数设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%BB%B4%E6%8A%A4%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="toc-text">5. 学生信息维护模块设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E5%BD%95%E5%85%A5%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD"><span class="toc-text">5.1 录入学生信息功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E5%88%A0%E9%99%A4%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD"><span class="toc-text">5.2 删除学生信息功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E4%BF%AE%E6%94%B9%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD"><span class="toc-text">5.3 修改学生信息功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%9F%A5%E8%AF%A2-%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="toc-text">6. 查询&#x2F;统计模块设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-text">6.1 实现查询学生信息功能：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E5%AE%9E%E7%8E%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%94%9F%E6%80%BB%E4%BA%BA%E6%95%B0%E5%8A%9F%E8%83%BD"><span class="toc-text">6.2 实现统计学生总人数功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD"><span class="toc-text">6.3 显示所有信息功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%8E%92%E5%BA%8F%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="toc-text">7. 排序模块设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85"><span class="toc-text">8. 项目打包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97"><span class="toc-text">8.1 安装第三方模块</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h1><h2 id="学生管理系统应具备的功能"><a href="#学生管理系统应具备的功能" class="headerlink" title="学生管理系统应具备的功能"></a>学生管理系统应具备的功能</h2><ol>
+<li>添加学生及成绩信息</li>
+<li>将学生信息保存到文件中</li>
+<li>修改和删除学生信息</li>
+<li>查询学生信息</li>
+<li>根据学生成绩进行排序</li>
+<li>统计学生的总分</li>
+</ol>
+<h1 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2. 系统设计"></a>2. 系统设计</h1><h2 id="系统功能结构"><a href="#系统功能结构" class="headerlink" title="系统功能结构"></a>系统功能结构</h2><p>学生信息管理系统的7大模块：</p>
+<ol>
+<li>录入学生信息模块</li>
+<li>查找学生信息模块</li>
+<li>删除学生信息模块</li>
+<li>修改学生信息模块</li>
+<li>学生成绩排名模块</li>
+<li>统计学生总人数模块</li>
+<li>显示全部学生信息模块</li>
+</ol>
+<h1 id="3-系统开发必备"><a href="#3-系统开发必备" class="headerlink" title="3. 系统开发必备"></a>3. 系统开发必备</h1><h2 id="系统开发环境："><a href="#系统开发环境：" class="headerlink" title="系统开发环境："></a>系统开发环境：</h2><ol>
+<li>操作系统</li>
+<li>Python解释器版本：Python3.8</li>
+<li>开发工具：PyCharm</li>
+<li>Python内置模块：os,re</li>
+</ol>
+<h1 id="4-主函数设计"><a href="#4-主函数设计" class="headerlink" title="4. 主函数设计"></a>4. 主函数设计</h1><p>实现主函数：</p>
+<table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td>退出系统</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td>录入学生信息，调用insert()函数</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>查找学生信息，调用search()函数</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>删除学生信息，调用delete()函数</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>修改学生信息，调用modify()函数</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>对学生成绩排序，调用sort()函数</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>统计学生总人数，调用total()函数</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td>显示所有的学生信息，调用show()函数</td>
+</tr>
+</tbody></table>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;gbk</span><br><span class="line">def main():</span><br><span class="line">    while True:</span><br><span class="line">        menm()</span><br><span class="line">        choice&#x3D;int(input(&#39;请选择&#39;))</span><br><span class="line">        if choice in [0,1,2,3,4,5,6,7]:</span><br><span class="line">            if choice&#x3D;&#x3D;0:</span><br><span class="line">                answer&#x3D;input(&#39;您确定要退出系统吗？y&#x2F;n&#39;)</span><br><span class="line">                if answer&#x3D;&#x3D;&#39;y&#39; or answer&#x3D;&#x3D;&#39;Y&#39;:</span><br><span class="line">                    print(&#39;谢谢您的使用!!!&#39;)</span><br><span class="line">                    break   #退出系统</span><br><span class="line">                else:</span><br><span class="line">                    continue</span><br><span class="line">            elif choice&#x3D;&#x3D;1:</span><br><span class="line">                insert()    #录入学生信息</span><br><span class="line">            elif choice&#x3D;&#x3D;2:</span><br><span class="line">                search()</span><br><span class="line">            elif choice&#x3D;&#x3D;3:</span><br><span class="line">                delete()</span><br><span class="line">            elif choice&#x3D;&#x3D;4:</span><br><span class="line">                modify()</span><br><span class="line">            elif choice&#x3D;&#x3D;5:</span><br><span class="line">                sort()</span><br><span class="line">            elif choice&#x3D;&#x3D;6:</span><br><span class="line">                total()</span><br><span class="line">            elif choice&#x3D;&#x3D;7:</span><br><span class="line">                show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def menm():</span><br><span class="line">    print(&#39;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;学生信息管理系统&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#39;)</span><br><span class="line">    print(&#39;------------------------------功能菜单------------------------------------&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t1.录入学生信息&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t2.查找学生信息&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t3.删除学生信息&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t4.修改学生信息&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t5.排序&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t6.统计学生总人数&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t7.显示所有学生信息&#39;)</span><br><span class="line">    print(&#39;\t\t\t\t\t\t0.退出&#39;)</span><br><span class="line">    print(&#39;--------------------------------------------------------------------------&#39;)</span><br><span class="line"></span><br><span class="line">def insert():</span><br><span class="line">    pass</span><br><span class="line">def search():</span><br><span class="line">    pass</span><br><span class="line">def delete():</span><br><span class="line">    pass</span><br><span class="line">def modify():</span><br><span class="line">    pass</span><br><span class="line">def sort():</span><br><span class="line">    pass</span><br><span class="line">def total():</span><br><span class="line">    pass</span><br><span class="line">def show():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-学生信息维护模块设计"><a href="#5-学生信息维护模块设计" class="headerlink" title="5. 学生信息维护模块设计"></a>5. 学生信息维护模块设计</h1><h2 id="5-1-录入学生信息功能"><a href="#5-1-录入学生信息功能" class="headerlink" title="5.1 录入学生信息功能"></a>5.1 录入学生信息功能</h2><p>从控制台录入学生信息，并且把他们保存到磁盘文件中。</p>
+<p>具体实现：</p>
+<p>①save(student)函数，用于将学生信息保存到文件</p>
+<p>②insert()函数，用于录入学生信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#最前面加上filename&#x3D;&#39;student.txt&#39;</span><br><span class="line">def insert():</span><br><span class="line">    student_list&#x3D;[]</span><br><span class="line">    while True:</span><br><span class="line">        id&#x3D;input(&#39;请输入ID（如1001）:&#39;)</span><br><span class="line">        if not id:</span><br><span class="line">            break</span><br><span class="line">        name&#x3D;input(&#39;请输入姓名：&#39;)</span><br><span class="line">        if not name:</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">        try:</span><br><span class="line">            english&#x3D;input(&#39;请输入英语成绩：&#39;)</span><br><span class="line">            python&#x3D;input(&#39;请输入Python成绩：&#39;)</span><br><span class="line">            java&#x3D;input(&#39;请输入java成绩：&#39;)</span><br><span class="line">        except:</span><br><span class="line">            print(&#39;输入无效，不是整数类型，请重新输入：&#39;)</span><br><span class="line">            continue</span><br><span class="line">        #将录入的学生信息保存到字典中</span><br><span class="line">        student&#x3D;&#123;&#39;id&#39;:id,&#39;name&#39;:name,&#39;english&#39;:english,&#39;python&#39;:python,&#39;java&#39;:java&#125;</span><br><span class="line">        #将学生信息添加到列表中</span><br><span class="line">        student_list.append(student)</span><br><span class="line">        answer&#x3D;input(&#39;是否继续添加？y&#x2F;n\n&#39;)</span><br><span class="line">        if answer&#x3D;&#x3D;&#39;y&#39;:</span><br><span class="line">            continue</span><br><span class="line">        else:</span><br><span class="line">            break</span><br><span class="line">    #调用save()函数</span><br><span class="line">    save(student_list)</span><br><span class="line">    print(&#39;学生信息录入完毕！！！&#39;)</span><br><span class="line">def save(lst):</span><br><span class="line">    try:</span><br><span class="line">        stu_txt&#x3D;open(filename,&#39;a&#39;,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">    except:</span><br><span class="line">        stu_txt&#x3D;open(filename,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">    for item in lst:</span><br><span class="line">        stu_txt.write(str(item)+&#39;\n&#39;)</span><br><span class="line">    stu_txt.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-2-删除学生信息功能"><a href="#5-2-删除学生信息功能" class="headerlink" title="5.2 删除学生信息功能"></a>5.2 删除学生信息功能</h2><p>从控制台录入学生ID，到磁盘文件中找到对应的学生信息，并将其删除。</p>
+<p>具体实现：</p>
+<p>①编写主函数中调用的删除学生信息的函数delete()</p>
+<p>②调用了show()函数显示学生信息，该函数的功能将在后面完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def delete():</span><br><span class="line">    while True:</span><br><span class="line">        student_id&#x3D;input(&#39;请输入要删除的学生的ID：&#39;)</span><br><span class="line">        if student_id!&#x3D;&#39;&#39;:</span><br><span class="line">            if os.path.exists(filename):</span><br><span class="line">                with open(filename,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as file:</span><br><span class="line">                    student_old&#x3D;file.readlines()</span><br><span class="line">            else:</span><br><span class="line">                student_ole&#x3D;[]</span><br><span class="line">            flag&#x3D;False   #标记是否删除</span><br><span class="line">            if student_old:</span><br><span class="line">                with open(filename,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;) as wfile:</span><br><span class="line">                    d&#x3D;&#123;&#125;</span><br><span class="line">                    for item in student_old:</span><br><span class="line">                        d&#x3D;dict(eval(item))    #将字符串转成字典</span><br><span class="line">                        if d[&#39;id&#39;]!&#x3D;student_id:</span><br><span class="line">                            wfile.write(str(d)+&#39;\n&#39;)</span><br><span class="line">                        else:</span><br><span class="line">                            flag&#x3D;True</span><br><span class="line">                    if flag:</span><br><span class="line">                        print(f&#39;id为&#123;student_id&#125;的学生信息已被删除&#39;)</span><br><span class="line">                    else:</span><br><span class="line">                        print(f&#39;没有找到ID为&#123;student_id&#125;的学生信息&#39;)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;无学生信息&#39;)</span><br><span class="line">                break</span><br><span class="line">            show()    #删除之后重新显示所有学生信息</span><br><span class="line">            answer&#x3D;input(&#39;是否继续删除？y&#x2F;n\n&#39;)</span><br><span class="line">            if answer&#x3D;&#x3D;&#39;y&#39;:</span><br><span class="line">                continue</span><br><span class="line">            else:</span><br><span class="line">                break</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-3-修改学生信息功能"><a href="#5-3-修改学生信息功能" class="headerlink" title="5.3 修改学生信息功能"></a>5.3 修改学生信息功能</h2><p>具体实现：</p>
+<p>①编写主函数中调用的修改学生信息的函数modify()</p>
+<p>②调用了show()函数显示学生信息，该函数的功能将在后面完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">def modify():</span><br><span class="line">    show()</span><br><span class="line">    if os.path.exists(filename):</span><br><span class="line">        with open(filename,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as rfile:</span><br><span class="line">            student_old&#x3D;rfile.readlines()</span><br><span class="line">    else:</span><br><span class="line">        return</span><br><span class="line">    student_id&#x3D;input(&#39;请输入要修改的学员的ID：&#39;)</span><br><span class="line">    with open(filename,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;) as wfile:</span><br><span class="line">        for item in student_old:</span><br><span class="line">            d&#x3D;dict(eval(item))</span><br><span class="line">            if d[&#39;id&#39;]&#x3D;&#x3D;student_id:</span><br><span class="line">                print(&#39;找到了学生信息，可以修改他的相关信息了！&#39;)</span><br><span class="line">                while True:</span><br><span class="line">                    try:</span><br><span class="line">                        d[&#39;name&#39;]&#x3D;input(&#39;请输入姓名:&#39;)</span><br><span class="line">                        d[&#39;english&#39;]&#x3D;input(&#39;请输入英语成绩:&#39;)</span><br><span class="line">                        d[&#39;python&#39;]&#x3D;input(&#39;请输入python成绩:&#39;)</span><br><span class="line">                        d[&#39;java&#39;]&#x3D;input(&#39;请输入Java成绩：&#39;)</span><br><span class="line">                    except:</span><br><span class="line">                        print(&#39;您的输入有误，请重新输入！！！&#39;)</span><br><span class="line">                    else:</span><br><span class="line">                        break</span><br><span class="line">                wfile.write(str(d)+&#39;\n&#39;)</span><br><span class="line">                print(&#39;修改成功！！！&#39;)</span><br><span class="line">            else:</span><br><span class="line">                wfile.write(str(d)+&#39;\n&#39;)</span><br><span class="line">        answer&#x3D;input(&#39;是否继续修改其他学生信息？y&#x2F;n\n&#39;)</span><br><span class="line">        if answer&#x3D;&#x3D;&#39;y&#39;:</span><br><span class="line">            modify()</span><br></pre></td></tr></table></figure>
+
+<h1 id="6-查询-统计模块设计"><a href="#6-查询-统计模块设计" class="headerlink" title="6. 查询/统计模块设计"></a>6. 查询/统计模块设计</h1><h2 id="6-1-实现查询学生信息功能："><a href="#6-1-实现查询学生信息功能：" class="headerlink" title="6.1 实现查询学生信息功能："></a>6.1 实现查询学生信息功能：</h2><p>从控制台录入学生ID或姓名，到磁盘文件中找到对应的学生信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">def search():</span><br><span class="line">    student_query&#x3D;[]</span><br><span class="line">    while True:</span><br><span class="line">        id&#x3D;&#39;&#39;</span><br><span class="line">        name&#x3D;&#39;&#39;</span><br><span class="line">        if os.path.exists(filename):</span><br><span class="line">            mode&#x3D;input(&#39;按ID查找请输入1，按姓名从查找请输入2：&#39;)</span><br><span class="line">            if mode&#x3D;&#x3D;&#39;1&#39;:</span><br><span class="line">                id&#x3D;input(&#39;请输入学生ID&#39;)</span><br><span class="line">            elif mode&#x3D;&#x3D;&#39;2&#39;:</span><br><span class="line">                name&#x3D;input(&#39;请输入学生姓名：&#39;)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;您的输入有误，请重新输入&#39;)</span><br><span class="line">                search()</span><br><span class="line">            with open(filename,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as rfile:</span><br><span class="line">                student&#x3D;rfile.readlines()</span><br><span class="line">                for item in student:</span><br><span class="line">                    d&#x3D;dict(eval(item))</span><br><span class="line">                    if id!&#x3D;&#39;&#39;:</span><br><span class="line">                        if d[&#39;id&#39;]&#x3D;&#x3D;id:</span><br><span class="line">                            student_query.append(d)</span><br><span class="line">                    elif name!&#x3D;&#39;&#39;:</span><br><span class="line">                        if d[&#39;name&#39;]&#x3D;&#x3D;name:</span><br><span class="line">                            student_query.append(d)</span><br><span class="line">            #显示查询结果</span><br><span class="line">            show_student(student_query)</span><br><span class="line">            #清空列表</span><br><span class="line">            student_query.clear()</span><br><span class="line">            answer&#x3D;input(&#39;是否继续查询？y&#x2F;n\n&#39;)</span><br><span class="line">            if answer&#x3D;&#x3D;&#39;y&#39;:</span><br><span class="line">                continue</span><br><span class="line">            else:</span><br><span class="line">                break</span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line">            print(&#39;暂未保存学生信息&#39;)</span><br><span class="line">            return</span><br><span class="line">def show_student(lst):</span><br><span class="line">    if len(lst)&#x3D;&#x3D;0:</span><br><span class="line">        print(&#39;没有查询到学生信息，无数据显示！！！&#39;)</span><br><span class="line">        return</span><br><span class="line">    #定义标题的显示格式</span><br><span class="line">    format_title&#x3D;&#39;&#123;:^6&#125;\t&#123;:^12&#125;\t&#123;:^8&#125;\t&#123;:^10&#125;\t&#123;:^10&#125;\t&#123;:^8&#125;&#39;</span><br><span class="line">    print(format_title.format(&#39;ID&#39;,&#39;姓名&#39;,&#39;英语成绩&#39;,&#39;Python成绩&#39;,&#39;JAVA成绩&#39;,&#39;总成绩&#39;))</span><br><span class="line">    #定义内容的显示格式</span><br><span class="line">    format_data&#x3D;&#39;&#123;:^6&#125;\t&#123;:^12&#125;\t&#123;:^8&#125;\t&#123;:^12&#125;\t&#123;:^14&#125;\t&#123;:^16&#125;&#39;</span><br><span class="line">    for item in lst:</span><br><span class="line">        print(format_data.format(item.get(&#39;id&#39;),</span><br><span class="line">                                 item.get(&#39;name&#39;),</span><br><span class="line">                                 item.get(&#39;english&#39;),</span><br><span class="line">                                 item.get(&#39;python&#39;),</span><br><span class="line">                                 item.get(&#39;java&#39;),</span><br><span class="line">                                 int(item.get(&#39;english&#39;))+int(item.get(&#39;python&#39;))+int(item.get(&#39;java&#39;))</span><br><span class="line">                                 ))</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-2-实现统计学生总人数功能"><a href="#6-2-实现统计学生总人数功能" class="headerlink" title="6.2 实现统计学生总人数功能"></a>6.2 实现统计学生总人数功能</h2><p>统计学生信息文件中保存的学生信息个数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def total():</span><br><span class="line">    if os.path.exists(filename):</span><br><span class="line">        with open(filename,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as rfile:</span><br><span class="line">            students&#x3D;rfile.readlines()</span><br><span class="line">            if students:</span><br><span class="line">                print(f&#39;一共有&#123;len(students)&#125;名学生&#39;)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;还没有录入学生信息&#39;)</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;暂未保存数据信息....&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-3-显示所有信息功能"><a href="#6-3-显示所有信息功能" class="headerlink" title="6.3 显示所有信息功能"></a>6.3 显示所有信息功能</h2><p>将学生信息文件中保存的全部学生信息获取并显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def show():</span><br><span class="line">    student_lst&#x3D;[]</span><br><span class="line">    if os.path.exists(filename):</span><br><span class="line">        with open(filename,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as rfile:</span><br><span class="line">            students&#x3D;rfile.readlines()</span><br><span class="line">            for item in students:</span><br><span class="line">                student_lst.append(eval(item))</span><br><span class="line">            if student_lst:</span><br><span class="line">                show_student(student_lst)</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;暂未保存过数据！！！&#39;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="7-排序模块设计"><a href="#7-排序模块设计" class="headerlink" title="7. 排序模块设计"></a>7. 排序模块设计</h1><p>实现按学生成绩排序功能：</p>
+<p>主要对学生信息按英语成绩、Python成绩、Java成绩、总成绩进行升序或降序排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def sort():</span><br><span class="line">    show()</span><br><span class="line">    if os.path.exists(filename):</span><br><span class="line">        with open(filename,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as rfile:</span><br><span class="line">            student_list&#x3D;rfile.readlines()</span><br><span class="line">        student_new&#x3D;[]</span><br><span class="line">        for item in student_list:</span><br><span class="line">            d&#x3D;dict(eval(item))</span><br><span class="line">            student_new.append(d)</span><br><span class="line">    else:</span><br><span class="line">        return</span><br><span class="line">    asc_or_desc&#x3D;input(&#39;请选择（0.升序 1.降序）：&#39;)</span><br><span class="line">    if asc_or_desc&#x3D;&#x3D;&#39;0&#39;:</span><br><span class="line">        asc_or_desc_bool&#x3D;False</span><br><span class="line">    elif asc_or_desc&#x3D;&#x3D;&#39;1&#39;:</span><br><span class="line">        asc_or_desc_bool&#x3D;True</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;您的输入有误，请重新输入&#39;)</span><br><span class="line">        sort()</span><br><span class="line">    mode&#x3D;input(&#39;请选择排序方式（1、按英语成绩排序 2、按PYthon成绩排序 3、按java成绩排序 0、按总成绩排序）：&#39;)</span><br><span class="line">    if mode&#x3D;&#x3D;&#39;1&#39;:</span><br><span class="line">        student_new.sort(key&#x3D;lambda x:int(x[&#39;english&#39;]),reverse&#x3D;asc_or_desc_bool)</span><br><span class="line">    elif mode&#x3D;&#x3D;&#39;2&#39;:</span><br><span class="line">        student_new.sort(key&#x3D;lambda x:int(x[&#39;Python&#39;]),reverse&#x3D;asc_or_desc_bool)</span><br><span class="line">    elif mode&#x3D;&#x3D;&#39;3&#39;:</span><br><span class="line">        student_new.sort(key&#x3D;lambda x:int(x[&#39;java&#39;]),reverse&#x3D;asc_or_desc_bool)</span><br><span class="line">    elif mode&#x3D;&#x3D;&#39;0&#39;:</span><br><span class="line">        student_new.sort(key&#x3D;lambda x:int(x[&#39;english&#39;]+x[&#39;Python&#39;]+[&#39;java&#39;]),reverse&#x3D;asc_or_desc_bool)</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;您的输入有误，请重新输入！！！&#39;)</span><br><span class="line">        sort()</span><br><span class="line">    show_student(student_new)</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-项目打包"><a href="#8-项目打包" class="headerlink" title="8. 项目打包"></a>8. 项目打包</h1><h2 id="8-1-安装第三方模块"><a href="#8-1-安装第三方模块" class="headerlink" title="8.1 安装第三方模块"></a>8.1 安装第三方模块</h2><p>(1) 在线安装方式</p>
+<p>pip install PyInstaller</p>
+<p>(2) 执行打包操作</p>
+<p>pyinstaller -F +文件路径</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395876210@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 ting-ting-he
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
