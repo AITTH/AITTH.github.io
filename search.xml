@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机器学习——任务、经验、性能</title>
+    <url>/2020/12/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BB%BB%E5%8A%A1%E3%80%81%E7%BB%8F%E9%AA%8C%E3%80%81%E6%80%A7%E8%83%BD%E5%AE%9A%E4%B9%89/</url>
+    <content><![CDATA[<h1 id="1-任务"><a href="#1-任务" class="headerlink" title="1. 任务"></a>1. 任务</h1><p>两类经典任务：1、监督学习；2、无监督学习</p>
+<p>监督学习：关注对事物未知表现的预测，一般包括分类问题和回归问题</p>
+<p>无监督学习：倾向于对事物本身特性的分析，常用的技术包括数据降维和聚类问题等。</p>
+<h2 id="具体解释"><a href="#具体解释" class="headerlink" title="具体解释"></a>具体解释</h2><p>分类问题：类别既是离散的，同时也是先知道数量的。</p>
+<p>回归问题：同样是预测问题，只是预测的目标往往是连续变量。</p>
+<p>数据降维：是对事物的特性进行压缩和筛选。</p>
+<p>聚类：依赖于数据的相似性，把相似的数据样本划分为一个簇。不同于分类问题，我们在大多数情况下不会预先知道簇的数量和每个簇的具体含义。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">分类问题的缺陷：</span><br><span class="line">所有需要预测的类别都是已知的。如果是新物种，我们便无法根据现有经验进行判断。常用的做法是对数据样本的分类表现打分；对于没有满足阈值设定的数据样本，就需要对其做进一步分析，基于要求人工参与鉴定。</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-经验"><a href="#2-经验" class="headerlink" title="2. 经验"></a>2. 经验</h1><p>监督学习问题：我们所拥有的经验包括特征和标记/目标两个部分。</p>
+<p>无监督学习，更加适合对数据结构的分析。</p>
+<p>训练集：既有特征，同时也带有目标/标记的数据集。</p>
+<h1 id="3-性能"><a href="#3-性能" class="headerlink" title="3. 性能"></a>3. 性能</h1><p>性能，评价所完成任务质量的指标。</p>
+<p>ps:测试集数据和训练集之间是彼此互斥的。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>python练习案例一</title>
     <url>/2020/11/29/Python%E7%BB%83%E4%B9%A0%E6%A1%88%E4%BE%8B%E4%B8%80/</url>
     <content><![CDATA[<p>[TOC]</p>
